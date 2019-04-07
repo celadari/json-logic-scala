@@ -1,0 +1,5 @@
+#JsonLogicScala 0.0.1 
+
+#scala
+
+Initial release of Json Logic Scala
