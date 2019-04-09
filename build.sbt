@@ -6,9 +6,9 @@ homepage := Some(url("https://github.com/celadari/json-logic-scala"))
 
 version := "0.0.1-SNAPSHOT"
 
-scalaVersion := "2.9.1"
+scalaVersion := "2.11.12"
 
-crossScalaVersions := Seq("2.9.1", "2.9.1-1", "2.9.2", "2.9.3", "2.10.3")
+crossScalaVersions := Seq("2.10.3", "2.11.12", "2.12.6")
 
 resolvers ++= Seq(
   "sonatype-snapshots" at "http://oss.sonatype.org/content/repositories/snapshots",
@@ -17,6 +17,8 @@ resolvers ++= Seq(
 
 libraryDependencies ++= {
   Seq(
+    "org.scala-lang" % "scala-compiler" % scalaVersion.value,
+    "com.typesafe.play" %% "play-json" % "2.7.2"
 //    "org.scalatest"  %% "scalatest"   % "1.9.1"  % "test",
 //    "org.scalacheck" %% "scalacheck"  % "1.10.1" % "test"
   )
@@ -77,7 +79,6 @@ OsgiKeys.requireBundle <<= (scalaVersion, crossScalaVersions) { (ver, crossVers)
   val nextVer = crossVers.zip(crossVers.tail).find(_._1 == ver).map(_._2)
   val langBundleVer = 
     if(ver.startsWith("2.10")) "[2.10,2.11)"          // All 2.10.x versions are binary-compatible
-    else if(ver.startsWith("2.9.3")) "[2.9.3,2.9.4)"  // Special case for the last 2.9.x version at this time
     else "["+ver+","+nextVer.get+")"                  // The current version, up to but excluding the next version
   Seq("scala-library;bundle-version=\""+langBundleVer+"\"") 
 }
@@ -90,16 +91,3 @@ ghpages.settings
 git.remoteRepo := "git@github.com:celadari/json-logic-scala.git"
 
 site.includeScaladoc()
-
-// Stuff for publicizing on http://ls.implicit.ly
-seq(lsSettings :_*)
-
-(LsKeys.tags in LsKeys.lsync) := Seq("awesome")
-
-(description in LsKeys.lsync) := "Json Logic Scala is the most awesome scala project available today"
-
-(LsKeys.ghUser in LsKeys.lsync) := Some("celadari")
-
-(LsKeys.ghRepo in LsKeys.lsync) := Some("json-logic-scala")
-
-(LsKeys.ghBranch in LsKeys.lsync) := Some("master")
