@@ -10,9 +10,9 @@ import play.api.libs.json._
 case object JsonLogicScala {
 
   def main(args: Array[String]): Unit = {
-    val js = """[{"<": [{"var": "car"}, {"var": "voiture"}]}, {"car": 2, "voiture": 5}]"""
-    val json = Json.parse(js).as[ComposeLogic[Int]]
-    println(json.conditions.mkString("[", ", ", "]"))
+    val js = """[{"<": [{"var": "car", "type": "int"}, {"var": "voiture", "type": "long"}]}, {"car": 2, "voiture": 5}]"""
+    val json = Json.parse(js).as[JsonLogicCore]
+    println(json.asInstanceOf[ComposeLogic].conditions.mkString("[", ", ", "]"))
   }
 
 }
