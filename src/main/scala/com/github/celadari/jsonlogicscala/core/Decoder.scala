@@ -1,6 +1,6 @@
 package com.github.celadari.jsonlogicscala.core
 
-import play.api.libs.json.{JsValue, Reads}
+import play.api.libs.json.{JsObject, JsValue, Reads}
 
 object Decoder {
   implicit val defaultDecoder: Decoder = new Decoder {
@@ -12,8 +12,12 @@ object Decoder {
 abstract class Decoder {
   def customDecode(json: JsValue, otherType: String)(implicit reads: Array[Reads[_]]): Any
 
-  def decode(jsValue: JsValue, `type`: String)(implicit reads: Array[Reads[_]] = Array()): ValueLogic[_] = {
-    val value = `type` match {
+  def decode(jsonLogic: JsObject, jsonLogicData: JsObject)(implicit reads: Array[Reads[_]] = Array()): ValueLogic[_] = {
+    val typeData = (jsonLogic \ "type").as[String]
+    val pathData = (jsonLogic \ "var").as[String]
+    val jsValue = (jsonLogicData \ pathData).get
+
+    val value = typeData match {
       case "byte" => jsValue.as[Byte]
       case "short" => jsValue.as[Short]
       case "int" => jsValue.as[Int]
