@@ -10,10 +10,7 @@ object ValueLogic {
   }
 
   private[core] def decode(jsonLogic: JsObject, jsonLogicData: JsObject)(implicit decoder: Decoder): ValueLogic[_] = {
-    val typeData = (jsonLogic \ "type").as[String]
-    val pathData = (jsonLogic \ "var").as[String]
-    val json = (jsonLogicData \ pathData).get
-    ValueLogic("var", decoder.decode(json, typeData))
+    ValueLogic("var", decoder.decode(jsonLogic, jsonLogicData))
   }
 
   implicit def valueLogicReads[T](implicit fmt: Reads[T]): Reads[ValueLogic[T]] = new Reads[ValueLogic[T]] {
