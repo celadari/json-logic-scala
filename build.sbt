@@ -66,7 +66,10 @@ osgiSettings
 
 OsgiKeys.bundleSymbolicName := "com.github.celadari.jsonlogicscala"
 
-OsgiKeys.exportPackage := Seq("com.github.celadari.jsonlogicscala")
+OsgiKeys.exportPackage := Seq("com.github.celadari.jsonlogicscala",
+                              "com.github.celadari.jsonlogicscala.core",
+                              "com.github.celadari.jsonlogicscala.operators"
+                              )
 
 OsgiKeys.privatePackage := Seq()
 

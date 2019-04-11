@@ -1,24 +1,9 @@
 package com.github.celadari.jsonlogicscala.core
 
+import com.github.celadari.jsonlogicscala.operators.ReduceLogic
 import play.api.libs.json._
 
 object JsonLogicCore {
-
-  private[core] def parse[T](jsonLogic: JsObject, jsonLogicData: JsObject)(implicit fmt: Reads[T]): JsonLogicCore = {
-    // check for operator field
-    val fields = jsonLogic.fields
-
-    // if operator is data access
-    if (fields.map(_._1).contains("var")) return ValueLogic.parse[T](jsonLogic, jsonLogicData)(fmt)
-
-    // check for compose logic operator field
-    if (fields.length > 1) throw new Error("JSON object is supposed to have only one operator field.")
-    val operator = fields.head._1
-    if (!ComposeLogic.OPERATORS.contains(operator)) throw new Error(s"Invalid parsed operator: $operator")
-
-    // if operator is compose logic
-    ComposeLogic.parse[T](jsonLogic, jsonLogicData)(fmt)
-  }
 
   private[core] def decode(jsonLogic: JsObject, jsonLogicData: JsObject)(implicit decoder: Decoder): JsonLogicCore = {
     // check for operator field
@@ -51,4 +36,9 @@ object JsonLogicCore {
 }
 
 
-abstract class JsonLogicCore(operator: String)
+abstract class JsonLogicCore(val operator: String) {
+
+  def reduce(implicit reducer: ReduceLogic): Any = {
+    reducer.reduce(this)
+  }
+}
