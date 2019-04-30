@@ -10,10 +10,10 @@ class CompareOperator {
   // custom operators to be override by user
   def negateCustom(value: Any): Any = throw new IllegalArgumentException(s"Invalid argument: $value")
   def cmpCustomLong(a: Long, b: Any): Any = throw new IllegalArgumentException(s"Invalid argument: $b")
-  def cmpCustomDouble(a: Double, b: Any) = throw new IllegalArgumentException(s"Invalid argument: $b")
+  def cmpCustomDouble(a: Double, b: Any): Any = throw new IllegalArgumentException(s"Invalid argument: $b")
   def cmpCustom(a: Any, b: Any): Any = throw new IllegalArgumentException(s"Invalid argument: ${(a, b)}")
   def eqCustomLong(a: Long, b: Any): Any = throw new IllegalArgumentException(s"Invalid argument: $b")
-  def eqCustomDouble(a: Double, b: Any) = throw new IllegalArgumentException(s"Invalid argument: $b")
+  def eqCustomDouble(a: Double, b: Any): Any = throw new IllegalArgumentException(s"Invalid argument: $b")
   def eqCustom(a: Any, b: Any): Any = throw new IllegalArgumentException(s"Invalid argument: ${(a, b)}")
 
   // operators for user

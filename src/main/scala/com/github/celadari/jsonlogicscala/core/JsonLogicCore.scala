@@ -15,7 +15,6 @@ object JsonLogicCore {
     // check for compose logic operator field
     if (fields.length > 1) throw new Error("JSON object is supposed to have only one operator field.")
     val operator = fields.head._1
-    if (!ComposeLogic.OPERATORS.contains(operator)) throw new Error(s"Invalid parsed operator: $operator")
 
     // if operator is compose logic
     ComposeLogic.decode(jsonLogic, jsonLogicData)(decoder)
