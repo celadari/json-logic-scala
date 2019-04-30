@@ -11,4 +11,7 @@ object ValueLogic {
 
 }
 
-case class ValueLogic[T](override val operator: String, value: T) extends JsonLogicCore(operator)
+case class ValueLogic[T](override val operator: String, valueOpt: Option[T]) extends JsonLogicCore(operator) {
+
+  def isEmpty: Boolean = valueOpt.isEmpty
+}

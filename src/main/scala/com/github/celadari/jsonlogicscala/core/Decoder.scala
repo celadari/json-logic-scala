@@ -28,6 +28,6 @@ abstract class Decoder {
       case "boolean" => jsValue.as[Boolean]
       case otherType => customDecode(jsValue, otherType)(reads)
     }
-    ValueLogic("var", value)
+    ValueLogic("var", Option(value))
   }
 }

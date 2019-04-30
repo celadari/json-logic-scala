@@ -13,8 +13,8 @@ object JsonLogicCore {
     if (fields.map(_._1).contains("var")) return ValueLogic.decode(jsonLogic, jsonLogicData)(decoder)
 
     // check for compose logic operator field
+    if (fields.isEmpty) return empty
     if (fields.length > 1) throw new Error("JSON object is supposed to have only one operator field.")
-    val operator = fields.head._1
 
     // if operator is compose logic
     ComposeLogic.decode(jsonLogic, jsonLogicData)(decoder)
@@ -23,6 +23,8 @@ object JsonLogicCore {
   implicit def jsonLogicCoreReads(implicit decoder: Decoder): Reads[JsonLogicCore] = new Reads[JsonLogicCore] {
 
     override def reads(json: JsValue): JsResult[JsonLogicCore] = {
+      // check if empty
+      if (json == JsObject.empty) return JsSuccess(empty)
 
       // split json in two components jsonLogic and jsonLogicData
       val jsonLogic = (json \ 0).getOrElse(JsObject.empty).asInstanceOf[JsObject]
@@ -32,6 +34,8 @@ object JsonLogicCore {
       JsSuccess(decode(jsonLogic, jsonLogicData)(decoder))
     }
   }
+
+  def empty: JsonLogicCore = ComposeLogic("", Array.empty[JsonLogicCore])
 }
 
 
@@ -40,4 +44,6 @@ abstract class JsonLogicCore(val operator: String) {
   def reduce(implicit reducer: ReduceLogic): Any = {
     reducer.reduce(this)
   }
+
+  def isEmpty: Boolean
 }
