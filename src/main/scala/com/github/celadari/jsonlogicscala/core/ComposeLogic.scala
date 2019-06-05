@@ -39,6 +39,21 @@ object ComposeLogic {
     ComposeLogic(operator, decodeArrayOfConditions((jsonLogic \ operator).get, jsonLogicData)(decoder))
   }
 
+  private[core] def encode(composeLogic: ComposeLogic)
+                          (implicit encoder: Encoder): (JsValue, JsObject) = {
+    // retrieve compose logic attributes
+    val operator = composeLogic.operator
+    val conditions = composeLogic.conditions
+
+    // create js map operator -> conditions
+    val (jsonLogic, jsonLogicData) = encodeArrayOfConditions(conditions)(encoder)
+    (JsObject(Map(operator -> jsonLogic)), jsonLogicData)
+  }
+
+  private[core] def encodeArrayOfConditions(conditions: Array[JsonLogicCore])(implicit encoder: Encoder): (JsValue, JsObject) = {
+    val (jsonLogics, jsonLogicData) = conditions.map(jsonLogic => JsonLogicCore.encode(jsonLogic)(encoder)).unzip
+    (JsArray(jsonLogics), jsonLogicData.reduce(_ ++ _))
+  }
 
   private[core] def decodeArrayOfConditions(json: JsValue, jsonLogicData: JsObject)(implicit decoder: Decoder): Array[JsonLogicCore] = {
     val jsArray = json.asInstanceOf[JsArray]

@@ -5,6 +5,14 @@ import play.api.libs.json._
 
 object JsonLogicCore {
 
+  private[core] def encode(jsonLogic: JsonLogicCore)(implicit encoder: Encoder): (JsValue, JsObject) = {
+    // if operator is data access
+    jsonLogic match {
+      case valueLogic: ValueLogic[_] => ValueLogic.encode(valueLogic)(encoder)
+      case composeLogic: ComposeLogic => ComposeLogic.encode(composeLogic)(encoder)
+    }
+  }
+
   private[core] def decode(jsonLogic: JsObject, jsonLogicData: JsObject)(implicit decoder: Decoder): JsonLogicCore = {
     // check for operator field
     val fields = jsonLogic.fields
@@ -32,6 +40,17 @@ object JsonLogicCore {
 
       // apply reading with distinguished components: logic and data
       JsSuccess(decode(jsonLogic, jsonLogicData)(decoder))
+    }
+  }
+
+  implicit def jsonLogicCoreWrites(implicit encoder: Encoder): Writes[JsonLogicCore] = new Writes[JsonLogicCore] {
+    override def writes(jsonLogicCore: JsonLogicCore): JsValue = {
+      // check if empty
+      if (jsonLogicCore.isEmpty) return JsObject.empty
+
+      // apply writing
+      val (jsonLogic, jsonLogicData) = encode(jsonLogicCore)(encoder)
+      JsArray(Array(jsonLogic, jsonLogicData))
     }
   }
 
