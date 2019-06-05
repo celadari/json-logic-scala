@@ -22,7 +22,11 @@ object ValueLogic {
 
 }
 
-case class ValueLogic[T](override val operator: String, valueOpt: Option[T], codename: String = random.toString)
+case class ValueLogic[T](
+                          override val operator: String,
+                          valueOpt: Option[T],
+                          codetype: String,
+                          codename: String = random.toString)
   extends JsonLogicCore(operator) {
 
   def isEmpty: Boolean = valueOpt.isEmpty
