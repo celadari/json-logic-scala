@@ -11,14 +11,14 @@ object ValueLogic {
     val (typeData, jsonData) = encoder.encode(valueLogic)
 
     // construct jsonLogic component and jsonLogicData component
-    val jsonLogic = JsObject(Map("var" -> JsString(codename), "type" -> JsString(typeData)))
+    val jsonLogic = JsObject(Map("var" -> (if (valueLogic.isDataArray) JsNumber(codename.toLong) else JsString(codename)), "type" -> JsString(typeData)))
     val jsonLogicData = JsObject(Map(codename -> jsonData))
     (jsonLogic, jsonLogicData)
   }
 
-  private[core] def decode(jsonLogic: JsObject, jsonLogicData: JsObject)(implicit decoder: Decoder): ValueLogic[_] = {
+  private[core] def decode(jsonLogic: JsObject, jsonLogicData: JsObject, isDataArray: Boolean = false)
+                          (implicit decoder: Decoder): ValueLogic[_] =
     decoder.decode(jsonLogic, jsonLogicData)
-  }
 
 }
 
@@ -30,4 +30,5 @@ case class ValueLogic[T](
   extends JsonLogicCore(operator) {
 
   def isEmpty: Boolean = valueOpt.isEmpty
+
 }

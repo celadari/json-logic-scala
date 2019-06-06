@@ -1,6 +1,6 @@
 package com.github.celadari.jsonlogicscala
 
-import com.github.celadari.jsonlogicscala.core.{Decoder, Encoder, JsonLogicCore, ValueLogic}
+import com.github.celadari.jsonlogicscala.core.{Decoder, Encoder, ValueLogic}
 import play.api.libs.json._
 
 
@@ -27,8 +27,6 @@ case object JsonLogicScala {
   case class Person[T](name: String, kids: T)
 //
   def main(args: Array[String]): Unit = {
-    val js = """[{"<": [{"var": "car", "type": "int"}, {"var": "voiture", "type": "long"}, {"var": "jack", "type": "person[Array[Array[Int]]]"}]}, {"jack": {"name": "Jack", "kids": [[5], [6]]}, "car": 2, "voiture": 5}]"""
-
 
     implicit val myDecoder: Decoder = new Decoder {
       override def customDecode(json: JsValue, otherType: String)(implicit reads: Array[Reads[_]] = Array()): Any =
@@ -54,13 +52,24 @@ case object JsonLogicScala {
       }
     }
 
-    val json = Json.parse(js).as[JsonLogicCore]
-    val js2 = """[{"<": [{"var": "voiture", "type": "int"}, {"var": "avion", "type": "int"}]}, {"voiture": 2, "avion": 5}]"""
+//    val js = """[{"<": [{"var": "car", "type": "int"}, {"var": "voiture", "type": "long"}, {"var": "jack", "type": "person[Array[Array[Int]]]"}]}, {"jack": {"name": "Jack", "kids": [[5], [6]]}, "car": 2, "voiture": 5}]"""
+//    val json = Json.parse(js).as[JsonLogicCore]
+//    println(js)
+//    println(Json.stringify(Json.toJson(json)))
+//
+//    val js2 = """[{"<": [{"var": "voiture", "type": "int"}, {"var": "avion", "type": "int"}]}, {"voiture": 2, "avion": 5}]"""
 //    val json2 = Json.parse(js2).as[JsonLogicCore]
+//
+//
+//    val js3 = """[true, {}]"""
+//    println((Json.parse(js3).as[JsonLogicCore].reduce))
 
-    println(js)
-    println(Json.stringify(Json.toJson(json)))
-//    println(json2.asInstanceOf[ComposeLogic].conditions.mkString("[", ", ", "]"))
+//    val js4 = """[{">": [{"var": 0, "type": "int"}, {"var": 1, "type": "int"}]}  , [6, 4]]"""
+//    val json4 = Json.parse(js4).as[JsonLogicCore]
+//    println(json4.reduce)
+//    println(Json.stringify(Json.toJson(json4)))
+
+    //    println(json2.asInstanceOf[ComposeLogic].conditions.mkString("[", ", ", "]"))
 //    println(json2.reduce)
 //    println(json2)
 //    json2.evaluate()

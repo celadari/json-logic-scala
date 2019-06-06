@@ -13,8 +13,9 @@ abstract class Decoder {
   def customDecode(json: JsValue, otherType: String)(implicit reads: Array[Reads[_]]): Any
 
   def decode(jsonLogic: JsObject, jsonLogicData: JsObject)(implicit reads: Array[Reads[_]] = Array()): ValueLogic[_] = {
+    val pathJs = (jsonLogic \ "var")
+    val pathData = if (pathJs.validate[String].isSuccess) pathJs.as[String] else pathJs.as[Long].toString
     val typeData = (jsonLogic \ "type").as[String]
-    val pathData = (jsonLogic \ "var").as[String]
     val jsValue = (jsonLogicData \ pathData).get
 
     val value = typeData match {

@@ -27,7 +27,8 @@ object ComposeLogic {
   }
   val OPERATORS: Array[String] = BINARY_OPERATORS.ALL ++ MULTIPLE_OPERATORS.ALL
 
-  private[core] def decode(jsonLogic: JsObject, jsonLogicData: JsObject)(implicit decoder: Decoder): ComposeLogic = {
+  private[core] def decode(jsonLogic: JsObject, jsonLogicData: JsObject, isDataArray: Boolean = false)
+                          (implicit decoder: Decoder): ComposeLogic = {
     // check for operator field
     val fields = jsonLogic.fields
 
@@ -36,7 +37,7 @@ object ComposeLogic {
     val operator = fields.head._1
 
     // if operator is compose logic
-    ComposeLogic(operator, decodeArrayOfConditions((jsonLogic \ operator).get, jsonLogicData)(decoder))
+    ComposeLogic(operator, decodeArrayOfConditions((jsonLogic \ operator).get, jsonLogicData, isDataArray)(decoder))
   }
 
   private[core] def encode(composeLogic: ComposeLogic)
@@ -55,12 +56,13 @@ object ComposeLogic {
     (JsArray(jsonLogics), jsonLogicData.reduce(_ ++ _))
   }
 
-  private[core] def decodeArrayOfConditions(json: JsValue, jsonLogicData: JsObject)(implicit decoder: Decoder): Array[JsonLogicCore] = {
+  private[core] def decodeArrayOfConditions(json: JsValue, jsonLogicData: JsObject, isDataArray: Boolean = false)
+                                           (implicit decoder: Decoder): Array[JsonLogicCore] = {
     val jsArray = json.asInstanceOf[JsArray]
     jsArray
       .value
       .map(jsValue => {
-        JsonLogicCore.decode(jsValue.asInstanceOf[JsObject], jsonLogicData)(decoder)
+        JsonLogicCore.decode(jsValue.asInstanceOf[JsObject], jsonLogicData, isDataArray)(decoder)
       })
       .toArray
   }
