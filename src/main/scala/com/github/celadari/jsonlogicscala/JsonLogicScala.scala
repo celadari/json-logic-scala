@@ -1,6 +1,7 @@
 package com.github.celadari.jsonlogicscala
 
-import com.github.celadari.jsonlogicscala.core.{Decoder, Encoder, ValueLogic}
+import com.github.celadari.jsonlogicscala.core.{Decoder, Encoder, JsonLogicCore, ValueLogic}
+import com.github.celadari.jsonlogicscala.refs.{RefComposeLogic, RefValueLogic}
 import play.api.libs.json._
 
 
@@ -73,6 +74,17 @@ case object JsonLogicScala {
 //    println(json2.reduce)
 //    println(json2)
 //    json2.evaluate()
+
+    val ref = RefComposeLogic[String]("AND", Array(
+      RefComposeLogic[String]("=", Array(RefValueLogic("voiture", "int"), RefValueLogic("camion", "int"))),
+      RefComposeLogic[String]("<=", Array(RefValueLogic("avion", "int"), RefValueLogic("sous-marin", "int")))
+    ))
+
+    val vals = Map("voiture" -> 54, "camion" -> 54, "avion" -> 100, "sous-marin" -> 154)
+
+    val jsonLogicCore = JsonLogicCore.fromRefs(ref, vals)
+
+    println(Json.prettyPrint(Json.toJson(jsonLogicCore)))
   }
 
 }

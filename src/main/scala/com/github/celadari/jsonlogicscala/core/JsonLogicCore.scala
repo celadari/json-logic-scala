@@ -1,6 +1,7 @@
 package com.github.celadari.jsonlogicscala.core
 
 import com.github.celadari.jsonlogicscala.operators.ReduceLogic
+import com.github.celadari.jsonlogicscala.refs.{RefComposeLogic, RefJsonLogicCore, RefValueLogic}
 import play.api.libs.json._
 
 object JsonLogicCore {
@@ -85,6 +86,30 @@ object JsonLogicCore {
   }
 
   def empty: JsonLogicCore = ValueLogic("", None, "")
+
+  def fromRefs(jsonLogic: RefJsonLogicCore[String], jsonLogicData: Map[String, Any]): JsonLogicCore = {
+    jsonLogic match {
+      case refVal: RefValueLogic[String] => {
+        ValueLogic("", Some(jsonLogicData(refVal.`var`)), refVal.`type`, refVal.`var`)
+      }
+      case refCompose: RefComposeLogic[String] => {
+        ComposeLogic(refCompose.operator, refCompose.conditions.map(fromRefs(_: RefJsonLogicCore[String], jsonLogicData)))
+      }
+    }
+  }
+
+  def fromRefs(jsonLogic: RefJsonLogicCore[Int], jsonLogicData: Iterable[Any]): JsonLogicCore = {
+    val _jsonLogicData = jsonLogicData.toArray
+    jsonLogic match {
+      case refVal: RefValueLogic[Int] => {
+        ValueLogic("", Some(_jsonLogicData(refVal.`var`)), refVal.`type`, refVal.`var`.toString).isDataArray = true
+      }
+      case refCompose: RefComposeLogic[Int] => {
+        ComposeLogic(refCompose.operator, refCompose.conditions.map(fromRefs(_: RefJsonLogicCore[Int], jsonLogicData).isDataArray=true)).isDataArray = true
+      }
+    }
+  }
+
 }
 
 

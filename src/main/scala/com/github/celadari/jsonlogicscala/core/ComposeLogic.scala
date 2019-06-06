@@ -69,7 +69,8 @@ object ComposeLogic {
 
 }
 
-case class ComposeLogic(override val operator: String, conditions: Array[JsonLogicCore]) extends JsonLogicCore(operator) {
+case class ComposeLogic(override val operator: String, conditions: Array[JsonLogicCore])
+  extends JsonLogicCore(operator) {
 
   def isEmpty: Boolean = conditions.forall(_.isEmpty)
 }
