@@ -2,28 +2,27 @@ package com.github.celadari.jsonlogicscala.core
 
 import play.api.libs.json._
 
-
 object ComposeLogic {
 
   object BINARY_OPERATORS {
-    val LTEQ = "<="
-    val LT = "<"
-    val GTEQ = ">="
-    val GT = ">"
-    val EQ = "=="
-    val DIFF = "!="
-    val IN = "in"
-    val NOT_IN = "not in"
-    val ALL = Array(LTEQ, LT, GTEQ, GT, EQ, DIFF)
+    val LTEQ: String = "<="
+    val LT: String = "<"
+    val GTEQ: String = ">="
+    val GT: String = ">"
+    val EQ: String = "=="
+    val DIFF: String = "!="
+    val IN: String = "in"
+    val NOT_IN: String = "not in"
+    val ALL: Array[String] = Array(LTEQ, LT, GTEQ, GT, EQ, DIFF)
   }
 
   object MULTIPLE_OPERATORS {
-    val OR = "or"
-    val AND = "and"
-    val XOR = "xor"
-    val MAX = "max"
-    val MIN = "min"
-    val ALL = Array(OR, AND, XOR, MAX, MIN)
+    val OR: String = "or"
+    val AND: String = "and"
+    val XOR: String = "xor"
+    val MAX: String = "max"
+    val MIN: String = "min"
+    val ALL: Array[String] = Array(OR, AND, XOR, MAX, MIN)
   }
   val OPERATORS: Array[String] = BINARY_OPERATORS.ALL ++ MULTIPLE_OPERATORS.ALL
 

@@ -1,10 +1,10 @@
-name := "Json Logic Scala"
+name := "json-logic-scala"
 
 organization := "com.github.celadari"
 
 homepage := Some(url("https://github.com/celadari/json-logic-scala"))
 
-version := "0.0.1-SNAPSHOT"
+version := "1.0.0"
 
 scalaVersion := "2.11.12"
 
@@ -18,7 +18,7 @@ resolvers ++= Seq(
 libraryDependencies ++= {
   Seq(
     "org.scala-lang" % "scala-compiler" % scalaVersion.value,
-    "com.typesafe.play" %% "play-json" % "2.7.2"
+    "com.typesafe.play" %% "play-json" % "latest.integration"
 //    "org.scalatest"  %% "scalatest"   % "1.9.1"  % "test",
 //    "org.scalacheck" %% "scalacheck"  % "1.10.1" % "test"
   )
@@ -37,11 +37,11 @@ publishTo <<= version { _.endsWith("SNAPSHOT") match {
   }
 }
 
-credentials += Credentials( file("sonatype.credentials") )
-
-publishMavenStyle := true
+credentials += Credentials(file("sonatype.credentials") )
 
 publishArtifact in Test := false
+
+publishMavenStyle := true
 
 pomIncludeRepository := { _ => false }
 

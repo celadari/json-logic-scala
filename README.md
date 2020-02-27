@@ -1,69 +1,126 @@
 # Json Logic Scala
 Build complex rules, serialize them as JSON, and execute them in Scala
+Json-logic-scala enables you to serialize in JSON format logical expressions.
+It also enables you to load a scala object from a logical expression/JSON.
 
-## Problem Statement
+Due to Scala's strong static typed language nature, json-logic-scala requires JSON to add tell type in json.
 
-This little project aims to solve the following problems:
+### Why would you use json-logic-scala ?
+The [JsonLogic format](http://jsonlogic.com/) is designed to allow you to share rules (logic) between
+front-end and back-end code (regardless of language difference), even to store
+logic along with a record in a database.
 
-1. Make stuff more awesome.
-2. Remove the less awesome stuff from your project.
+Logic that has been exported from another language can be applied quickly on
+scala.
 
-## Configuration
-
-Add the Sonatype.org Releases repo as a resolver in your `build.sbt` or `Build.scala` as appropriate.
-
-```scala
-resolvers += "Sonatype.org Releases" at "https://oss.sonatype.org/content/repositories/releases/"
-```
-
-Add **Json Logic Scala** as a dependency in your `build.sbt` or `Build.scala` as appropriate.
-
-```scala
-libraryDependencies ++= Seq(
-  // Other dependencies ...
-  "com.github.celadari" %% "JsonLogicScala" % "0.0.1" % "compile"
-)
-```
-
-## Scala Versions
+### Scala Versions
 
 This project is compiled, tested, and published for the following Scala versions:
+1. 2.10.3
+2. 2.11.12
+3. 2.12.6
 
-1. 2.9.1
-2. 2.9.1-1
-3. 2.9.2
-4. 2.9.3
-5. 2.10.3
-6. 2.11.12
-7. 2.12.6
+## 1. Installation
+
+To get started, add json-logic-scala as a dependency to your project:
+
+* sbt
+    ```sbt
+    libraryDependencies += "com.github.celadari" %% "json-logic-scala" % "latest.integration"
+    ```
+
+* Gradle
+    ```gradle
+    compile group: 'com.github.celadari', name: 'json-logic-scala_2.12', version: 'latest.integration'
+    ```
+* Maven
+    ```maven
+    <dependency>
+      <groupId>com.github.celadari</groupId>
+      <artifactId>play-json_2.12</artifactId>
+      <version>latest.integration</version>
+    </dependency>
+    ```
+Json-logic-scala supports Scala 2.11 and 2.12. Choosing the right JAR is automatically managed in sbt. If you're using Gradle or Maven then you need to use the correct version in the artifactId.
+
+## 2. Main concepts: Boolean-Algebra-Tree
+Boolean expressions are complex boolean statements composed of atoms, unary, binary and multiple operators.
+Atoms are assigned a value, and can be fed to a binary or unary expression.
+For example, the logical expression
+$price \gte 20 \and label \neq label2$ can be parsed to the following Abstract Syntax Tree:
+
+A tree representation of the logical expression is very convenient. After isolating the outermost operator of the
+expression (the operator which is enclosed with the fewest amount of parentheses), the logical expression can be split on
+said operator into different branches representing themselves logical expressions. These different expressions can be further
+split into different branches until reaching leaves Node which represent single atoms. Evaluating the logical expression in
+its tree representation is evaluated recursively. Each Internal Node needs to have its children nodes evaluated before
+being evaluated. Leaf Nodes represent variables/values.
 
 
-## Usage
+## 3. Example
+Let's suppose you have a parquet/csv file on disk and you want to remember/transfer
+filtering rules before loading it.
 
-To use **Json Logic Scala**, you should import it and call it...
+| price (€) | quantity | label    | label2    | clientID | date                |
+|-----------|----------|----------|----------|----------|---------------------|
+| 54        | 2        | t-shirts | t-shirts | 245698   | 2018-01-12 09:12:00 |
+| 68        | 1        | pants    | shoes    | 478965   | 2019-07-24 15:24:00 |
+| 10        | 2        | sockets  | hat      | 478963   | 2020-02-14 16:22:00 |
+|...........|..........|..........|..........|..........|.....................|
+
+Let's suppose we are only interested in rows which satisfy logical expression:
+$price \gte 20 \and label \neq label2$.
+If you want to store the logic (logical expression) in an universal format that can
+be shared between scala, R, python code you can store in jsonLogic format.
+
+For the logic:
+```json
+{
+  "and": [{
+            "<=": [
+                    {"var": "colA", "type": "column"},
+                    {"var": "valA", "type": "value"}
+                  ]
+          },
+          {
+            "!=": [
+                    {"var": "colB", "type": "column"},
+                    {"var": "colC", "type": "column"}
+                  ]
+          }
+         ]
+}
+```
+For the values:
+```json
+{
+    "colA": {"name": "price (€)"},
+    "valA": {"value": 20, "type": "int"},
+    "colB": {"name": "label"},
+    "colC": {"name": "label2"}
+}
+```
+
+## 4. Usage
+
+
+
+### 4.1 Importing/Exporting
+A boolean decision tree is represented by `JsonLogicCore` class - which has two subtypes: `ComposeLogic` and `ValueLogic`.
+
+* An Internal Node (i.e. conditional node) is of type: `ComposeLogic`.
+* A Leaf Node (i.e. value/variable node) is of type: `ValueLogic`.
+
+To use **Json Logic Scala**, you should start by defining or importing a `JsonLogicCore` instance (we'll see how to evaluate it latter below).
+
+#### Define
+You should define how to read/write Leaves Nodes using [Play](https://www.playframework.com/documentation/latest/ScalaJson) library.
+There can be severa
+
 
 ## Scaladoc API
 
 The Scaladoc API for this project can be found [here](http://celadari.github.io/json-logic-scala/latest/api).
-
-## Examples
-
-```scala
-package org.example
-
-import com.github.celadari.jsonlogicscala._
-
-case object MyObject {
-  // ...
-}
-```
-
-## Wishlist
-
-Below is a list of features we would like to one day include in this project
-
-1. Support more awesome.
-2. Decimate the not-awesome.
 
 ## License
 
