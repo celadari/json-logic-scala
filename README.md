@@ -113,10 +113,20 @@ A boolean decision tree is represented by `JsonLogicCore` class - which has two 
 
 To use **Json Logic Scala**, you should start by defining or importing a `JsonLogicCore` instance (we'll see how to evaluate it latter below).
 
-#### Define
+#### Define Encoder
 You should define how to read/write Leaves Nodes using [Play](https://www.playframework.com/documentation/latest/ScalaJson) library.
 There can be severa
 
+#### Define Decoder
+A decoder defines how to read/parse a JSON string/[JsValue](https://www.playframework.com/documentation/latest/api/scala/play/api/libs/json/JsValue.html)
+to a `JsonLogicCore` instance.
+
+You should implement and instantiate a decoder for your case:
+```scala
+implicit val decoder = new Decoder(){
+  def customDecode
+}
+```
 
 ## Scaladoc API
 
