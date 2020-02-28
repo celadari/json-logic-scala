@@ -39,7 +39,6 @@ object ComposeLogic {
     ComposeLogic(operator, decodeArrayOfConditions((jsonLogic \ operator).get, jsonLogicData)(decoder))
   }
 
-
   private[core] def decodeArrayOfConditions(json: JsValue, jsonLogicData: JsObject)(implicit decoder: Decoder): Array[JsonLogicCore] = {
     val jsArray = json.asInstanceOf[JsArray]
     jsArray
