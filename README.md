@@ -61,7 +61,9 @@ can be parsed to the following Abstract Syntax Tree:
 A tree representation of the logical expression is very convenient. After isolating the outermost operator of the
 expression (the operator which is enclosed with the fewest amount of parentheses), the logical expression can be split on
 said operator into different branches representing themselves logical expressions. These different expressions can be further
-split into different branches until reaching leaves Node which represent single atoms. Evaluating the logical expression in
+split into different branches until reaching leaves Node which represent single atoms.
+
+Evaluating the logical expression in
 its tree representation is evaluated recursively. Each Internal Node needs to have its children nodes evaluated before
 being evaluated. Leaf Nodes represent variables/values.
 
@@ -245,7 +247,7 @@ The `reduce` method applies two sub-methods depending if the Node is an Internal
 There are several ways to define a **custom `reduceComposeLogic`** method:
 
 #### 5.2.1 Define custom comparators methods
-Good option if you **need to add new types** but **don't need to change the comparator functions** and
+Good option if you **need to add new types** but **don't need to change the comparator functions for built-in/basic types** and
 **don't need to change built-in naming convention for operators**.
 
 *Json-logic-scala* provides comparator functions for basic types: `Byte`, `Short`, `Int`, `Long`, `Float`, `Double`.
@@ -271,41 +273,47 @@ among the following:
 | BooleanOperator  |`def orCustomBoolean(a: Boolean, b: Any): Any` | or operator between `Boolean` type and custom types         |
 | BooleanOperator  |`def negateCustom(value: Any): Any`            | negate operator for custom types in BooleanOperator package |
 
-#### 5.2.2 Redefine 
-Following built-in comparators:
+#### 5.2.2 Redefine main comparators methods
+Good option if you **need to change the comparator functions for built-in/basic types** and
+**don't need to change built-in naming convention for operators**.
 
-| `operator` field | Scala comparator function|
-|:----------------:|:---------------------:|
-|`"<="`            | `cmpOp.gteq`          |
-|`"<"`             | `cmpOp.gt`            |
-|`">="`            | `cmpOp.lteq`          |
-|`">"`             | `cmpOp.lt`            |
-|`"and"`           | `condition.conditions`|
-|`"or"`            | `condition.conditions`|
-|`"xor"`           | `boolOp.xor`          |
-|`"="`             | `cmpOp.eq`            |
-|`"!="`            | `cmpOp.diff`          |
-|`"in"`            | `ctnOp.contains`      |
-|`"not in"`        | `ctnOp.containsNot`   |
+You just need to override among the following comparator methods:
+
+|     package      |              Scala function                   |                  Behavior that it defines                              |
+|:----------------:|:----------------------------------------------|:----------------------------------------------------------------------:|
+| CompareOperator  |`def eq(a: Any, b: Any): Any`                  | = operator for all different types in CompareOperator package          |
+| CompareOperator  |`def negate(value: Any): Any`                  | ! operator for all different types in CompareOperator package          |
+| CompareOperator  |`def cmp(a: Any, b: Any): Any`                 | <= operator for all different types in CompareOperator package         |
+| ContainsOperator |`def contains(a: Any, b: Any): Any`            | contains operator for all different types in ContainsOperator package  |
+| ContainsOperator |`def negate(value: Any): Any`                  | ! operator for all different types in ContainsOperator package         |
+| BooleanOperator  |`def and(a: Any, b: Any): Any`                 | ! operator for all different types in ContainsOperator package         |
+| BooleanOperator  |`def or(a: Any, b: Any): Any`                  | ! operator for all different types in ContainsOperator package         |
+| BooleanOperator  |`def negate(value: Any): Any`                  | ! operator for all different types in ContainsOperator package         |
 
 
+#### 5.2.3 Redefine `reduceComposeLogic` method
+Good option if you **need to add new operators**.
 
-**Example**:
-In the [example](3.-Example) above, we receive the logic from a backend/frontend app and we want to apply
-our logic to filter the data.
-Let's suppose we have initialized our `Decoder` with the following `customDecode` method:
+*Example*: let's imagine we just want to add the `"if"` condition.
 ```scala
-implicit val decoder = new Decoder{
-    override def customDecode(json: JsValue, otherType: String): Any =
-          otherType match {
-                case "column" => json.as[Car]
-                case "value" => json.as[Plane]
-                case _ => throw new IllegalArgumentException("Wrong argument.")
-          }
+
+implicit val reducer = new ReduceLogic() {
+    override def reduceComposeLogic(condition: ComposeLogic): Any = {
+        condition.operator match {
+            case "if" => ifCondition(condition.conditions)
+            case other => super.reduceComposeLogic(condition)
+        } 
+    }
+
+    def ifCondition(conditions: Array[JsonLogicCore]): Any = {
+          ...
+    }
 }
 ```
 
+## 6. More examples
 
+[Contribution guidelines for this project](examples/)
 
 
 
