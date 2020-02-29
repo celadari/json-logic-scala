@@ -313,7 +313,7 @@ implicit val reducer = new ReduceLogic() {
 
 ## 6. More examples
 
-[Contribution guidelines for this project](examples/)
+[More detailed examples can found here](examples/)
 
 
 
