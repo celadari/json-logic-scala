@@ -16,9 +16,10 @@ scala.
 ### Scala Versions
 
 This project is compiled, tested, and published for the following Scala versions:
-1. 2.10.3
-2. 2.11.12
-3. 2.12.6
+* 2.10.7
+* 2.11.12
+* 2.12.6
+* 2.13.1
 
 ## 1. Installation
 
