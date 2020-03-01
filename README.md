@@ -212,6 +212,53 @@ to a `JsonLogicCore` instance.
 A decoder defines how to write a JSON string/[JsValue](https://www.playframework.com/documentation/latest/api/scala/play/api/libs/json/JsValue.html)
 from a `JsonLogicCore` instance.
 
+* **`Encoder` class must be instantiated** if you need to stringify a Scala object.
+    ```scala
+    implicit val encoder: Encoder = new Encoder // useless if only basic built-in types
+    val json = Json.stringify(Json.toJson(json).as[JsonLogicCore])
+    ```
+  *Json-logic-scala* comes with built-in `Encoder` for basic/built-in types.
+
+* **Custom scala object/classes**:
+    - You *don't need to change built-in naming convention*.
+        Just instantiate `Encoder` class and define its `customValueAndType` method.
+        ```scala
+        implicit val encoder = new Encoder{
+            override def customValueAndType(value: Any): (String, JsValue) =
+                  value match {
+                        case value: Car => ("car", Json.toJson(value))
+                        case value: Plane => ("plane", Json.toJson(value))
+                        case _ => throw new IllegalArgumentException("Wrong argument.")
+                  }
+        }
+        ```
+        To do so, you just need to indicate new `"type"` field value along with their Scala class/type.
+        You can also override `encode` method instead of `customValueAndType`.
+
+    - You *need to change built-in naming convention*.
+        Just instantiate `Encoder` class and override its `getJsValueAndType` method.
+        ```scala
+        implicit val encoder = new Encoder{
+            override def getJsValueAndType(value: Any): (String, JsValue) = {
+                value match {
+                      case value: String => ("my_custom_string", JsString(value))
+                      case value: MyCustomClass => ("my_custom_class", Json.toJson(value))
+                      ...
+                }
+        }
+        ```
+
+    - Take note that you must provide Play JSON library a `Writes` typeclass to define how to write your specific type.
+    For [more information on defining a `Writes` typeclass](https://github.com/playframework/play-json#reading-and-writing-objects).
+    Fortunately, you usually don't need to implement a `Writes` typleclass directly.
+    Play JSON comes equipped with some convenient macros to convert to and from case classes.
+    In the following, you just need to define in *companion object* of `case class Car`:
+        ```scala
+        object Car {
+            implicit val carWrites: Writes[Car] = Json.writes[Car]
+        }
+        ```
+
 ## 5. Evaluating logical expression: reduce
 Evaluating a logical expression and getting its result if the main interest for most cases.
 Generally, logic/rules are received from another language/application and we want to apply this logic

@@ -21,6 +21,14 @@ object JsonLogicCore {
     ComposeLogic.decode(jsonLogic, jsonLogicData)(decoder)
   }
 
+  private[core] def encode(jsonLogic: JsonLogicCore)(implicit encoder: Encoder): (JsValue, JsObject) = {
+    // if operator is data access
+    jsonLogic match {
+      case valueLogic: ValueLogic[_] => ValueLogic.encode(valueLogic)(encoder)
+      case composeLogic: ComposeLogic => ComposeLogic.encode(composeLogic)(encoder)
+    }
+  }
+
   implicit def jsonLogicCoreReads(implicit decoder: Decoder): Reads[JsonLogicCore] = new Reads[JsonLogicCore] {
 
     override def reads(json: JsValue): JsResult[JsonLogicCore] = {
@@ -31,6 +39,17 @@ object JsonLogicCore {
 
       // apply reading with distinguished components: logic and data
       JsSuccess(decode(jsonLogic, jsonLogicData)(decoder))
+    }
+  }
+
+  implicit def jsonLogicCoreWrites(implicit encoder: Encoder): Writes[JsonLogicCore] = new Writes[JsonLogicCore] {
+
+    override def writes(jsonLogicCore: JsonLogicCore): JsValue = {
+      // apply writing
+      val (jsonLogic, jsonLogicData) = encode(jsonLogicCore)(encoder)
+
+      // return final result
+      JsArray(Array(jsonLogic, jsonLogicData))
     }
   }
 }

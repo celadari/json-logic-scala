@@ -25,7 +25,7 @@ class ContainsOperator {
 
   def contains(a: Any, b: Any): Any = {
     a match {
-      case a: Array[_] => a.contains(b)
+      case a: Array[Any] => a.contains(b)
       case a: List[_] => a.contains(b)
       case a: ArrayBuffer[_] => a.contains(b)
       case a: mutable.Seq[_] => a.contains(b)
