@@ -1,5 +1,6 @@
 # Json Logic Scala
-Build complex rules, serialize them as JSON, and execute them in Scala
+Build complex rules, serialize them as JSON, and execute them in Scala.
+
 Json-logic-scala enables you to serialize in JSON format logical expressions.
 It also enables you to load a scala object from a logical expression/JSON.
 
@@ -20,6 +21,27 @@ This project is compiled, tested, and published for the following Scala versions
 * 2.11.12
 * 2.12.6
 * 2.13.1
+
+# Table of Contents
+1. [Installation]()
+2. [Main concepts: Boolean-Algebra-Tree]()
+
+    2.1 [`ComposeLogic`: Internal Node]()
+
+    2.2 [`ValueLogic`: Leaf Node]()
+3. [Example]()
+4. [Read/Write json]()
+
+    4.1 [Read json: Define `Decoder`]()
+
+    4.2 [Write json: Define `Encoder`]()
+5. [Evaluating logical expression: `reduce`]()
+
+    5.1 [`reduceValueLogic` method]()
+    
+    5.2 [`reduceComposeLogic` method]()
+6. [More examples]()
+7. [Scaladoc API]()
 
 ## 1. Installation
 
@@ -94,7 +116,9 @@ filtering rules before loading it.
 |...........|..........|..........|..........|..........|.....................|
 
 Let's suppose we are only interested in rows which satisfy logical expression:
-$price \gte 20 \and label \neq label2$.
+<p align="center">
+    <img src=".img/logical_expression.png" alt="drawing" width="200"/>
+</p>
 If you want to store the logic (logical expression) in an universal format that can
 be shared between scala, R, python code you can store in jsonLogic format.
 
@@ -365,7 +389,7 @@ implicit val reducer = new ReduceLogic() {
 
 
 
-## Scaladoc API
+## 7. Scaladoc API
 
 The Scaladoc API for this project can be found [here](http://celadari.github.io/json-logic-scala/latest/api).
 
