@@ -4,7 +4,7 @@ organization := "com.github.celadari"
 
 homepage := Some(url("https://github.com/celadari/json-logic-scala"))
 
-version := "1.0.0"
+version := "1.1.0"
 
 scalaVersion := "2.10.7"
 
@@ -32,6 +32,8 @@ publishTo := {
   if (version.value.endsWith("SNAPSHOT")) Some("snapshots" at "https://oss.sonatype.org/content/repositories/snapshots")
   else Some("releases" at "https://oss.sonatype.org/service/local/staging/deploy/maven2")
 }
+
+publishConfiguration := publishConfiguration.value.withOverwrite(true)
 
 credentials += Credentials(Path.userHome / ".sbt" / ".credentials")
 

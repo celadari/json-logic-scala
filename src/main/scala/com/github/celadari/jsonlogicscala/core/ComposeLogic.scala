@@ -26,6 +26,13 @@ object ComposeLogic {
   }
   val OPERATORS: Array[String] = BINARY_OPERATORS.ALL ++ MULTIPLE_OPERATORS.ALL
 
+  /**
+   * Returns an empty condition.
+   * @since 1.1.0
+   * @return [[ComposeLogic]] instance.
+   */
+  def empty: ComposeLogic = new ComposeLogic("", Array())
+
   private[core] def decode(jsonLogic: JsObject, jsonLogicData: JsObject)(implicit decoder: Decoder): ComposeLogic = {
     // check for operator field
     val fields = jsonLogic.fields
@@ -33,7 +40,6 @@ object ComposeLogic {
     // check for compose logic operator field
     if (fields.length > 1) throw new Error("JSON object is supposed to have only one operator field.")
     val operator = fields.head._1
-    if (!OPERATORS.contains(operator)) throw new Error(s"Invalid parsed operator: $operator")
 
     // if operator is compose logic
     ComposeLogic(operator, decodeArrayOfConditions((jsonLogic \ operator).get, jsonLogicData)(decoder))
@@ -67,4 +73,12 @@ object ComposeLogic {
 
 }
 
-case class ComposeLogic(override val operator: String, conditions: Array[JsonLogicCore]) extends JsonLogicCore(operator)
+case class ComposeLogic(override val operator: String, conditions: Array[JsonLogicCore]) extends JsonLogicCore(operator) {
+
+  /**
+   * Indicates if this represents an empty condition.
+   * @since 1.1.0
+   * @return boolean to indicate if all sub-conditions are empty as well or if sub-conditions array is empty.
+   */
+  def isEmpty: Boolean = conditions.forall(_.isEmpty)
+}

@@ -13,6 +13,8 @@ abstract class Encoder {
   def customValueAndType(value: Any): (String, JsValue)
 
   def getJsValueAndType(value: Any): (String, JsValue) = {
+    if (Option(value).isEmpty) return ("null", JsNull)
+
     value match {
       case value: String => ("string", JsString(value))
       case value: Byte => ("byte", JsNumber(value.toInt))
@@ -36,7 +38,7 @@ abstract class Encoder {
   def encode(valueLogic: ValueLogic[_]): (String, String, JsValue) = {
     val codenameData = valueLogic.codename
 
-    val (typeData, jsValue) = getJsValueAndType(valueLogic.value)
+    val (typeData, jsValue) = getJsValueAndType(valueLogic.valueOpt.orNull)
     (typeData, codenameData, jsValue)
   }
 }

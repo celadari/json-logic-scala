@@ -5,6 +5,16 @@ import play.api.libs.json._
 
 object JsonLogicCore {
 
+  /**
+   * Returns an empty condition.
+   * @since 1.1.0
+   * @return [[JsonLogicCore]] instance.
+   * @note Be careful with this method: returned instance is neither of type [[ComposeLogic]] or type [[ValueLogic]].
+   */
+  def empty: JsonLogicCore = new JsonLogicCore("") {
+    override def isEmpty: Boolean = true
+  }
+
   private[core] def decode(jsonLogic: JsObject, jsonLogicData: JsObject)(implicit decoder: Decoder): JsonLogicCore = {
     // check for operator field
     val fields = jsonLogic.fields
@@ -14,8 +24,6 @@ object JsonLogicCore {
 
     // check for compose logic operator field
     if (fields.length > 1) throw new Error("JSON object is supposed to have only one operator field.")
-    val operator = fields.head._1
-    if (!ComposeLogic.OPERATORS.contains(operator)) throw new Error(s"Invalid parsed operator: $operator")
 
     // if operator is compose logic
     ComposeLogic.decode(jsonLogic, jsonLogicData)(decoder)
@@ -60,4 +68,12 @@ abstract class JsonLogicCore(val operator: String) {
   def reduce(implicit reducer: ReduceLogic): Any = {
     reducer.reduce(this)
   }
+
+  /**
+   * Indicates if this represents an empty condition.
+   * @since 1.1.0
+   * @return boolean to indicate if empty.
+   * @since abstract method.
+   */
+  def isEmpty: Boolean
 }

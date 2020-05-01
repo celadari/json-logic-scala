@@ -25,7 +25,7 @@ class ReduceLogic(implicit cmpOp: CompareOperator, ctnOp: ContainsOperator, bool
     }
   }
 
-  def reduceValueLogic(condition: ValueLogic[_]): Any = condition.value
+  def reduceValueLogic(condition: ValueLogic[_]): Any = condition.valueOpt.get
 
   def reduce(condition: JsonLogicCore): Any = {
     condition match {
