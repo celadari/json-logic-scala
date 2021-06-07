@@ -1,0 +1,7 @@
+operator=gt
+methodName=greater
+ownerMethod=com.github.celadari.jsonlogicscala.evaluate.impl.OperatorImplGreater
+singleton=false
+isReduceTypeOperator=true
+isCompositionOperator=false
+isUnaryOperator=false

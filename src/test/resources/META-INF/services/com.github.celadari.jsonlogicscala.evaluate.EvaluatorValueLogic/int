@@ -1,0 +1,6 @@
+className=com.github.celadari.jsonlogicscala.evaluate.impl.EvaluatorValueLogicImplInt
+singleton=false
+num=0
+constructorArgNames=num
+sep=;
+codename={"codename": "int"}
