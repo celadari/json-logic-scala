@@ -2,9 +2,18 @@ name := "json-logic-scala"
 
 organization := "com.github.celadari"
 
-homepage := Some(url("https://github.com/celadari/json-logic-scala"))
+homepage := Some(url("https://jsonlogicscala.com"))
 
-version := "2.0.0"
+developers := List(Developer(
+  "celadari",
+  "Charles",
+  "celadari@jsonlogicscala.com",
+  url("https://github.com/username")
+))
+
+licenses += ("MIT", url("https://mit-license.org/"))
+
+version := "SNAPSHOT-2.0.0"
 
 scalaVersion := "2.13.2"
 
@@ -21,7 +30,7 @@ autoScalaLibrary := false
 // scalastyle:off magic.number
 def resolveVersion(scalaV: String, versionsResolver: Map[String, String]): String = versionsResolver(scalaV.slice(0, 4))
 
-val typeSafeVersions = Map("2.10" -> "2.6.14", "2.11" -> "2.7.4", "2.12" -> "2.8.1", "2.13" -> "2.8.1")
+val typeSafeVersions = Map("2.11" -> "2.7.4", "2.12" -> "2.8.1", "2.13" -> "2.8.1")
 
 libraryDependencies ++= Seq(
     "com.typesafe.play" %% "play-json" % resolveVersion(scalaVersion.value, typeSafeVersions),
@@ -30,9 +39,9 @@ libraryDependencies ++= Seq(
     "org.scalatest" %% "scalatest" % "3.2.9" % Test
 )
 
-// scalacOptions ++= ("-feature" :: "-language:postfixOps" :: "-language:implicitConversions" :: Nil)
 scalacOptions ++= Seq(
-  "-encoding", "utf8",
+  "-encoding",
+  "utf8",
   "-deprecation",
   "-feature",
   "-language:higherKinds",
@@ -58,7 +67,10 @@ publishTo := {
 
 publishConfiguration := publishConfiguration.value.withOverwrite(true)
 
-credentials += Credentials(Path.userHome / ".sbt" / ".credentials")
+credentials += sys.env.get("SONATYPE_USERNAME").zip(sys.env.get("SONATYPE_PASSWORD"))
+  .headOption
+  .map{case (username, password) => Credentials("Sonatype Nexus Repository Manager", "oss.sonatype.org", username, password)}
+  .getOrElse(Credentials(Path.userHome / ".sbt" / ".credentials"))
 
 Test / publishArtifact := false
 
@@ -66,19 +78,11 @@ publishMavenStyle := true
 
 pomIncludeRepository := { _ => false }
 
-pomExtra :=
-         <scm>
-            <url>git@github.com:celadari/json-logic-scala.git</url>
-            <connection>scm:git:git@github.com:celadari/json-logic-scala.git</connection>
-         </scm>
-         <developers>
-            <developer>
-              <id>celadari</id>
-              <name>Charles-Edouard LADARI</name>
-              <url>https://github.com/celadari</url>
-            </developer>
-         </developers>
+scmInfo := Some(ScmInfo(url("https://github.com/celadari/json-logic-scala"),
+                            "git@github.com:celadari/json-logic-scala.git"))
 
-licenses += ("MIT", url("https://mit-license.org/"))
-
-// Scaladoc publishing stuff
+// sonatype repository settings
+publishTo := Some(
+  if (isSnapshot.value) Opts.resolver.sonatypeSnapshots
+  else Opts.resolver.sonatypeStaging
+)

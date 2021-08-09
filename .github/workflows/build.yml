@@ -1,0 +1,48 @@
+name: Build
+on: [push]
+jobs:
+  build:
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up JDK 11
+        uses: actions/setup-java@v2
+        with:
+          java-version: '11'
+          distribution: 'adopt'
+      - name: Cache Java modules
+        uses: actions/cache@v2
+        env:
+          cache-name: cache-java-modules
+        with:
+          path: ~/.m2
+          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('./build.sbt') }}
+          restore-keys: |
+            ${{ runner.os }}-build-${{ env.cache-name }}-
+            ${{ runner.os }}-build-
+            ${{ runner.os }}-
+      - name: Cache Scala modules
+        uses: actions/cache@v2
+        env:
+          cache-name: cache-scala-modules
+        with:
+          path: ~/.m2
+          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('./build.sbt') }}
+          restore-keys: |
+            ${{ runner.os }}-build-${{ env.cache-name }}-
+            ${{ runner.os }}-build-
+            ${{ runner.os }}-
+      - name: Cache Sbt modules
+        uses: actions/cache@v2
+        env:
+          cache-name: cache-sbt-modules
+        with:
+          path: ~/.sbt/1.0
+          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('./build.sbt') }}
+          restore-keys: |
+            ${{ runner.os }}-build-${{ env.cache-name }}-
+            ${{ runner.os }}-build-
+            ${{ runner.os }}-
+      - name: Run Sbt Test and Generate Report on Multiple Scala Versions
+        run: |
+          sbt +package
