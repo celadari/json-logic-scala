@@ -1,0 +1,30 @@
+# Configurations
+title:            Json Logic Scala
+longtitle:        Json Logic Scala
+author:           Charles LADARI
+email:            charles@jsonlogicscala.com
+description: >
+  Build complex rules, serialize them as JSON, and execute them in Scala.
+url:              'https://jsonlogicscala.com'
+
+# Theme settings
+remote_theme: pmarsceill/just-the-docs
+logo: "/assets/jsonlogicscala_logo.jpg"
+
+
+# Aux links for the upper right navigation
+aux_links:
+  "Json Logic Scala on GitHub":
+    - "//github.com/celadari/json-logic-scala"
+
+# Build settings
+markdown: kramdown
+
+include: [_posts, _layouts, _api]
+
+destination:      ./_site
+incremental:      true
+regenerate:       true
+
+plugins:
+  - jekyll-seo-tag
