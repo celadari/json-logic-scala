@@ -1,0 +1,6 @@
+# frozen_string_literal: true
+source "https://rubygems.org"
+
+# github pages locally
+gem "github-pages", "~> 217", group: :jekyll_plugins
+gem "just-the-docs"

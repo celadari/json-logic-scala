@@ -1,0 +1,26 @@
+# Configurations
+title:            Json Logic Scala
+longtitle:        Json Logic Scala
+author:           Charles LADARI
+email:            charles@jsonlogicscala.com
+description: >
+  Build complex rules, serialize them as JSON, and execute them in Scala.
+url:              'https://jsonlogicscala.com'
+
+# Theme settings
+remote_theme: pmarsceill/just-the-docs
+
+# Aux links for the upper right navigation
+aux_links:
+  "Just the Docs on GitHub":
+    - "//github.com/pmarsceill/just-the-docs"
+
+# Build settings
+include: [_posts]
+
+destination:      ./_site
+incremental:      false
+regenerate:       false
+
+plugins:
+  - jekyll-seo-tag

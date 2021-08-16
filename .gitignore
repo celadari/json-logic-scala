@@ -1,0 +1,4 @@
+.idea
+doc/.jekyll-cache
+doc/.jekyll-metadata
+docs/_site
