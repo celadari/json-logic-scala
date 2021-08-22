@@ -16,6 +16,8 @@ aux_links:
     - "//github.com/pmarsceill/just-the-docs"
 
 # Build settings
+markdown: kramdown
+
 include: [_posts]
 
 destination:      ./_site
