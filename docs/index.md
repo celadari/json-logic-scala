@@ -17,5 +17,29 @@ Build complex rules, serialize them as JSON, and execute them in Scala.
 ---
 
 ## What is Json Logic ?
+[Json Logic](https://jsonlogic.com/) is a json format to represent expressions (binary, mathematical, linguistic, ...). It is a recursive data-format consisting of keys represent operator's codename and
+values representing operands/sub-expression.
+
+Json logic enables separating logic and evaluation, which can be delegated to another component.
+
+Example, the following expression:
+$$\mathbf{price} \ge 20 \and \mathbf{label}\neq\mathbf{label2}$$
+
+
+```json
+{
+  "and": [
+    {">=": [
+      {"var":  "price"},
+      20
+    ]},
+    {"!=": [
+      {"var":  "label"},
+      "label2"
+    ]}
+  ]
+}
+```
+
 
 ## What is Json Logic Extended ?
