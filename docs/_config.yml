@@ -18,11 +18,11 @@ aux_links:
 # Build settings
 markdown: kramdown
 
-include: [_posts]
+include: [_posts, _layouts]
 
 destination:      ./_site
-incremental:      false
-regenerate:       false
+incremental:      true
+regenerate:       true
 
 plugins:
   - jekyll-seo-tag
