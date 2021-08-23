@@ -18,6 +18,7 @@ instead.
 ### Parsing examples:
 
 * With default `Deserializer` and `DeserializerConf`
+
 ```scala
 import play.api.libs.json.Json
 
@@ -26,6 +27,7 @@ val jsonLogicCore = Json.parse(jsonString).as[JsonLogicCore]
 ```
 
 * With custom `DeserializerConf`
+
 ```scala
 import play.api.libs.json.Json
 
@@ -36,6 +38,7 @@ val jsonLogicCore = deserializer.deserialize(jsonString)
 ```
 
 * With custom `Deserializer`
+
 ```scala
 import play.api.libs.json.Json
 
