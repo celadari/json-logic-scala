@@ -9,11 +9,12 @@ url:              'https://jsonlogicscala.com'
 
 # Theme settings
 remote_theme: pmarsceill/just-the-docs
+logo: "/assets/jsonlogicscala_logo.jpg"
 
 # Aux links for the upper right navigation
 aux_links:
-  "Just the Docs on GitHub":
-    - "//github.com/pmarsceill/just-the-docs"
+  "Json Logic Scala on GitHub":
+    - "//github.com/celadari/json-logic-scala"
 
 # Build settings
 markdown: kramdown

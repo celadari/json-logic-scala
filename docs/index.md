@@ -15,6 +15,9 @@ Build complex rules, serialize them as JSON, and execute them in Scala.
 
 [Get started now](#what-is-json-logic){: .btn .btn-primary .fs-5 .mb-4 .mb-md-0 .mr-2 } [View it on GitHub](https://github.com/celadari/json-logic-scala){: .btn .fs-5 .mb-4 .mb-md-0 }
 
+![Json Logic Scala](assets/jsonlogicscala_logo.jpg)
+
+
 ---
 
 ## What is Json Logic ?
