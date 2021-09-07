@@ -54,7 +54,7 @@ is equivalent to an evaluation on the following abstract tree:
 
 ### To summarize `EvaluatorValueLogic`
 **Evaluation will start by applying the class extending `EvaluatorValueLogic` defined above on all syntax tree nodes leaf
-associated with this `TypeValue` (![see explanation on `TypeValue`]({% link json-logic-typed-scala-representation-part-2.md %}))**
+associated with this `TypeValue` (![see explanation on `TypeValue`]({% link _posts/json-logic-typed-scala-representation-part-2.md %}))**
 
 ### More detailed code lines
 
