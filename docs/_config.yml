@@ -20,7 +20,7 @@ aux_links:
 # Build settings
 markdown: kramdown
 
-include: [_posts, _layouts]
+include: [_posts, _layouts, _api]
 
 destination:      ./_site
 incremental:      true
