@@ -1,7 +1,7 @@
 ---
 title: Parse json to scala data structure
 author: Charles
-nav_order: 3
+nav_order: 4
 category: Jekyll
 layout: post
 parent: Getting started
@@ -37,7 +37,7 @@ implicit val deserializer = new Deserializer()
 val jsonLogicCore = deserializer.deserialize(jsonString)
 ```
 
-* With custom `Deserializer`
+* You may also customize `Deserializer` to your own case if needed
 
 ```scala
 import play.api.libs.json.Json

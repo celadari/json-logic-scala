@@ -11,6 +11,7 @@ url:              'https://jsonlogicscala.com'
 remote_theme: pmarsceill/just-the-docs
 logo: "/assets/jsonlogicscala_logo.jpg"
 
+
 # Aux links for the upper right navigation
 aux_links:
   "Json Logic Scala on GitHub":
