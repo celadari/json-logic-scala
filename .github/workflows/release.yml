@@ -7,24 +7,45 @@ jobs:
   publish-doc:
     runs-on: ubuntu-20.04
     steps:
+      - name: Install ansi2txt tool
+        run: |
+          sudo apt-get update
+          sudo apt-get install colorized-logs
       - uses: actions/checkout@v2
+        with:
+          token: ${{ secrets.PAT_TOKEN }}
       - name: Generate API Doc
         run: sbt doc
       - name: Make API Doc directory outside repository
-        run: mkdir ../api_docs
+        run: mkdir -p ../api_docs
       - name: Move API Docs to outside directory
-        run: mv target/scala-[0-9].[0-9][0-9] ../api_docs/
-      - name: check something
-        run: ls ../api_docs
-      - name: git checkout master
+        run: |
+          source .workflow-scripts/put_scala_docs_aside.sh ./target ../api_docs
+          cp .workflow-scripts/move_scala_docs.sh ../api_docs/
+          cp .workflow-scripts/update_json_api_versions.py ../api_docs/
+          echo "scala_versions=$scala_versions" >> $GITHUB_ENV
+          echo "api_version=$api_version" >> $GITHUB_ENV
+      - name: Git checkout on gh-pages
         run:  |
           git fetch
-          git checkout master
-      - name: something else2
-        run: pwd
-      - name: something else3
-        run: ls ../
+          git checkout gh-pages
+      - name: Move API Docs to website API Docs directory
+        run: |
+          cd ..
+          export scala_versions="${{ env.scala_versions }}"
+          export api_version="${{ env.api_version }}"
+          bash api_docs/move_scala_docs.sh ./api_docs "./${GITHUB_REPOSITORY#*/}/docs/_api" ./api_docs "./${GITHUB_REPOSITORY#*/}/docs/_data/api_versions.json"
+      - name: Git add and commit on gh-pages
+        run: |
+          git config user.name "$GITHUB_ACTOR"
+          git config user.email "$GITHUB_ACTOR+github-actions@users.noreply.github.com"
+          git add docs/_api/.
+          git add docs/_data/api_versions.json
+          git commit -m "[RELEASE] Update doc version from branch \"$GITHUB_REF\" commit \"$GITHUB_REF\""
+          git push
 
+#      - name: something else3
+#        run: ls ../
 #  publish-package:
 #    runs-on: ubuntu-latest
 #    needs: [publish-doc]
