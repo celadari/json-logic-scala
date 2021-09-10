@@ -13,15 +13,15 @@ developers := List(Developer(
 
 licenses += ("MIT", url("https://mit-license.org/"))
 
-version := "SNAPSHOT-2.0.0"
+version := "1.9.14"
 
 scalaVersion := "2.13.2"
 
 crossScalaVersions := Seq("2.11.12", "2.12.13", "2.13.2")
 
 resolvers ++= Seq(
-  "sonatype-snapshots" at "https://oss.sonatype.org/content/repositories/snapshots",
-  "sonatype-releases"  at "https://oss.sonatype.org/content/repositories/releases",
+  "sonatype-snapshots" at "https://s01.oss.sonatype.org/content/repositories/snapshots",
+  "sonatype-releases"  at "https://s01.oss.sonatype.org/content/repositories/releases",
 )
 
 // This forbids including Scala related libraries into the dependency
@@ -38,6 +38,8 @@ libraryDependencies ++= Seq(
     "org.apache.xbean" % "xbean-reflect" % "4.20",
     "org.scalatest" %% "scalatest" % "3.2.9" % Test
 )
+
+versionScheme := Some("early-semver")
 
 scalacOptions ++= Seq(
   "-encoding",
@@ -60,16 +62,18 @@ Test / testOptions += Tests.Argument("-oGK")
 Test / scalastyleConfig := baseDirectory.value / "scalastyle-test-config.xml"
 
 // Publishing stuff for sonatype
-publishTo := {
-  if (version.value.endsWith("SNAPSHOT")) Some("snapshots" at "https://oss.sonatype.org/content/repositories/snapshots")
-  else Some("releases" at "https://oss.sonatype.org/service/local/staging/deploy/maven2")
-}
+sonatypeBundleDirectory := baseDirectory.value / target.value.getName / s"scala-${scalaBinaryVersion.value}" / "sonatype-staging" / version.value
+publishTo := sonatypePublishToBundle.value
+sonatypeCredentialHost := "s01.oss.sonatype.org"
+sonatypeRepository := "https://s01.oss.sonatype.org/service/local"
+
+crossPaths := true
 
 publishConfiguration := publishConfiguration.value.withOverwrite(true)
 
 credentials += sys.env.get("SONATYPE_USERNAME").zip(sys.env.get("SONATYPE_PASSWORD"))
   .headOption
-  .map{case (username, password) => Credentials("Sonatype Nexus Repository Manager", "oss.sonatype.org", username, password)}
+  .map{case (username, password) => Credentials("Sonatype Nexus Repository Manager", "s01.oss.sonatype.org", username, password)}
   .getOrElse(Credentials(Path.userHome / ".sbt" / ".credentials"))
 
 Test / publishArtifact := false
@@ -80,9 +84,3 @@ pomIncludeRepository := { _ => false }
 
 scmInfo := Some(ScmInfo(url("https://github.com/celadari/json-logic-scala"),
                             "git@github.com:celadari/json-logic-scala.git"))
-
-// sonatype repository settings
-publishTo := Some(
-  if (isSnapshot.value) Opts.resolver.sonatypeSnapshots
-  else Opts.resolver.sonatypeStaging
-)
