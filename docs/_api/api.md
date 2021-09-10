@@ -26,10 +26,10 @@ has_children: false
         <div class="column">
             {% capture scala_version %}{{ scala_version_apis["scala-version"] }}{% endcapture %}
             scala-version: {{ scala_version }}
-            <li><a href="scala-{{ scala_version }}/latest/index.html"> latest version </a></li>
+            <li><a href="scala-{{ scala_version }}/latest/api/index.html"> latest version </a></li>
             {% for api_version in scala_version_apis["json-logic-versions"] %}
                 <li>
-                    <a href="scala-{{ scala_version }}/{{ api_version }}/index.html"> version - {{ api_version }} </a>
+                    <a href="scala-{{ scala_version }}/{{ api_version }}/api/index.html"> version - {{ api_version }} </a>
                 </li>
             {% endfor %}
         </div>
