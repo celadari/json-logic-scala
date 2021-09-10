@@ -56,17 +56,17 @@ To get started, add json-logic-scala as a dependency to your project:
 
 * sbt
     ```sbt
-    libraryDependencies += "com.github.celadari" %% "json-logic-scala" % "latest.integration"
+    libraryDependencies += "com.celadari" %% "json-logic-scala" % "latest.integration"
     ```
 
 * Gradle
     ```gradle
-    compile group: 'com.github.celadari', name: 'json-logic-scala_2.12', version: 'latest.integration'
+    compile group: 'com.celadari', name: 'json-logic-scala_2.12', version: 'latest.integration'
     ```
 * Maven
     ```maven
     <dependency>
-      <groupId>com.github.celadari</groupId>
+      <groupId>com.celadari</groupId>
       <artifactId>play-json_2.12</artifactId>
       <version>latest.integration</version>
     </dependency>

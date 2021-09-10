@@ -1,6 +1,0 @@
-className=com.github.celadari.jsonlogicscala.serialize.impl.MarshallerDoubleImpl
-singleton=false
-codename=double
-sep=;
-constructorArgNames=offset
-offset=0

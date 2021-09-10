@@ -1,3 +1,0 @@
-className=com.github.celadari.jsonlogicscala.evaluate.impl.EvaluatorValueLogicImplArrayInt
-singleton=true
-codename={"codename": "array", "paramType": {"codename": "int"}}

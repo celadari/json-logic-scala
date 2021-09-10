@@ -1,0 +1,11 @@
+operator=surround
+methodName=surroundString
+ownerMethod=com.celadari.jsonlogicscala.evaluate.impl.OperatorImplSurroundString
+singleton=false
+prefix=before
+suffix=after
+sep=;
+constructorArgNames=prefi;suffi
+isReduceTypeOperator=false
+isCompositionOperator=false
+isUnaryOperator=false

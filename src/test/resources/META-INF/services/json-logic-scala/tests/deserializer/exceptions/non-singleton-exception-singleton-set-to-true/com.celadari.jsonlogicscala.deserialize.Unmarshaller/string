@@ -1,0 +1,3 @@
+className=com.celadari.jsonlogicscala.deserialize.impl.UnmarshallerStringImpl
+singleton=true
+codename=string

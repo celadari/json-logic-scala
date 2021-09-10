@@ -1,0 +1,10 @@
+operator=prefix
+methodName=prefix
+ownerMethod=com.celadari.jsonlogicscala.evaluate.impl.OperatorImplPrefix
+singleton=false
+isReduceTypeOperator=false
+isCompositionOperator=false
+isUnaryOperator=false
+prefix=before
+constructorArgNames=prefix
+sep=;

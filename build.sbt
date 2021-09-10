@@ -1,14 +1,14 @@
 name := "json-logic-scala"
 
-organization := "com.github.celadari"
+organization := "com.celadari"
 
 homepage := Some(url("https://jsonlogicscala.com"))
 
 developers := List(Developer(
   "celadari",
   "Charles",
-  "celadari@jsonlogicscala.com",
-  url("https://github.com/username")
+  "charles@jsonlogicscala.com",
+  url("https://github.com/celadari")
 ))
 
 licenses += ("MIT", url("https://mit-license.org/"))

@@ -1,0 +1,5 @@
+className=com.celadari.jsonlogicscala.deserialize.impl.UnmarshallerDoubleImpl
+singleton=false
+sep=;
+constructorArgNames=offset
+offset=0

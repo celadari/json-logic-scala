@@ -1,7 +1,0 @@
-operator=prefix
-methodName=prefix
-ownerMethod=com.github.celadari.jsonlogicscala.evaluate.impl.OperatorImplPrefix
-singleton=true
-isReduceTypeOperator=false
-isCompositionOperator=false
-isUnaryOperator=false

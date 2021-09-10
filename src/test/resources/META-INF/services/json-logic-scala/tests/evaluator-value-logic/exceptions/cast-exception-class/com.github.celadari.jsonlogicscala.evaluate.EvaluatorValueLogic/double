@@ -1,6 +1,0 @@
-className=com.github.celadari.jsonlogicscala.deserialize.impl.UnmarshallerDoubleImpl
-singleton=false
-codename={"codename": "double"}
-sep=;
-constructorArgNames=offset
-offset=0

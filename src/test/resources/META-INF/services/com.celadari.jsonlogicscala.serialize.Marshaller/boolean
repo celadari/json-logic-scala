@@ -1,0 +1,3 @@
+className=com.celadari.jsonlogicscala.serialize.impl.MarshallerBooleanImpl
+singleton=true
+codename=boolean

@@ -1,7 +1,0 @@
-className=com.github.celadari.jsonlogicscala.serialize.impl.MarshallerStringImpl
-singleton=false
-prefix=before
-suffix=after
-constructorArgNames=prefix;suffix
-sep=;
-codename=string

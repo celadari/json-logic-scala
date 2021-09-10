@@ -1,3 +1,0 @@
-className=com.github.celadari.jsonlogicscala.serialize.impl.MarshallerIntImpl
-singleton=true
-codename=int
