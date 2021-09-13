@@ -1,15 +1,21 @@
+// Copyright 2019 celadari. All rights reserved. MIT license.
 package com.celadari.jsonlogicscala.serialize.defaults
 
 import play.api.libs.json.{JsNull, JsValue}
 import com.celadari.jsonlogicscala.exceptions.IllegalInputException
 import com.celadari.jsonlogicscala.serialize.Marshaller
-import com.celadari.jsonlogicscala.tree.types.DefaultTypes.NULL_CODENAME
 
 
+/**
+ * Default marshaller that converts scala null value to json format null value.
+ */
 object MarshallerNull extends Marshaller {
-  val typeCodename: String = NULL_CODENAME
-  val typeClassName: String = classOf[Null].getName
 
+  /**
+   * Converts a scala null value to a json null value.
+   * @param value: value to be serialized in json format.
+   * @return serialized value.
+   */
   def marshal(value: Any): JsValue = {
     if (value == null) JsNull
     else {

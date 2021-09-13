@@ -1,11 +1,23 @@
+// Copyright 2019 celadari. All rights reserved. MIT license.
 package com.celadari.jsonlogicscala.serialize
 
 import scala.reflect.runtime.{universe => ru}
 import play.api.libs.json.JsValue
 
 
+/**
+ * Defines interface of class/object defining marshal method.
+ * This method serializes a specific scala data structure to json format.
+ */
 trait Marshaller {
 
+  /**
+   * Serializes a specific scala data structure to json format.
+   * @param value: value to be serialized in json format.
+   * @return serialized value.
+   * @note serialized value of basic types (Int, String, Boolean, ...) are the values themselves, custom defined classes
+   * are usually serialized to map of (attribute -> value).
+   */
   def marshal(value: Any): JsValue
 
   // scalastyle:off return

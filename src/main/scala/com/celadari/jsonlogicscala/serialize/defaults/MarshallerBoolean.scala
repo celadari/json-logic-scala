@@ -1,15 +1,21 @@
+// Copyright 2019 celadari. All rights reserved. MIT license.
 package com.celadari.jsonlogicscala.serialize.defaults
 
 import play.api.libs.json.{JsBoolean, JsValue}
 import com.celadari.jsonlogicscala.exceptions.IllegalInputException
 import com.celadari.jsonlogicscala.serialize.Marshaller
-import com.celadari.jsonlogicscala.tree.types.DefaultTypes.BOOL_CODENAME
 
 
+/**
+ * Default marshaller that converts scala boolean value to json format boolean value.
+ */
 object MarshallerBoolean extends Marshaller {
-  val typeCodename: String = BOOL_CODENAME
-  val typeClassName: String = classOf[java.lang.Boolean].getName
 
+  /**
+   * Converts a scala boolean value to a json boolean value.
+   * @param value: value to be serialized in json format.
+   * @return serialized value.
+   */
   def marshal(value: Any): JsValue = {
     value match {
       case boolean: Boolean => JsBoolean(boolean)

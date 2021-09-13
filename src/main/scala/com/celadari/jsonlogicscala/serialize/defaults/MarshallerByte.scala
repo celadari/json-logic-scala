@@ -1,15 +1,21 @@
+// Copyright 2019 celadari. All rights reserved. MIT license.
 package com.celadari.jsonlogicscala.serialize.defaults
 
 import play.api.libs.json.{JsNumber, JsValue}
 import com.celadari.jsonlogicscala.exceptions.IllegalInputException
 import com.celadari.jsonlogicscala.serialize.Marshaller
-import com.celadari.jsonlogicscala.tree.types.DefaultTypes.BYTE_CODENAME
 
 
+/**
+ * Default marshaller that converts scala byte value to json format number value.
+ */
 object MarshallerByte extends Marshaller {
-  val typeCodename: String = BYTE_CODENAME
-  val typeClassName: String = classOf[java.lang.Byte].getName
 
+  /**
+   * Converts a scala byte value to a json number value.
+   * @param value: value to be serialized in json format.
+   * @return serialized value.
+   */
   def marshal(value: Any): JsValue = {
     value match {
       case byte: Byte => JsNumber(byte)
