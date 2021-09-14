@@ -13,7 +13,7 @@ developers := List(Developer(
 
 licenses += ("MIT", url("https://mit-license.org/"))
 
-version := "1.9.14"
+version := "1.9.16"
 
 scalaVersion := "2.13.2"
 
@@ -30,7 +30,7 @@ autoScalaLibrary := false
 // scalastyle:off magic.number
 def resolveVersion(scalaV: String, versionsResolver: Map[String, String]): String = versionsResolver(scalaV.slice(0, 4))
 
-val typeSafeVersions = Map("2.11" -> "2.7.4", "2.12" -> "2.8.1", "2.13" -> "2.8.1")
+val typeSafeVersions = Map("2.11" -> "2.7.4", "2.12" -> "2.9.2", "2.13" -> "2.9.2")
 
 libraryDependencies ++= Seq(
     "com.typesafe.play" %% "play-json" % resolveVersion(scalaVersion.value, typeSafeVersions),

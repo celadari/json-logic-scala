@@ -136,7 +136,7 @@ class Serializer(implicit val conf: SerializerConf) {
   }
 
   /**
-   * Returns tuple of serialized (logic, data) of scala data structure [[Array[com.celadari.jsonlogicscala.tree.JsonLogicCore]]].
+   * Returns tuple of serialized (logic, data) of scala data structure Array\[ [[com.celadari.jsonlogicscala.tree.JsonLogicCore]]\].
    * Logic is returned in an array of JsValue and data by merging data JsObject of each condition.
    * @param conditions: array of [[com.celadari.jsonlogicscala.tree.JsonLogicCore]].
    * @return tuple of split (logic JsValue, data JsObject) from conditions.
