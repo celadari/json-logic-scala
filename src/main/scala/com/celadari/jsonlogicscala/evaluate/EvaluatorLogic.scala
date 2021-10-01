@@ -62,7 +62,7 @@ class EvaluatorLogic(implicit val conf: EvaluatorLogicConf) {
   // scalastyle:off return null
   protected[this] def evaluateValueLogic(condition: ValueLogic[_]): Any = {
     val value = condition.valueOpt.get
-    val typeValueOpt = condition.typeCodenameOpt
+    val typeValueOpt = condition.typeOpt
     if (typeValueOpt.isEmpty) return null
 
     val evaluatorClassOpt = conf.valueLogicTypeToReducer.get(typeValueOpt.get)

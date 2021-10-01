@@ -1,5 +1,10 @@
+// Copyright 2019 celadari. All rights reserved. MIT license.
 package com.celadari.jsonlogicscala.tree.types
 
+
+/**
+ * Contains codename of default types.
+ */
 object DefaultTypes {
 
   val BYTE_CODENAME: String = "byte"

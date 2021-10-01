@@ -1,11 +1,21 @@
+// Copyright 2019 celadari. All rights reserved. MIT license.
 package com.celadari.jsonlogicscala.tree.types
 
 import play.api.libs.json.{JsError, JsObject, JsResult, JsString, JsSuccess, JsValue, Reads, Writes}
 import com.celadari.jsonlogicscala.exceptions.{IllegalInputException, InvalidJsonParsingException}
 
 
+/**
+ * Companion object holding implicit reader and writer json.
+ * Also defines methods serialize/deserialize [[com.celadari.jsonlogicscala.tree.types.TypeValue]] to json and vice-versa.
+ */
 object TypeValue {
 
+  /**
+   * Deserializes a json to a [[com.celadari.jsonlogicscala.tree.types.TypeValue]] scala data structure.
+   * @param json: json to be deserialized.
+   * @return TypeValue scala data structure.
+   */
   private[this] def parseTypeValue(json: JsValue): TypeValue = {
     val codename = (json \ "codename").as[String]
     val paramType = (json \ "paramType").asOpt[JsValue]
@@ -35,6 +45,11 @@ object TypeValue {
     }
   }
 
+  /**
+   * Serializes [[com.celadari.jsonlogicscala.tree.types.TypeValue]] to json.
+   * @param typeValue: [[com.celadari.jsonlogicscala.tree.types.TypeValue]] to be serialized.
+   * @return serialized value in right json format.
+   */
   private[this] def serializeTypeValue(typeValue: TypeValue): JsValue = {
     typeValue match {
       case SimpleTypeValue(codename) => JsObject(Map("codename" -> JsString(codename)))
@@ -60,5 +75,9 @@ object TypeValue {
 
 }
 
+/**
+ * Represents information about type data. Important to static-typed languages such as scala to inform serializer/deserializer
+ * which marshaller/unmarshaller to invoke.
+ * @param codename: unique codename to identify type data in json-logic-typed format.
+ */
 abstract class TypeValue(val codename: String)
-

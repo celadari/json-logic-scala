@@ -47,7 +47,7 @@ trait JsonLogicCoreMatcher extends AnyFlatSpec with Matchers {
           left.operator == valueLogic.operator &&
           left.pathNameOpt == valueLogic.pathNameOpt &&
           left.variableNameOpt == valueLogic.variableNameOpt &&
-          left.typeCodenameOpt == valueLogic.typeCodenameOpt
+          left.typeOpt == valueLogic.typeOpt
         }
       }
     }

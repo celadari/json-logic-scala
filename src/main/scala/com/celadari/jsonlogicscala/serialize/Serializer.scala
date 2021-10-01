@@ -108,7 +108,7 @@ class Serializer(implicit val conf: SerializerConf) {
     val (jsType, jsonLogicDatum) = valueLogic
       .valueOpt
       .map(value => {
-        val typeCodenameOpt = valueLogic.typeCodenameOpt
+        val typeCodenameOpt = valueLogic.typeOpt
         if (typeCodenameOpt.isEmpty) throw new InvalidValueLogicException("ValueLogic with defined value must define a typeCodename as well")
         val marshaller = getMarshaller(typeCodenameOpt.get)
         (Json.toJson(typeCodenameOpt.get), marshaller.marshal(value))
