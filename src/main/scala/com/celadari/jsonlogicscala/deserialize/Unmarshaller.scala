@@ -1,10 +1,23 @@
+// Copyright 2019 celadari. All rights reserved. MIT license.
 package com.celadari.jsonlogicscala.deserialize
 
 import scala.reflect.runtime.{universe => ru}
 import play.api.libs.json.JsValue
 
 
+/**
+ * Defines interface of class/object defining unmarshal method.
+ * This method deserializes a specific scala data structure to json format.
+ */
 trait Unmarshaller {
+
+  /**
+   * Deserializes a json to a specific scala data structure.
+   * @param jsValue: json to be deserialized into scala data structure.
+   * @return scala data structure value.
+   * @note serialized value of basic types (Int, String, Boolean, ...) are the values themselves, custom defined classes
+   * are usually serialized to map of (attribute -> value).
+   */
   def unmarshal(jsValue: JsValue): Any
 
   // scalastyle:off return
