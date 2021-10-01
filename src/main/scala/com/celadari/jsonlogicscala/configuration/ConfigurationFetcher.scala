@@ -1,3 +1,4 @@
+// Copyright 2019 celadari. All rights reserved. MIT license.
 package com.celadari.jsonlogicscala.configuration
 
 import java.util.Properties
@@ -6,8 +7,19 @@ import org.apache.xbean.recipe.{MissingAccessorException, ObjectRecipe}
 import com.celadari.jsonlogicscala.exceptions.ConfigurationException
 
 
+/**
+ * Contains methods to instantiate object from configuration properties (Marshaller|Unmarshaller|EvaluatorValueLogic)
+ */
 object ConfigurationFetcher {
 
+  /**
+   * Returns boolean property from "java.util.Properties" object or else defaultValue.
+   * @param key: key to look for in prop.
+   * @param defaultValue: value to return is key doesn't exist in prop.
+   * @param prop: configuration to look key into.
+   * @param throwable: exception to be thrown if needed.
+   * @return boolean property value or defaultValue.
+   */
   def getOptionalBooleanProperty(key: String, defaultValue: Boolean, prop: Properties, throwable: Throwable): Boolean = {
     try {
       if (prop.containsKey(key)) prop.remove(key).toString.toBoolean else defaultValue
@@ -17,6 +29,13 @@ object ConfigurationFetcher {
     }
   }
 
+  /**
+   * Returns tuple of (typeCodename, value) from configuration file.
+   * @param fileName: path of configuration file.
+   * @param prop: read properties from configuration file.
+   * @tparam T: object to be instantiated after reading configuration.
+   * @return instantiated object after reading configuration.
+   */
   def getOrCreateClassFromProperties[T: ru.TypeTag](fileName: String, prop: Properties): (String, T) = {
     if (!prop.containsKey("className")) throw new ConfigurationException(s"Property file '$fileName' must define key 'className'")
     if (!prop.containsKey("codename")) throw new ConfigurationException(s"Property file '$fileName' must define key 'codename'")

@@ -6,7 +6,7 @@ import play.api.libs.json.JsValue
 
 
 /**
- * Defines interface of class/object defining unmarshal method.
+ * Defines interface of class/object that defines unmarshal method.
  * This method deserializes a specific scala data structure to json format.
  */
 trait Unmarshaller {

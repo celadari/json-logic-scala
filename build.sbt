@@ -1,3 +1,5 @@
+// Copyright 2019 celadari. All rights reserved. MIT license.
+
 name := "json-logic-scala"
 
 organization := "com.celadari"
@@ -13,7 +15,7 @@ developers := List(Developer(
 
 licenses += ("MIT", url("https://mit-license.org/"))
 
-version := "1.9.16"
+version := "2.0.0"
 
 scalaVersion := "2.13.2"
 

@@ -9,7 +9,7 @@ import com.celadari.jsonlogicscala.tree.types.TypeValue
 
 
 /**
- * Companion object holding implicit reader json.
+ * Companion object that holds implicit reader json.
  */
 object ValueLogic {
   val OPERATOR_CODENAME: String = "var"

@@ -1,3 +1,4 @@
+// Copyright 2019 celadari. All rights reserved. MIT license.
 package com.celadari.jsonlogicscala
 
 import org.scalatest.PrivateMethodTester

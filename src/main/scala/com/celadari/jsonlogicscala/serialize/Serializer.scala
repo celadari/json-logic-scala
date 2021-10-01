@@ -9,7 +9,7 @@ import com.celadari.jsonlogicscala.exceptions.{IllegalInputException, InvalidVal
 
 
 /**
- * Companion object holding implicit serializer.
+ * Companion object that holds implicit serializer.
  * Useful to invoke methods using implicit [[com.celadari.jsonlogicscala.serialize.Serializer]] that do not require
  * custom Serializer.
  */
@@ -142,7 +142,7 @@ class Serializer(implicit val conf: SerializerConf) {
    * @return tuple of split (logic JsValue, data JsObject) from conditions.
    */
   protected[this] def serializeArrayOfConditions(conditions: Array[JsonLogicCore]): (JsValue, JsObject) = {
-    val (jsonLogics, jsonLogicData) = conditions.map(jsonLogic => serialize(jsonLogic)).unzip
+    val (jsonLogics, jsonLogicData) = conditions.map(jsonLogic => serializeJsonLogicCore(jsonLogic)).unzip
     (JsArray(jsonLogics), jsonLogicData.map(_.as[JsObject]).reduce(_ ++ _))
   }
 
@@ -152,7 +152,7 @@ class Serializer(implicit val conf: SerializerConf) {
    * @param jsonLogic: input JsonLogicCore to be split into (logic JsValue, data JsValue).
    * @return (logic JsValue, data JsValue)
    */
-  def serialize(jsonLogic: JsonLogicCore): (JsValue, JsValue) = {
+  protected[this] def serializeJsonLogicCore(jsonLogic: JsonLogicCore): (JsValue, JsValue) = {
     jsonLogic match {
       case valueLogic: ValueLogic[_] => serializeValueLogic(valueLogic)
       case composeLogic: ComposeLogic => serializeComposeLogic(composeLogic)
@@ -160,5 +160,18 @@ class Serializer(implicit val conf: SerializerConf) {
         throw new InvalidValueLogicException("VariableLogic cannot be serialized. CompositionOperator.ComposeJsonLogicCore output is only used at evaluation.")
       }
     }
+  }
+
+  /**
+   * Returns serialized scala data structure.
+   * @param jsonLogicCore: input JsonLogicCore to be serialized.
+   * @return full structure with logic and data.
+   */
+  def serialize(jsonLogicCore: JsonLogicCore): JsValue = {
+    // apply writing
+    val (jsonLogic, jsonLogicData) = serializeJsonLogicCore(jsonLogicCore)
+
+    // return final result
+    JsArray(Array(jsonLogic, jsonLogicData))
   }
 }

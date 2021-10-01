@@ -1,3 +1,4 @@
+// Copyright 2019 celadari. All rights reserved. MIT license.
 package com.celadari.jsonlogicscala.deserialize.defaults
 
 import org.scalatest.matchers.should.Matchers

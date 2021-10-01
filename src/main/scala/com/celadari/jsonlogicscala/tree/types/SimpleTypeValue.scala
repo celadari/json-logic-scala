@@ -5,7 +5,7 @@ import play.api.libs.json.{JsValue, Writes}
 
 
 /**
- * Companion object holding implicit writer json.
+ * Companion object that holds implicit writer json.
  */
 object SimpleTypeValue {
 

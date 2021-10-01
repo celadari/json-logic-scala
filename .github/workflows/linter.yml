@@ -1,3 +1,4 @@
+# Copyright 2019 celadari. All rights reserved. MIT license.
 name: Linter
 on: [push]
 jobs:

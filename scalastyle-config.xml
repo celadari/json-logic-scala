@@ -8,7 +8,7 @@
       </parameter>
     </parameters>
   </check>
-  <check class="org.scalastyle.file.HeaderMatchesChecker" level="warning" enabled="false">
+  <check class="org.scalastyle.file.HeaderMatchesChecker" level="warning" enabled="true">
     <parameters>
       <parameter name="header">
         <![CDATA[// Copyright 2019 celadari. All rights reserved. MIT license.]]>

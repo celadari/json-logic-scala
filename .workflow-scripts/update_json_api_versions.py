@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+# Copyright 2019 celadari. All rights reserved. MIT license.
 
 import argparse
 import json

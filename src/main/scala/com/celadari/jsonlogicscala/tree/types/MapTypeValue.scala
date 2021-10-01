@@ -5,7 +5,7 @@ import play.api.libs.json.{JsValue, Writes}
 
 
 /**
- * Companion object holding implicit writer json and constant codename for [[com.celadari.jsonlogicscala.tree.types.MapTypeValue]].
+ * Companion object that holds implicit writer json and constant codename for [[com.celadari.jsonlogicscala.tree.types.MapTypeValue]].
  */
 object MapTypeValue {
   val CODENAME_TYPE: String = "map"

@@ -1,3 +1,4 @@
+// Copyright 2019 celadari. All rights reserved. MIT license.
 package com.celadari.jsonlogicscala.evaluate.impl
 
 import com.celadari.jsonlogicscala.evaluate.Operator

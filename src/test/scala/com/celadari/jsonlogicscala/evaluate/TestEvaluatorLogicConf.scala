@@ -1,3 +1,4 @@
+// Copyright 2019 celadari. All rights reserved. MIT license.
 package com.celadari.jsonlogicscala.evaluate
 
 import org.scalatest.matchers.should.Matchers
@@ -32,7 +33,7 @@ class TestEvaluatorLogicConf extends AnyFlatSpec with Matchers {
 
   "createConf EvaluateValueLogic other path with manual add priority" should "return conf" in {
     val result = EvaluatorLogicConf.createConf(
-      pathEvaluatorLogic = "META-INF/services/json-logic-scala/tests/evaluator-value-logic/normal/manual-add-priority/",
+      pathEvaluatorValueLogic = "META-INF/services/json-logic-scala/tests/evaluator-value-logic/normal/manual-add-priority/",
       evaluatorValueLogicManualAdd = Map(SimpleTypeValue(DOUBLE_CODENAME) -> EvaluatorValueLogicImplDouble)
     )
     val expectedResult = EvaluatorLogicConf(
@@ -56,7 +57,7 @@ class TestEvaluatorLogicConf extends AnyFlatSpec with Matchers {
 
   "createConf EvaluateValueLogic other path with meta-inf-priority" should "return conf" in {
     val result = EvaluatorLogicConf.createConf(
-      pathEvaluatorLogic = "META-INF/services/json-logic-scala/tests/evaluator-value-logic/normal/meta-inf-priority/",
+      pathEvaluatorValueLogic = "META-INF/services/json-logic-scala/tests/evaluator-value-logic/normal/meta-inf-priority/",
       evaluatorValueLogicManualAdd = Map(SimpleTypeValue(DOUBLE_CODENAME) -> EvaluatorValueLogicImplDouble),
       isPriorityToManualAdd = false
     )
@@ -82,7 +83,7 @@ class TestEvaluatorLogicConf extends AnyFlatSpec with Matchers {
 
   "createConf EvaluateValueLogic non EvaluateValueLogic object" should "throw an exception" in {
     val thrown = the[ConfigurationException] thrownBy {EvaluatorLogicConf.createConf(
-      pathEvaluatorLogic = "META-INF/services/json-logic-scala/tests/evaluator-value-logic/exceptions/cast-exception-singleton/"
+      pathEvaluatorValueLogic = "META-INF/services/json-logic-scala/tests/evaluator-value-logic/exceptions/cast-exception-singleton/"
     )}
     val expectedMessage =
       """Found object is not a 'com\.celadari\.jsonlogicscala\.evaluate\.EvaluatorValueLogic' instance:
@@ -92,7 +93,7 @@ class TestEvaluatorLogicConf extends AnyFlatSpec with Matchers {
 
   "createConf EvaluateValueLogic non singleton with singleton true in props file" should "throw an exception" in {
     val thrown = the[ConfigurationException] thrownBy {EvaluatorLogicConf.createConf(
-      pathEvaluatorLogic = "META-INF/services/json-logic-scala/tests/evaluator-value-logic/exceptions/non-singleton-exception-singleton-set-to-true/"
+      pathEvaluatorValueLogic = "META-INF/services/json-logic-scala/tests/evaluator-value-logic/exceptions/non-singleton-exception-singleton-set-to-true/"
     )}
     val expectedMessage =
       """No singleton object found for: 'com.celadari.jsonlogicscala.evaluate.impl.EvaluatorValueLogicImplInt'
@@ -103,7 +104,7 @@ class TestEvaluatorLogicConf extends AnyFlatSpec with Matchers {
 
   "createConf EvaluateValueLogic non marshaller class" should "throw an exception" in {
     val thrown = the[ConfigurationException] thrownBy {EvaluatorLogicConf.createConf(
-      pathEvaluatorLogic = "META-INF/services/json-logic-scala/tests/evaluator-value-logic/exceptions/cast-exception-class/"
+      pathEvaluatorValueLogic = "META-INF/services/json-logic-scala/tests/evaluator-value-logic/exceptions/cast-exception-class/"
     )}
     val expectedMessage =
       """Found class is not a 'com\.celadari\.jsonlogicscala\.evaluate\.EvaluatorValueLogic' instance:
@@ -113,7 +114,7 @@ class TestEvaluatorLogicConf extends AnyFlatSpec with Matchers {
 
   "createConf EvaluateValueLogic singleton with singleton false in props file" should "throw an exception" in {
     val thrown = the[ConfigurationException] thrownBy {EvaluatorLogicConf.createConf(
-      pathEvaluatorLogic = "META-INF/services/json-logic-scala/tests/evaluator-value-logic/exceptions/singleton-exception-singleton-set-to-false/"
+      pathEvaluatorValueLogic = "META-INF/services/json-logic-scala/tests/evaluator-value-logic/exceptions/singleton-exception-singleton-set-to-false/"
     )}
     val expectedMessage =
       """No class found for: 'com.celadari.jsonlogicscala.evaluate.impl.EvaluatorValueLogicImplDouble'
@@ -124,7 +125,7 @@ class TestEvaluatorLogicConf extends AnyFlatSpec with Matchers {
 
   "createConf EvaluateValueLogic className not defined in props file" should "throw an exception" in {
     val thrown = the[ConfigurationException] thrownBy {EvaluatorLogicConf.createConf(
-      pathEvaluatorLogic = "META-INF/services/json-logic-scala/tests/evaluator-value-logic/exceptions/classname-not-defined-exception-class/"
+      pathEvaluatorValueLogic = "META-INF/services/json-logic-scala/tests/evaluator-value-logic/exceptions/classname-not-defined-exception-class/"
     )}
     val expectedMessage = "Property file 'double' must define key 'className'"
     thrown.getMessage shouldBe expectedMessage
@@ -132,7 +133,7 @@ class TestEvaluatorLogicConf extends AnyFlatSpec with Matchers {
 
   "createConf EvaluateValueLogic codename not defined in props file" should "throw an exception" in {
     val thrown = the[ConfigurationException] thrownBy {EvaluatorLogicConf.createConf(
-      pathEvaluatorLogic = "META-INF/services/json-logic-scala/tests/evaluator-value-logic/exceptions/codename-not-defined-exception-class/"
+      pathEvaluatorValueLogic = "META-INF/services/json-logic-scala/tests/evaluator-value-logic/exceptions/codename-not-defined-exception-class/"
     )}
     val expectedMessage = "Property file 'int' must define key 'codename'"
     thrown.getMessage shouldBe expectedMessage
@@ -140,7 +141,7 @@ class TestEvaluatorLogicConf extends AnyFlatSpec with Matchers {
 
   "createConf EvaluateValueLogic wrong constructor argument names in props file" should "throw an exception" in {
     val thrown = the[ConfigurationException] thrownBy {EvaluatorLogicConf.createConf(
-      pathEvaluatorLogic =
+      pathEvaluatorValueLogic =
         "META-INF/services/json-logic-scala/tests/evaluator-value-logic/exceptions/wrong-constructor-argument-names-definition-exception-class/"
     )}
     val expectedMessage =
@@ -154,7 +155,7 @@ class TestEvaluatorLogicConf extends AnyFlatSpec with Matchers {
 
   "createConf EvaluateValueLogic wrong property type in props file" should "throw an exception" in {
     val thrown = the[ConfigurationException] thrownBy {EvaluatorLogicConf.createConf(
-      pathEvaluatorLogic = "META-INF/services/json-logic-scala/tests/evaluator-value-logic/exceptions/wrong-property-type-exception-class/"
+      pathEvaluatorValueLogic = "META-INF/services/json-logic-scala/tests/evaluator-value-logic/exceptions/wrong-property-type-exception-class/"
     )}
     val expectedMessage = "Property 'singleton' in property file 'string' is not a valid boolean parameter"
     thrown.getMessage shouldBe expectedMessage

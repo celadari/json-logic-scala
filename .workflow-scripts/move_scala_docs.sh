@@ -1,4 +1,4 @@
-
+# Copyright 2019 celadari. All rights reserved. MIT license.
 
 # shellcheck disable=SC2154
 for scala_version in $scala_versions

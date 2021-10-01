@@ -7,7 +7,7 @@ import com.celadari.jsonlogicscala.serialize.Serializer
 
 
 /**
- * Companion object holding implicit reader and writer json.
+ * Companion object that holds implicit reader and writer json.
  * Also defines methods to traverse abstract syntax tree and return string representation.
  */
 object JsonLogicCore {
@@ -26,14 +26,7 @@ object JsonLogicCore {
   }
 
   implicit def jsonLogicCoreWrites(implicit serializer: Serializer): Writes[JsonLogicCore] = new Writes[JsonLogicCore] {
-
-    override def writes(jsonLogicCore: JsonLogicCore): JsValue = {
-      // apply writing
-      val (jsonLogic, jsonLogicData) = serializer.serialize(jsonLogicCore)
-
-      // return final result
-      JsArray(Array(jsonLogic, jsonLogicData))
-    }
+    override def writes(jsonLogicCore: JsonLogicCore): JsValue = serializer.serialize(jsonLogicCore)
   }
 
   /**

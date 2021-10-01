@@ -1,3 +1,4 @@
+// Copyright 2019 celadari. All rights reserved. MIT license.
 package com.celadari.jsonlogicscala.evaluate.defaults
 
 import com.celadari.jsonlogicscala.converters.CollectionConverters.HasPartitionMap
@@ -7,6 +8,16 @@ import com.celadari.jsonlogicscala.exceptions.WrongNumberOfConditionsException
 
 object OperatorIfElse extends Operator {
 
+  /**
+   * Returns a value after performing if else statement on input values.
+   * On case length 3, first element is boolean, second element is value to return if boolean is true, third element
+   * is value to return if boolean is false.
+   * On case length 5 and greater, first element is boolean, second element is value to return if boolean is true,
+   * third element is another boolean condition if first element is false, fourth element is to be returned if third
+   * element is true, and so on...
+   * @param values: input array of boolean and return values.
+   * @return value associated with boolean true.
+   */
   def ifElse(values: Array[java.lang.Object]): java.lang.Object = {
     val n = values.length
 

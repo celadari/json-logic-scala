@@ -4,6 +4,10 @@ import scala.collection.{GenTraversableOnce, JavaConverters, mutable}
 import scala.reflect.ClassTag
 
 
+/**
+ * Holds a set of implicit utility class/functions.
+ * Thus, enhancing portability between scala versions and avoiding code duplication.
+ */
 object CollectionConverters {
 
   implicit class MapHasAsScala[K, V](m: java.util.Map[K, V]) {

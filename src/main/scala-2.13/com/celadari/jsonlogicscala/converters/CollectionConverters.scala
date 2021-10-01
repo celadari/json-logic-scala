@@ -1,3 +1,4 @@
+// Copyright 2019 celadari. All rights reserved. MIT license.
 package com.celadari.jsonlogicscala.converters
 
 import scala.collection.{ArrayOps, IterableOnce}
@@ -5,6 +6,10 @@ import scala.jdk.CollectionConverters.{MapHasAsScala => OriginalMapHasAsScala}
 import scala.reflect.ClassTag
 
 
+/**
+ * Holds a set of implicit utility class/functions.
+ * Thus, enhancing portability between scala versions and avoiding code duplication.
+ */
 object CollectionConverters {
 
   implicit class MapHasAsScala[K, V](m: java.util.Map[K, V]) extends OriginalMapHasAsScala(m)

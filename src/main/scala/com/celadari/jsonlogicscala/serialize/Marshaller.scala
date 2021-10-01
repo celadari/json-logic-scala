@@ -6,7 +6,7 @@ import play.api.libs.json.JsValue
 
 
 /**
- * Defines interface of class/object defining marshal method.
+ * Defines interface of class/object that defines marshal method.
  * This method serializes a specific scala data structure to json format.
  */
 trait Marshaller {

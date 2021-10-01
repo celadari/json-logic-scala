@@ -1,8 +1,12 @@
+// Copyright 2019 celadari. All rights reserved. MIT license.
 package com.celadari.jsonlogicscala.evaluate.defaults
 
 import com.celadari.jsonlogicscala.evaluate.Operator
 
 
+/**
+ * Reduce type operator of Bitwise AND.
+ */
 object OperatorAndBitwise extends Operator {
 
   def $amp(num1: java.lang.Byte, num2: java.lang.Byte): java.lang.Byte = (num1 & num2).toByte

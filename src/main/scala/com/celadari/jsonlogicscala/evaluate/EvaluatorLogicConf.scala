@@ -1,3 +1,4 @@
+// Copyright 2019 celadari. All rights reserved. MIT license.
 package com.celadari.jsonlogicscala.evaluate
 
 import java.util.Properties
@@ -12,10 +13,14 @@ import com.celadari.jsonlogicscala.evaluate.defaults._
 import com.celadari.jsonlogicscala.converters.CollectionConverters.MapHasAsScala
 
 
+/**
+ * Companion object to hold implicit: [[com.celadari.jsonlogicscala.evaluate.EvaluatorLogicConf]], mapping of default
+ * operators (type_codename -> method_conf), and method to create a custom configuration.
+ */
 object EvaluatorLogicConf {
 
   // scalastyle:off null
-  val DEFAULT_REDUCEOPERATORS_TO_METHODNAME: Map[String, (String, Operator)] = Map(
+  val DEFAULT_REDUCE_OPERATORS_TO_METHODNAME: Map[String, (String, Operator)] = Map(
     "<" -> ("$less", OperatorLess),
     "<=" -> ("$less$eq", OperatorLessEq),
     ">" -> ("$greater", OperatorGreater),
@@ -41,7 +46,11 @@ object EvaluatorLogicConf {
     "max" -> ("max", OperatorMax),
     "min" -> ("min", OperatorMin)
   )
-  val DEFAULT_REDUCEMETHOD_CONFS: Map[String, MethodConf] = DEFAULT_REDUCEOPERATORS_TO_METHODNAME
+
+  /**
+   * Maps default Reduce operators (operator_codename -> method_conf).
+   */
+  val DEFAULT_REDUCE_METHOD_CONFS: Map[String, MethodConf] = DEFAULT_REDUCE_OPERATORS_TO_METHODNAME
     .map{case (operator, (methodName, objOperator)) => {
       operator -> MethodConf(
         operator,
@@ -50,7 +59,7 @@ object EvaluatorLogicConf {
       )
     }}
 
-  val DEFAULT_NONREDUCEOPERATORS_TO_METHODNAME: Map[String, (String, Operator)] = Map(
+  val DEFAULT_NON_REDUCE_OPERATORS_TO_METHODNAME: Map[String, (String, Operator)] = Map(
     "if" -> ("ifElse", OperatorIfElse),
     "in" -> ("in", OperatorIn),
     "merge" -> ("merge", OperatorMerge),
@@ -58,7 +67,11 @@ object EvaluatorLogicConf {
     "substr" -> ("substr", OperatorSubstr),
     "at" -> ("at", OperatorAt)
   )
-  val DEFAULT_NONREDUCEOPERATORS_CONFS: Map[String, MethodConf] = DEFAULT_NONREDUCEOPERATORS_TO_METHODNAME
+
+  /**
+   * Maps default Non-Reduce operators (operator_codename -> method_conf).
+   */
+  val DEFAULT_NON_REDUCE_OPERATORS_CONFS: Map[String, MethodConf] = DEFAULT_NON_REDUCE_OPERATORS_TO_METHODNAME
     .map{case (operator, (methodName, objOperator)) => {
       operator -> MethodConf(
         operator,
@@ -68,7 +81,7 @@ object EvaluatorLogicConf {
       )
     }}
 
-  val DEFAULT_COMPOSITIONOPERATORS_TO_METHODNAME: Map[String, Operator] = Map(
+  val DEFAULT_COMPOSITION_OPERATORS_TO_METHOD_NAME: Map[String, Operator] = Map(
     "map" -> OperatorMap,
     "reduce" -> OperatorReduce,
     "filter" -> OperatorFilter,
@@ -76,7 +89,11 @@ object EvaluatorLogicConf {
     "none" -> OperatorNone,
     "some" -> OperatorSome
   )
-  val DEFAULT_COMPOSITIONOPERATORS_CONFS: Map[String, MethodConf] = DEFAULT_COMPOSITIONOPERATORS_TO_METHODNAME
+
+  /**
+   * Maps default Composition operators (operator_codename -> method_conf).
+   */
+  val DEFAULT_COMPOSITION_OPERATORS_CONFS: Map[String, MethodConf] = DEFAULT_COMPOSITION_OPERATORS_TO_METHOD_NAME
     .map{case (operator, objOperator) => {
       operator -> MethodConf(
         operator,
@@ -86,7 +103,8 @@ object EvaluatorLogicConf {
         isCompositionOperator = true
       )
     }}
-  val DEFAULT_UNARYOPERATORS_TO_METHODNAME: Map[String, Operator] = Map(
+
+  val DEFAULT_UNARY_OPERATORS_TO_METHOD_NAME: Map[String, Operator] = Map(
     "!" -> OperatorNeg,
     "get_or_default_array" -> OperatorOptionGetOrDefaultArray,
     "get_or_default_boolean" -> OperatorOptionGetOrDefaultBoolean,
@@ -100,7 +118,11 @@ object EvaluatorLogicConf {
     "get_or_default_map" -> OperatorOptionGetOrDefaultMap,
     "get_value_or_null" -> OperatorOptionGetValueOrNull
   )
-  val DEFAULT_UNARYOPERATORS_CONFS: Map[String, MethodConf] = DEFAULT_UNARYOPERATORS_TO_METHODNAME
+
+  /**
+   * Maps default Unary operators (operator_codename -> method_conf).
+   */
+  val DEFAULT_UNARY_OPERATORS_CONFS: Map[String, MethodConf] = DEFAULT_UNARY_OPERATORS_TO_METHOD_NAME
     .map{case (operator, objOperator) => {
       operator -> MethodConf(
         operator,
@@ -111,9 +133,19 @@ object EvaluatorLogicConf {
       )
     }}
 
-  val DEFAULT_METHOD_CONFS: Map[String, MethodConf] = DEFAULT_REDUCEMETHOD_CONFS ++
-    DEFAULT_NONREDUCEOPERATORS_CONFS ++ DEFAULT_COMPOSITIONOPERATORS_CONFS ++ DEFAULT_UNARYOPERATORS_CONFS
+  /**
+   * Maps default operators (operator_codename -> method_conf).
+   */
+  val DEFAULT_METHOD_CONFS: Map[String, MethodConf] = DEFAULT_REDUCE_METHOD_CONFS ++
+    DEFAULT_NON_REDUCE_OPERATORS_CONFS ++ DEFAULT_COMPOSITION_OPERATORS_CONFS ++ DEFAULT_UNARY_OPERATORS_CONFS
 
+  /**
+   * Returns tuple of (typeCodename, method_conf) from configuration file.
+   * @param fileName: path of configuration file.
+   * @param prop: read properties from configuration file.
+   * @param operatorToOwnerManualAdd: map of (operator_codename -> operator) for manually added operators.
+   * @return tuple (operator_codename, method_conf) after reading configuration.
+   */
   // scalastyle:off return
   def createConfMethod(
                         fileName: String,
@@ -192,16 +224,26 @@ object EvaluatorLogicConf {
     }
   }
 
+  /**
+   * Returns a custom evaluator configuration [[com.celadari.jsonlogicscala.evaluate.EvaluatorLogicConf]].
+   * @param pathEvaluatorValueLogic: folder to [[com.celadari.jsonlogicscala.evaluate.EvaluatorValueLogic]] provider-configuration files.
+   * @param pathOperator: folder to [[com.celadari.jsonlogicscala.evaluate.Operator]] provider-configuration files.
+   * @param methodConfsManualAdd: map of (type_codename -> method_conf) to be added to the evaluator configuration.
+   * @param operatorToOwnerManualAdd: map of (type_codename -> operator) to be added to the evaluator configuration.
+   * @param evaluatorValueLogicManualAdd: map of (type -> evaluator_value_logic) to be added to the evaluator configuration.
+   * @param isPriorityToManualAdd: boolean indicating if manual add has priority over provider-configuration folder add.
+   * @return custom serializer configuration.
+   */
   def createConf(
-                  pathEvaluatorLogic: String = "META-INF/services/",
+                  pathEvaluatorValueLogic: String = "META-INF/services/",
                   pathOperator: String = "META-INF/services/",
                   methodConfsManualAdd: Map[String, MethodConf] = DEFAULT_METHOD_CONFS,
-                  evaluatorValueLogicManualAdd: Map[TypeValue, EvaluatorValueLogic] = Map(),
                   operatorToOwnerManualAdd: Map[String, Operator] = Map(),
+                  evaluatorValueLogicManualAdd: Map[TypeValue, EvaluatorValueLogic] = Map(),
                   isPriorityToManualAdd: Boolean = true
                 ): EvaluatorLogicConf = {
 
-    val finderEvaluatorValueLogic = new ResourceFinder(pathEvaluatorLogic)
+    val finderEvaluatorValueLogic = new ResourceFinder(pathEvaluatorValueLogic)
     val propsEvaluatorValueLogic = finderEvaluatorValueLogic.mapAllProperties(classOf[EvaluatorValueLogic].getName).asScala
     val evaluatorValueLogicMetaInfTypeNonParsed = propsEvaluatorValueLogic
       .map{case (fileName, prop) => ConfigurationFetcher.getOrCreateClassFromProperties[EvaluatorValueLogic](fileName, prop)}
@@ -219,6 +261,15 @@ object EvaluatorLogicConf {
   implicit val implReduceLogicConf: EvaluatorLogicConf = createConf()
 }
 
+/**
+ * Represents an evaluator's configuration.
+ * It informs the evaluator how to map an operator_codename to an actual method.
+ * @param operatorToMethodConfMetaInfAdd: map of (type_codename -> method_conf) fetched from META-INF resources folder.
+ * @param operatorToMethodConfManualAdd: map of (type_codename -> method_conf) manually added.
+ * @param valueLogicTypeToReducerMetaInfAdd: map of (type -> evaluator_value_logic) fetched from META-INF resources folder.
+ * @param valueLogicTypeToReducerManualAdd: map of (type -> evaluator_value_logic) manually added.
+ * @param isPriorityToManualAdd: boolean indicating if manual add has priority over provider-configuration folder add.
+ */
 case class EvaluatorLogicConf(
                                operatorToMethodConfMetaInfAdd: Map[String, MethodConf],
                                operatorToMethodConfManualAdd: Map[String, MethodConf],
@@ -227,8 +278,19 @@ case class EvaluatorLogicConf(
                                isPriorityToManualAdd: Boolean = true
                              ) {
 
+  /**
+   * Maps codename_operator to [[com.celadari.jsonlogicscala.evaluate.MethodConf]].
+   * If "isPriorityToManualAdd" is true, if a codename_operator is defined in both "operatorToMethodConfMetaInfAdd"
+   * and "operatorToMethodConfManualAdd" then manual add is selected, otherwise fetched META-INF is selected.
+   */
   val operatorToMethodConf: Map[String, MethodConf] = if (isPriorityToManualAdd) operatorToMethodConfMetaInfAdd ++ operatorToMethodConfManualAdd
                                                       else operatorToMethodConfManualAdd ++ operatorToMethodConfMetaInfAdd
+
+  /**
+   * Maps type to [[com.celadari.jsonlogicscala.evaluate.EvaluatorValueLogic]].
+   * If "isPriorityToManualAdd" is true, if a type is defined in both "valueLogicTypeToReducerMetaInfAdd"
+   * and "valueLogicTypeToReducerManualAdd" then manual add is selected, otherwise fetched META-INF is selected.
+   */
   val valueLogicTypeToReducer: Map[TypeValue, EvaluatorValueLogic] =
     if (isPriorityToManualAdd) valueLogicTypeToReducerMetaInfAdd ++ valueLogicTypeToReducerManualAdd
     else valueLogicTypeToReducerManualAdd ++ valueLogicTypeToReducerMetaInfAdd

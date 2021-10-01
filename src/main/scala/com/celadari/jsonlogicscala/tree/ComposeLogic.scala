@@ -7,7 +7,7 @@ import com.celadari.jsonlogicscala.serialize.Serializer
 
 
 /**
- * Companion object holding implicit reader and writer json.
+ * Companion object that holds implicit reader and writer json.
  */
 object ComposeLogic {
 

@@ -1,8 +1,12 @@
+// Copyright 2019 celadari. All rights reserved. MIT license.
 package com.celadari.jsonlogicscala.evaluate.defaults
 
 import com.celadari.jsonlogicscala.evaluate.Operator
 
 
+/**
+ * Reduce type operator of MAX Number.
+ */
 object OperatorMax extends Operator {
 
   def max(num1: java.lang.Byte, num2: java.lang.Byte): java.lang.Byte = if (num1 >= num2) num1 else num2

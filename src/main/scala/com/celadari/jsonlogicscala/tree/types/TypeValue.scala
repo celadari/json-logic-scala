@@ -6,7 +6,7 @@ import com.celadari.jsonlogicscala.exceptions.{IllegalInputException, InvalidJso
 
 
 /**
- * Companion object holding implicit reader and writer json.
+ * Companion object that holds implicit reader and writer json.
  * Also defines methods serialize/deserialize [[com.celadari.jsonlogicscala.tree.types.TypeValue]] to json and vice-versa.
  */
 object TypeValue {

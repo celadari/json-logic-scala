@@ -1,3 +1,4 @@
+// Copyright 2019 celadari. All rights reserved. MIT license.
 package com.celadari.jsonlogicscala.evaluate
 
 import com.celadari.jsonlogicscala.exceptions.{IllegalInputException, IncompatibleMethodsException}

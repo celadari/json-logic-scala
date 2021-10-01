@@ -1,3 +1,4 @@
+// Copyright 2019 celadari. All rights reserved. MIT license.
 package com.celadari.jsonlogicscala.serialize.impl
 
 import play.api.libs.json.{JsNumber, JsValue}

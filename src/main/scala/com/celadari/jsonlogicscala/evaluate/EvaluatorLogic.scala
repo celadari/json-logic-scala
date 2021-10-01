@@ -1,13 +1,29 @@
+// Copyright 2019 celadari. All rights reserved. MIT license.
 package com.celadari.jsonlogicscala.evaluate
 
 import java.lang.reflect.InvocationTargetException
-import CompositionOperator.ComposeJsonLogicCore
+import com.celadari.jsonlogicscala.evaluate.CompositionOperator.ComposeJsonLogicCore
 import com.celadari.jsonlogicscala.tree.{ComposeLogic, JsonLogicCore, ValueLogic, VariableLogic}
 import com.celadari.jsonlogicscala.exceptions.{EvaluateException, EvaluationException, IllegalInputException, IncompatibleMethodsException}
 
 
+/**
+ * Responsible for evaluating scala data structure [[com.celadari.jsonlogicscala.tree.JsonLogicCore]].
+ * May be extended to fit custom use cases. Providing the right configuration via
+ * [[com.celadari.jsonlogicscala.evaluate.EvaluatorLogicConf]] is enough to cover most cases.
+ * You may redefine methods to handle extreme uncommon cases.
+ * @param conf: informs of mappings (codename_operator -> method_conf) and mappings (type -> evaluator_value_logic).
+ */
 class EvaluatorLogic(implicit val conf: EvaluatorLogicConf) {
 
+  /**
+   * Returns evaluated result of corresponding condition (internal node in syntax tree).
+   * This method carries a map of map of (composition_operator -> map(variable_name -> variable_value)) to fetch
+   * the value of variable (depends on the composition_operator and the values this composition_operator is applied to).
+   * @param condition: node in syntax tree to evaluate.
+   * @param logicToValue: map of (composition_operator -> map(variable_name -> variable_value))
+   * @return evaluated result.
+   */
   // scalastyle:off return
   protected[this] def evaluateComposeLogic(condition: ComposeLogic, logicToValue: Map[ComposeLogic, Map[String, Any]]): Any = {
     val operator = condition.operator
@@ -24,7 +40,7 @@ class EvaluatorLogic(implicit val conf: EvaluatorLogicConf) {
     // Composition operators: map, filter, reduce
     if (confMethod.isCompositionOperator) {
       return confMethod.ownerMethodOpt.get.asInstanceOf[CompositionOperator]
-        .evalOperator(condition.conditions, condition, this, logicToValue)
+        .evalOperator(condition, this, logicToValue)
     }
 
     val conditionsEval = condition.conditions.map(cond => evaluate(cond, logicToValue))
@@ -32,7 +48,7 @@ class EvaluatorLogic(implicit val conf: EvaluatorLogicConf) {
     // Global operators: ifElse, merge, in
     if (!confMethod.isReduceTypeOperator) {
       val methods = confMethod.ownerMethodOpt.get.getClass.getMethods.filter(_.getName == confMethod.methodName).toSet
-      val (paramTypes, conditionsEvalCasted) = MethodSignatureFinder.maxMinsAndCastedValues(conditionsEval, methods.map(_.getParameterTypes.apply(0)))
+      val (paramTypes, conditionsEvalCasted) = MethodSignatureFinder.minsSupAndCastedValues(conditionsEval, methods.map(_.getParameterTypes.apply(0)))
 
       if (paramTypes.isEmpty) {
         throw new IncompatibleMethodsException(s"Method ${confMethod.methodName} doesn't accept parameter of type: ${conditionsEval.getClass}")
@@ -59,6 +75,11 @@ class EvaluatorLogic(implicit val conf: EvaluatorLogicConf) {
       }}
   }
 
+  /**
+   * Returns transformed value of leaf node in syntax tree before evaluation.
+   * @param condition: leaf node whose value is to be transformed.
+   * @return transformed value.
+   */
   // scalastyle:off return null
   protected[this] def evaluateValueLogic(condition: ValueLogic[_]): Any = {
     val value = condition.valueOpt.get
@@ -67,10 +88,18 @@ class EvaluatorLogic(implicit val conf: EvaluatorLogicConf) {
 
     val evaluatorClassOpt = conf.valueLogicTypeToReducer.get(typeValueOpt.get)
     evaluatorClassOpt
-      .getOrElse(EvaluatorValueLogic.IDENTITY_REDUCER_VALUELOGIC)
+      .getOrElse(EvaluatorValueLogic.IDENTITY_REDUCER_VALUE_LOGIC)
       .evaluateValueLogic(value)
   }
 
+  /**
+   * Returns evaluated result of corresponding condition (node in syntax tree).
+   * This method carries a map of map of (composition_operator -> map(variable_name -> variable_value)) to fetch
+   * the value of variable (depends on the composition_operator and the values this composition_operator is applied to).
+   * @param condition: node in syntax tree to evaluate.
+   * @param logicOperatorToValue: map of (composition_operator -> map(variable_name -> variable_value))
+   * @return evaluated result.
+   */
   def evaluate(condition: JsonLogicCore, logicOperatorToValue: Map[ComposeLogic, Map[String, Any]]): Any = {
     try {
       condition match {
@@ -91,6 +120,20 @@ class EvaluatorLogic(implicit val conf: EvaluatorLogicConf) {
     }
   }
 
+  /**
+   * Returns evaluated result of scala data structure [[com.celadari.jsonlogicscala.tree.JsonLogicCore]].
+   * A [[com.celadari.jsonlogicscala.tree.JsonLogicCore]] is a scala data structure that represents a json-logic-typed.
+   * A json-logic-typed object represents an expression.
+   * This method evaluates the underlying expression represented by a scala data structure
+   * [[com.celadari.jsonlogicscala.tree.JsonLogicCore]].
+   * Before evaluation, the underlying syntax tree is traversed
+   * - using [[com.celadari.jsonlogicscala.evaluate.CompositionOperator.ComposeJsonLogicCore]] - and
+   * any [[com.celadari.jsonlogicscala.tree.ValueLogic]] object representing a variable
+   * (of a [[com.celadari.jsonlogicscala.evaluate.CompositionOperator]]) is replaced by an
+   * [[com.celadari.jsonlogicscala.tree.VariableLogic]] object recursively.
+   * @param jsonLogicCore: expression to evaluate.
+   * @return evaluated result.
+   */
   // scalastyle:off null
   def eval(jsonLogicCore: JsonLogicCore): Any = {
     var composedLogic: JsonLogicCore = null

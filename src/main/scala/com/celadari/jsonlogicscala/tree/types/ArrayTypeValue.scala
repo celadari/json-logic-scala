@@ -5,7 +5,7 @@ import play.api.libs.json.{JsValue, Writes}
 
 
 /**
- * Companion object holding implicit writer json and constant codename for [[com.celadari.jsonlogicscala.tree.types.ArrayTypeValue]].
+ * Companion object that holds implicit writer json and constant codename for [[com.celadari.jsonlogicscala.tree.types.ArrayTypeValue]].
  */
 object ArrayTypeValue {
   val CODENAME_TYPE: String = "array"

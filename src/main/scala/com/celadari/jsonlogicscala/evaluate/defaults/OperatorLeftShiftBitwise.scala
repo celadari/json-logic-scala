@@ -1,8 +1,12 @@
+// Copyright 2019 celadari. All rights reserved. MIT license.
 package com.celadari.jsonlogicscala.evaluate.defaults
 
 import com.celadari.jsonlogicscala.evaluate.Operator
 
 
+/**
+ * Reduce type operator of Bitwise LEFT SHIFT <<.
+ */
 object OperatorLeftShiftBitwise extends Operator {
 
   def $less$less(num1: java.lang.Byte, num2: java.lang.Byte): java.lang.Integer = num1 << num2.toInt

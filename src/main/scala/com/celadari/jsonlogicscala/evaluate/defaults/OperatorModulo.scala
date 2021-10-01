@@ -1,8 +1,12 @@
+// Copyright 2019 celadari. All rights reserved. MIT license.
 package com.celadari.jsonlogicscala.evaluate.defaults
 
 import com.celadari.jsonlogicscala.evaluate.Operator
 
 
+/**
+ * Operator that compute modulo from dividing two numbers.
+ */
 object OperatorModulo extends Operator {
 
   def $percent(num1: java.lang.Byte, num2: java.lang.Byte): java.lang.Byte = (num1 % num2).toByte

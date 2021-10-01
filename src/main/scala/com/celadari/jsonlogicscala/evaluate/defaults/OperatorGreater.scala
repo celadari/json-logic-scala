@@ -1,8 +1,12 @@
+// Copyright 2019 celadari. All rights reserved. MIT license.
 package com.celadari.jsonlogicscala.evaluate.defaults
 
 import com.celadari.jsonlogicscala.evaluate.Operator
 
 
+/**
+ * Reduce type operator of Comparison >.
+ */
 object OperatorGreater extends Operator {
 
   def $greater(num1: java.lang.Byte, num2: java.lang.Byte): java.lang.Boolean = num1 > num2

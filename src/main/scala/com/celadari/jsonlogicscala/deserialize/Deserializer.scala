@@ -9,7 +9,7 @@ import com.celadari.jsonlogicscala.tree.{ComposeLogic, JsonLogicCore, ValueLogic
 
 
 /**
- * Companion object holding implicit deserializer.
+ * Companion object that holds implicit deserializer.
  * Useful to invoke methods using implicit [[com.celadari.jsonlogicscala.deserialize.Deserializer]] that do not require
  * custom Deserializer.
  */

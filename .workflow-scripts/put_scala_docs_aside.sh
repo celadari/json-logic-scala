@@ -1,4 +1,4 @@
-
+# Copyright 2019 celadari. All rights reserved. MIT license.
 
 # shellcheck disable=SC2010
 scala_versions=$(ls "$1" | grep -Eo "[0-9]\.[0-9][0-9]" |  tr '\n' ' ')

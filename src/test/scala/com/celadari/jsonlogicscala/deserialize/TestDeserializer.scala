@@ -1,3 +1,4 @@
+// Copyright 2019 celadari. All rights reserved. MIT license.
 package com.celadari.jsonlogicscala.deserialize
 
 import play.api.libs.json.{JsObject, Json}
