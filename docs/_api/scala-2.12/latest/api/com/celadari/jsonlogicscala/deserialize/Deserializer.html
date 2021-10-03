@@ -150,17 +150,17 @@
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="index.html" class="extype" name="com.celadari.jsonlogicscala.deserialize">deserialize</a></dd></dl></div>
     </li><li class="current-entities indented4">
-                        <a class="object" href="Deserializer$.html" title=""></a>
-                        <a class="class" href="" title=""></a>
-                        <a href="" title="">Deserializer</a>
+                        <a class="object" href="Deserializer$.html" title="Companion object holding implicit deserializer."></a>
+                        <a class="class" href="" title="Responsible for deserializing json into scala com.celadari.jsonlogicscala.tree.JsonLogicCore data structure."></a>
+                        <a href="" title="Responsible for deserializing json into scala com.celadari.jsonlogicscala.tree.JsonLogicCore data structure.">Deserializer</a>
                       </li><li class="current-entities indented4">
-                        <a class="object" href="DeserializerConf$.html" title=""></a>
-                        <a class="class" href="DeserializerConf.html" title=""></a>
-                        <a href="DeserializerConf.html" title="">DeserializerConf</a>
+                        <a class="object" href="DeserializerConf$.html" title="Companion object to hold implicit: com.celadari.jsonlogicscala.deserialize.DeserializerConf, mapping of default unmarshallers (type_codename -&gt; Unmarshaller), method to create a custom configuration."></a>
+                        <a class="class" href="DeserializerConf.html" title="Represents a deserializer's configuration."></a>
+                        <a href="DeserializerConf.html" title="Represents a deserializer's configuration.">DeserializerConf</a>
                       </li><li class="current-entities indented4">
                         <span class="separator"></span>
-                        <a class="trait" href="Unmarshaller.html" title=""></a>
-                        <a href="Unmarshaller.html" title="">Unmarshaller</a>
+                        <a class="trait" href="Unmarshaller.html" title="Defines interface of class/object defining unmarshal method."></a>
+                        <a href="Unmarshaller.html" title="Defines interface of class/object defining unmarshal method.">Unmarshaller</a>
                       </li>
               </ul>
             </div>
@@ -191,7 +191,10 @@
       </h4>
 
       
-          <div id="comment" class="fullcommenttop"><div class="toggleContainer block">
+          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Responsible for deserializing json into scala <a href="../tree/JsonLogicCore.html" class="extype" name="com.celadari.jsonlogicscala.tree.JsonLogicCore">com.celadari.jsonlogicscala.tree.JsonLogicCore</a> data structure.
+May be extended to fit custom use cases. Providing the right configuration via
+<a href="DeserializerConf.html" class="extype" name="com.celadari.jsonlogicscala.deserialize.DeserializerConf">com.celadari.jsonlogicscala.deserialize.DeserializerConf</a> is enough to cover most cases.
+You may redefine methods to handle extreme uncommon cases.</p></div><div class="toggleContainer block">
           <span class="toggle">
             Linear Supertypes
           </span>
@@ -256,7 +259,7 @@
         <span class="name">Deserializer</span><span class="params">()</span><span class="params">(<span class="implicit">implicit </span><span name="conf">conf: <a href="DeserializerConf.html" class="extype" name="com.celadari.jsonlogicscala.deserialize.DeserializerConf">DeserializerConf</a></span>)</span>
       </span>
       
-      
+      <p class="shortcomment cmt"></p>
     </li></ol>
             </div>
 
@@ -373,7 +376,7 @@
       </span>
       
       
-    </li><li name="com.celadari.jsonlogicscala.deserialize.Deserializer#deserialize" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+    </li><li name="com.celadari.jsonlogicscala.deserialize.Deserializer#deserialize" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="deserialize(jsonLogic:play.api.libs.json.JsObject,jsonLogicData:play.api.libs.json.JsObject):com.celadari.jsonlogicscala.tree.JsonLogicCore"></a><a id="deserialize(JsObject,JsObject):JsonLogicCore"></a>
       <span class="permalink">
       <a href="../../../../com/celadari/jsonlogicscala/deserialize/Deserializer.html#deserialize(jsonLogic:play.api.libs.json.JsObject,jsonLogicData:play.api.libs.json.JsObject):com.celadari.jsonlogicscala.tree.JsonLogicCore" title="Permalink">
@@ -388,7 +391,7 @@
         <span class="name">deserialize</span><span class="params">(<span name="jsonLogic">jsonLogic: <span class="extype" name="play.api.libs.json.JsObject">JsObject</span></span>, <span name="jsonLogicData">jsonLogicData: <span class="extype" name="play.api.libs.json.JsObject">JsObject</span></span>)</span><span class="result">: <a href="../tree/JsonLogicCore.html" class="extype" name="com.celadari.jsonlogicscala.tree.JsonLogicCore">JsonLogicCore</a></span>
       </span>
       
-      
+      <p class="shortcomment cmt">Returns <a href="../tree/JsonLogicCore.html" class="extype" name="com.celadari.jsonlogicscala.tree.JsonLogicCore">com.celadari.jsonlogicscala.tree.JsonLogicCore</a> by combining logic from jsonLogic and data from jsonLogicData.</p><div class="fullcomment"><div class="comment cmt"><p>Returns <a href="../tree/JsonLogicCore.html" class="extype" name="com.celadari.jsonlogicscala.tree.JsonLogicCore">com.celadari.jsonlogicscala.tree.JsonLogicCore</a> by combining logic from jsonLogic and data from jsonLogicData.</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>JsonLogicCore.</p></dd></dl></div>
     </li><li name="com.celadari.jsonlogicscala.deserialize.Deserializer#deserializeArrayOfConditions" visbl="prt" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="deserializeArrayOfConditions(json:play.api.libs.json.JsValue,jsonLogicData:play.api.libs.json.JsObject):Array[com.celadari.jsonlogicscala.tree.JsonLogicCore]"></a><a id="deserializeArrayOfConditions(JsValue,JsObject):Array[JsonLogicCore]"></a>
       <span class="permalink">
@@ -404,7 +407,8 @@
         <span class="name">deserializeArrayOfConditions</span><span class="params">(<span name="json">json: <span class="extype" name="play.api.libs.json.JsValue">JsValue</span></span>, <span name="jsonLogicData">jsonLogicData: <span class="extype" name="play.api.libs.json.JsObject">JsObject</span></span>)</span><span class="result">: <span class="extype" name="scala.Array">Array</span>[<a href="../tree/JsonLogicCore.html" class="extype" name="com.celadari.jsonlogicscala.tree.JsonLogicCore">JsonLogicCore</a>]</span>
       </span>
       
-      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[this] </dd></dl></div>
+      <p class="shortcomment cmt">Returns array of <a href="../tree/JsonLogicCore.html" class="extype" name="com.celadari.jsonlogicscala.tree.JsonLogicCore">com.celadari.jsonlogicscala.tree.JsonLogicCore</a> from tuple of serialized (logic, data).</p><div class="fullcomment"><div class="comment cmt"><p>Returns array of <a href="../tree/JsonLogicCore.html" class="extype" name="com.celadari.jsonlogicscala.tree.JsonLogicCore">com.celadari.jsonlogicscala.tree.JsonLogicCore</a> from tuple of serialized (logic, data).
+Logic is assumed to be an array of JsValue (JsArray) and each member of array is deserialized.</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>array of <a href="../tree/JsonLogicCore.html" class="extype" name="com.celadari.jsonlogicscala.tree.JsonLogicCore">com.celadari.jsonlogicscala.tree.JsonLogicCore</a>.</p></dd></dl><dl class="attributes block"> <dt>Attributes</dt><dd>protected[this] </dd></dl></div>
     </li><li name="com.celadari.jsonlogicscala.deserialize.Deserializer#deserializeComposeLogic" visbl="prt" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="deserializeComposeLogic(jsonLogic:play.api.libs.json.JsObject,jsonLogicData:play.api.libs.json.JsObject):com.celadari.jsonlogicscala.tree.ComposeLogic"></a><a id="deserializeComposeLogic(JsObject,JsObject):ComposeLogic"></a>
       <span class="permalink">
@@ -420,7 +424,7 @@
         <span class="name">deserializeComposeLogic</span><span class="params">(<span name="jsonLogic">jsonLogic: <span class="extype" name="play.api.libs.json.JsObject">JsObject</span></span>, <span name="jsonLogicData">jsonLogicData: <span class="extype" name="play.api.libs.json.JsObject">JsObject</span></span>)</span><span class="result">: <a href="../tree/ComposeLogic.html" class="extype" name="com.celadari.jsonlogicscala.tree.ComposeLogic">ComposeLogic</a></span>
       </span>
       
-      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[this] </dd></dl></div>
+      <p class="shortcomment cmt">Returns <a href="../tree/ComposeLogic.html" class="extype" name="com.celadari.jsonlogicscala.tree.ComposeLogic">com.celadari.jsonlogicscala.tree.ComposeLogic</a> by combining logic from jsonLogic and data from jsonLogicData.</p><div class="fullcomment"><div class="comment cmt"><p>Returns <a href="../tree/ComposeLogic.html" class="extype" name="com.celadari.jsonlogicscala.tree.ComposeLogic">com.celadari.jsonlogicscala.tree.ComposeLogic</a> by combining logic from jsonLogic and data from jsonLogicData.</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>ComposeLogic.</p></dd></dl><dl class="attributes block"> <dt>Attributes</dt><dd>protected[this] </dd></dl></div>
     </li><li name="com.celadari.jsonlogicscala.deserialize.Deserializer#deserializeValueLogic" visbl="prt" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="deserializeValueLogic(jsonLogic:play.api.libs.json.JsObject,jsonLogicData:play.api.libs.json.JsObject):com.celadari.jsonlogicscala.tree.ValueLogic[_]"></a><a id="deserializeValueLogic(JsObject,JsObject):ValueLogic[_]"></a>
       <span class="permalink">
@@ -436,7 +440,7 @@
         <span class="name">deserializeValueLogic</span><span class="params">(<span name="jsonLogic">jsonLogic: <span class="extype" name="play.api.libs.json.JsObject">JsObject</span></span>, <span name="jsonLogicData">jsonLogicData: <span class="extype" name="play.api.libs.json.JsObject">JsObject</span></span>)</span><span class="result">: <a href="../tree/ValueLogic.html" class="extype" name="com.celadari.jsonlogicscala.tree.ValueLogic">ValueLogic</a>[_]</span>
       </span>
       
-      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[this] </dd></dl></div>
+      <p class="shortcomment cmt">Returns <a href="../tree/ValueLogic.html" class="extype" name="com.celadari.jsonlogicscala.tree.ValueLogic">com.celadari.jsonlogicscala.tree.ValueLogic</a> by combining logic from jsonLogic and data from jsonLogicData.</p><div class="fullcomment"><div class="comment cmt"><p>Returns <a href="../tree/ValueLogic.html" class="extype" name="com.celadari.jsonlogicscala.tree.ValueLogic">com.celadari.jsonlogicscala.tree.ValueLogic</a> by combining logic from jsonLogic and data from jsonLogicData.</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>ValueLogic.</p></dd></dl><dl class="attributes block"> <dt>Attributes</dt><dd>protected[this] </dd></dl></div>
     </li><li name="scala.AnyRef#eq" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="eq(x$1:AnyRef):Boolean"></a><a id="eq(AnyRef):Boolean"></a>
       <span class="permalink">
@@ -505,7 +509,13 @@
         <span class="name">getUnmarshaller</span><span class="params">(<span name="typeValue">typeValue: <a href="../tree/types/TypeValue.html" class="extype" name="com.celadari.jsonlogicscala.tree.types.TypeValue">TypeValue</a></span>)</span><span class="result">: <a href="Unmarshaller.html" class="extype" name="com.celadari.jsonlogicscala.deserialize.Unmarshaller">Unmarshaller</a></span>
       </span>
       
-      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[this] </dd></dl></div>
+      <p class="shortcomment cmt">Returns <a href="Unmarshaller.html" class="extype" name="com.celadari.jsonlogicscala.deserialize.Unmarshaller">com.celadari.jsonlogicscala.deserialize.Unmarshaller</a> associated with input typeValue.</p><div class="fullcomment"><div class="comment cmt"><p>Returns <a href="Unmarshaller.html" class="extype" name="com.celadari.jsonlogicscala.deserialize.Unmarshaller">com.celadari.jsonlogicscala.deserialize.Unmarshaller</a> associated with input typeValue.
+If input typeValue is <a href="../tree/types/SimpleTypeValue.html" class="extype" name="com.celadari.jsonlogicscala.tree.types.SimpleTypeValue">com.celadari.jsonlogicscala.tree.types.SimpleTypeValue</a> then returns mapped value
+by unmarshallers attribute.
+If input typeValue is <a href="../tree/types/OptionTypeValue.html" class="extype" name="com.celadari.jsonlogicscala.tree.types.OptionTypeValue">com.celadari.jsonlogicscala.tree.types.OptionTypeValue</a>,
+<a href="../tree/types/ArrayTypeValue.html" class="extype" name="com.celadari.jsonlogicscala.tree.types.ArrayTypeValue">com.celadari.jsonlogicscala.tree.types.ArrayTypeValue</a>, <a href="../tree/types/MapTypeValue.html" class="extype" name="com.celadari.jsonlogicscala.tree.types.MapTypeValue">com.celadari.jsonlogicscala.tree.types.MapTypeValue</a>
+then a new <a href="Unmarshaller.html" class="extype" name="com.celadari.jsonlogicscala.deserialize.Unmarshaller">com.celadari.jsonlogicscala.deserialize.Unmarshaller</a> is recursively created by checking paramType of
+input typeValue.</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>Unmarshaller associated to typeValue.</p></dd></dl><dl class="attributes block"> <dt>Attributes</dt><dd>protected[this] </dd></dl></div>
     </li><li name="scala.AnyRef#hashCode" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="hashCode():Int"></a>
       <span class="permalink">
@@ -648,7 +658,8 @@
         <span class="name">unmarshallers</span><span class="result">: <span class="extype" name="scala.Predef.Map">Map</span>[<span class="extype" name="scala.Predef.String">String</span>, <a href="Unmarshaller.html" class="extype" name="com.celadari.jsonlogicscala.deserialize.Unmarshaller">Unmarshaller</a>]</span>
       </span>
       
-      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[this] </dd></dl></div>
+      <p class="shortcomment cmt">Maps type_codename to <a href="Unmarshaller.html" class="extype" name="com.celadari.jsonlogicscala.deserialize.Unmarshaller">com.celadari.jsonlogicscala.deserialize.Unmarshaller</a>.</p><div class="fullcomment"><div class="comment cmt"><p>Maps type_codename to <a href="Unmarshaller.html" class="extype" name="com.celadari.jsonlogicscala.deserialize.Unmarshaller">com.celadari.jsonlogicscala.deserialize.Unmarshaller</a>.</p></div><dl class="attributes block"> <dt>Attributes</dt><dd>protected[this] </dd><dt>Note</dt><dd><span class="cmt"><p>More specifically, keys should be type_codename of <a href="../tree/types/SimpleTypeValue.html" class="extype" name="com.celadari.jsonlogicscala.tree.types.SimpleTypeValue">com.celadari.jsonlogicscala.tree.types.SimpleTypeValue</a>
+as generic types (OptionTypeValue, MapTypeValue, ArrayTypeValue) are handled recursively by getMarshaller.</p></span></dd></dl></div>
     </li><li name="scala.AnyRef#wait" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="wait(x$1:Long,x$2:Int):Unit"></a><a id="wait(Long,Int):Unit"></a>
       <span class="permalink">

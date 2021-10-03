@@ -145,14 +145,17 @@
         <span class="kind">object</span>
       </span>
       <span class="symbol">
-        <a title="" href="CompositionOperator$.html"><span class="name">CompositionOperator</span></a>
+        <a title="Companion object containing class com.celadari.jsonlogicscala.evaluate.CompositionOperator.ComposeJsonLogicCore's definition." href="CompositionOperator$.html"><span class="name">CompositionOperator</span></a>
       </span>
       
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="index.html" class="extype" name="com.celadari.jsonlogicscala.evaluate">evaluate</a></dd></dl></div>
+      <p class="shortcomment cmt">Companion object containing class <a href="" class="extype" name="com.celadari.jsonlogicscala.evaluate.CompositionOperator.ComposeJsonLogicCore">com.celadari.jsonlogicscala.evaluate.CompositionOperator.ComposeJsonLogicCore</a>'s
+definition.</p><div class="fullcomment"><div class="comment cmt"><p>Companion object containing class <a href="" class="extype" name="com.celadari.jsonlogicscala.evaluate.CompositionOperator.ComposeJsonLogicCore">com.celadari.jsonlogicscala.evaluate.CompositionOperator.ComposeJsonLogicCore</a>'s
+definition.
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="index.html" class="extype" name="com.celadari.jsonlogicscala.evaluate">evaluate</a></dd></dl></div>
     </li><li class="current-entities indented5">
                         <span class="separator"></span>
-                        <a class="class" href="" title=""></a>
-                        <a href="" title="">ComposeJsonLogicCore</a>
+                        <a class="class" href="" title="Class for recursively traversing com.celadari.jsonlogicscala.tree.JsonLogicCore data structure and replace any com.celadari.jsonlogicscala.tree.ValueLogic object referring to a variable in a com.celadari.jsonlogicscala.evaluate.CompositionOperator operator by a com.celadari.jsonlogicscala.tree.VariableLogic object."></a>
+                        <a href="" title="Class for recursively traversing com.celadari.jsonlogicscala.tree.JsonLogicCore data structure and replace any com.celadari.jsonlogicscala.tree.ValueLogic object referring to a variable in a com.celadari.jsonlogicscala.evaluate.CompositionOperator operator by a com.celadari.jsonlogicscala.tree.VariableLogic object.">ComposeJsonLogicCore</a>
                       </li>
               </ul>
             </div>
@@ -181,7 +184,11 @@
       </h4>
 
       
-          <div id="comment" class="fullcommenttop"><div class="toggleContainer block">
+          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Class for recursively traversing <a href="../tree/JsonLogicCore.html" class="extype" name="com.celadari.jsonlogicscala.tree.JsonLogicCore">com.celadari.jsonlogicscala.tree.JsonLogicCore</a> data structure and replace
+any <a href="../tree/ValueLogic.html" class="extype" name="com.celadari.jsonlogicscala.tree.ValueLogic">com.celadari.jsonlogicscala.tree.ValueLogic</a> object referring to a variable in a
+<a href="CompositionOperator.html" class="extype" name="com.celadari.jsonlogicscala.evaluate.CompositionOperator">com.celadari.jsonlogicscala.evaluate.CompositionOperator</a> operator by a
+<a href="../tree/VariableLogic.html" class="extype" name="com.celadari.jsonlogicscala.tree.VariableLogic">com.celadari.jsonlogicscala.tree.VariableLogic</a> object.
+This is performed before any evaluation.</p></div><div class="toggleContainer block">
           <span class="toggle">
             Linear Supertypes
           </span>
@@ -246,7 +253,7 @@
         <span class="name">ComposeJsonLogicCore</span><span class="params">(<span name="jsonLogicVariable">jsonLogicVariable: <a href="../tree/JsonLogicCore.html" class="extype" name="com.celadari.jsonlogicscala.tree.JsonLogicCore">JsonLogicCore</a></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="conf">conf: <a href="EvaluatorLogicConf.html" class="extype" name="com.celadari.jsonlogicscala.evaluate.EvaluatorLogicConf">EvaluatorLogicConf</a></span>)</span>
       </span>
       
-      
+      <p class="shortcomment cmt"></p>
     </li></ol>
             </div>
 
@@ -395,7 +402,7 @@
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
-    </li><li name="com.celadari.jsonlogicscala.evaluate.CompositionOperator.ComposeJsonLogicCore#evaluate" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+    </li><li name="com.celadari.jsonlogicscala.evaluate.CompositionOperator.ComposeJsonLogicCore#evaluate" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="evaluate():com.celadari.jsonlogicscala.tree.JsonLogicCore"></a><a id="evaluate():JsonLogicCore"></a>
       <span class="permalink">
       <a href="../../../../com/celadari/jsonlogicscala/evaluate/CompositionOperator$$ComposeJsonLogicCore.html#evaluate():com.celadari.jsonlogicscala.tree.JsonLogicCore" title="Permalink">
@@ -410,7 +417,14 @@
         <span class="name">evaluate</span><span class="params">()</span><span class="result">: <a href="../tree/JsonLogicCore.html" class="extype" name="com.celadari.jsonlogicscala.tree.JsonLogicCore">JsonLogicCore</a></span>
       </span>
       
-      
+      <p class="shortcomment cmt">Returns recursively traversed <a href="../tree/JsonLogicCore.html" class="extype" name="com.celadari.jsonlogicscala.tree.JsonLogicCore">com.celadari.jsonlogicscala.tree.JsonLogicCore</a> and whose
+<a href="../tree/ValueLogic.html" class="extype" name="com.celadari.jsonlogicscala.tree.ValueLogic">com.celadari.jsonlogicscala.tree.ValueLogic</a> objects referring to variables in
+<a href="CompositionOperator.html" class="extype" name="com.celadari.jsonlogicscala.evaluate.CompositionOperator">com.celadari.jsonlogicscala.evaluate.CompositionOperator</a> operator have been replaced by
+<a href="../tree/VariableLogic.html" class="extype" name="com.celadari.jsonlogicscala.tree.VariableLogic">com.celadari.jsonlogicscala.tree.VariableLogic</a>.</p><div class="fullcomment"><div class="comment cmt"><p>Returns recursively traversed <a href="../tree/JsonLogicCore.html" class="extype" name="com.celadari.jsonlogicscala.tree.JsonLogicCore">com.celadari.jsonlogicscala.tree.JsonLogicCore</a> and whose
+<a href="../tree/ValueLogic.html" class="extype" name="com.celadari.jsonlogicscala.tree.ValueLogic">com.celadari.jsonlogicscala.tree.ValueLogic</a> objects referring to variables in
+<a href="CompositionOperator.html" class="extype" name="com.celadari.jsonlogicscala.evaluate.CompositionOperator">com.celadari.jsonlogicscala.evaluate.CompositionOperator</a> operator have been replaced by
+<a href="../tree/VariableLogic.html" class="extype" name="com.celadari.jsonlogicscala.tree.VariableLogic">com.celadari.jsonlogicscala.tree.VariableLogic</a>.
+If tree has not yet been traversed, it is traversed, otherwise returns cached value.</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>ready for evaluation <a href="../tree/JsonLogicCore.html" class="extype" name="com.celadari.jsonlogicscala.tree.JsonLogicCore">com.celadari.jsonlogicscala.tree.JsonLogicCore</a> object.</p></dd></dl></div>
     </li><li name="scala.AnyRef#getClass" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="getClass():Class[_]"></a>
       <span class="permalink">
@@ -590,7 +604,14 @@
         <span class="name">traverse</span><span class="params">(<span name="jsonLogicCore">jsonLogicCore: <a href="../tree/JsonLogicCore.html" class="extype" name="com.celadari.jsonlogicscala.tree.JsonLogicCore">JsonLogicCore</a></span>, <span name="parentComposeLogicOperatorOpt">parentComposeLogicOperatorOpt: <span class="extype" name="scala.Option">Option</span>[<a href="../tree/ComposeLogic.html" class="extype" name="com.celadari.jsonlogicscala.tree.ComposeLogic">ComposeLogic</a>]</span>)</span><span class="result">: <a href="../tree/JsonLogicCore.html" class="extype" name="com.celadari.jsonlogicscala.tree.JsonLogicCore">JsonLogicCore</a></span>
       </span>
       
-      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[this] </dd></dl></div>
+      <p class="shortcomment cmt">Traverses <a href="../tree/JsonLogicCore.html" class="extype" name="com.celadari.jsonlogicscala.tree.JsonLogicCore">com.celadari.jsonlogicscala.tree.JsonLogicCore</a> recursively data structure and replace
+any <a href="../tree/ValueLogic.html" class="extype" name="com.celadari.jsonlogicscala.tree.ValueLogic">com.celadari.jsonlogicscala.tree.ValueLogic</a> object referring to a variable in a
+<a href="CompositionOperator.html" class="extype" name="com.celadari.jsonlogicscala.evaluate.CompositionOperator">com.celadari.jsonlogicscala.evaluate.CompositionOperator</a> operator by a
+<a href="../tree/VariableLogic.html" class="extype" name="com.celadari.jsonlogicscala.tree.VariableLogic">com.celadari.jsonlogicscala.tree.VariableLogic</a> object.</p><div class="fullcomment"><div class="comment cmt"><p>Traverses <a href="../tree/JsonLogicCore.html" class="extype" name="com.celadari.jsonlogicscala.tree.JsonLogicCore">com.celadari.jsonlogicscala.tree.JsonLogicCore</a> recursively data structure and replace
+any <a href="../tree/ValueLogic.html" class="extype" name="com.celadari.jsonlogicscala.tree.ValueLogic">com.celadari.jsonlogicscala.tree.ValueLogic</a> object referring to a variable in a
+<a href="CompositionOperator.html" class="extype" name="com.celadari.jsonlogicscala.evaluate.CompositionOperator">com.celadari.jsonlogicscala.evaluate.CompositionOperator</a> operator by a
+<a href="../tree/VariableLogic.html" class="extype" name="com.celadari.jsonlogicscala.tree.VariableLogic">com.celadari.jsonlogicscala.tree.VariableLogic</a> object.</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p><a href="../tree/JsonLogicCore.html" class="extype" name="com.celadari.jsonlogicscala.tree.JsonLogicCore">com.celadari.jsonlogicscala.tree.JsonLogicCore</a> with
+        <a href="../tree/VariableLogic.html" class="extype" name="com.celadari.jsonlogicscala.tree.VariableLogic">com.celadari.jsonlogicscala.tree.VariableLogic</a> for nodes representing variable from composition operators.</p></dd></dl><dl class="attributes block"> <dt>Attributes</dt><dd>protected[this] </dd></dl></div>
     </li><li name="scala.AnyRef#wait" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="wait(x$1:Long,x$2:Int):Unit"></a><a id="wait(Long,Int):Unit"></a>
       <span class="permalink">

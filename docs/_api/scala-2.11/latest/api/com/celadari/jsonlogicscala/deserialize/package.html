@@ -66,7 +66,7 @@
 
         <div id="types" class="types members">
               <h3>Type Members</h3>
-              <ol><li name="com.celadari.jsonlogicscala.deserialize.Deserializer" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+              <ol><li name="com.celadari.jsonlogicscala.deserialize.Deserializer" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="DeserializerextendsAnyRef"></a>
       <a id="Deserializer:Deserializer"></a>
       <h4 class="signature">
@@ -82,8 +82,11 @@
         <img src="../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      
-    </li><li name="com.celadari.jsonlogicscala.deserialize.DeserializerConf" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <p class="shortcomment cmt">Responsible for deserializing json into scala <a href="../tree/JsonLogicCore.html" class="extype" name="com.celadari.jsonlogicscala.tree.JsonLogicCore">com.celadari.jsonlogicscala.tree.JsonLogicCore</a> data structure.</p><div class="fullcomment"><div class="comment cmt"><p>Responsible for deserializing json into scala <a href="../tree/JsonLogicCore.html" class="extype" name="com.celadari.jsonlogicscala.tree.JsonLogicCore">com.celadari.jsonlogicscala.tree.JsonLogicCore</a> data structure.
+May be extended to fit custom use cases. Providing the right configuration via
+<a href="DeserializerConf.html" class="extype" name="com.celadari.jsonlogicscala.deserialize.DeserializerConf">com.celadari.jsonlogicscala.deserialize.DeserializerConf</a> is enough to cover most cases.
+You may redefine methods to handle extreme uncommon cases.</p></div></div>
+    </li><li name="com.celadari.jsonlogicscala.deserialize.DeserializerConf" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="DeserializerConfextendsProductwithSerializable"></a>
       <a id="DeserializerConf:DeserializerConf"></a>
       <h4 class="signature">
@@ -99,8 +102,9 @@
         <img src="../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      
-    </li><li name="com.celadari.jsonlogicscala.deserialize.Unmarshaller" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <p class="shortcomment cmt">Represents a deserializer's configuration.</p><div class="fullcomment"><div class="comment cmt"><p>Represents a deserializer's configuration.
+It informs the deserializer how to map a type_codename to a <a href="Unmarshaller.html" class="extype" name="com.celadari.jsonlogicscala.deserialize.Unmarshaller">com.celadari.jsonlogicscala.deserialize.Unmarshaller</a>.</p></div></div>
+    </li><li name="com.celadari.jsonlogicscala.deserialize.Unmarshaller" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
       <a id="UnmarshallerextendsAnyRef"></a>
       <a id="Unmarshaller:Unmarshaller"></a>
       <h4 class="signature">
@@ -116,7 +120,9 @@
         <img src="../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      
+      <p class="shortcomment cmt">Defines interface of class/object defining unmarshal method.</p><div class="fullcomment"><div class="comment cmt"><p>Defines interface of class/object defining unmarshal method.
+This method deserializes a specific scala data structure to json format.
+</p></div></div>
     </li></ol>
             </div>
 
@@ -124,7 +130,7 @@
 
         <div id="values" class="values members">
               <h3>Value Members</h3>
-              <ol><li name="com.celadari.jsonlogicscala.deserialize.Deserializer" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+              <ol><li name="com.celadari.jsonlogicscala.deserialize.Deserializer" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="Deserializer"></a>
       <a id="Deserializer:Deserializer"></a>
       <h4 class="signature">
@@ -140,7 +146,10 @@
         <img src="../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      
+      <p class="shortcomment cmt">Companion object holding implicit deserializer.</p><div class="fullcomment"><div class="comment cmt"><p>Companion object holding implicit deserializer.
+Useful to invoke methods using implicit <a href="Deserializer.html" class="extype" name="com.celadari.jsonlogicscala.deserialize.Deserializer">com.celadari.jsonlogicscala.deserialize.Deserializer</a> that do not require
+custom Deserializer.
+</p></div></div>
     </li><li name="com.celadari.jsonlogicscala.deserialize.DeserializerConf" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="DeserializerConf"></a>
       <a id="DeserializerConf:DeserializerConf"></a>
@@ -157,7 +166,8 @@
         <img src="../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      
+      <p class="shortcomment cmt">Companion object to hold implicit: <a href="DeserializerConf.html" class="extype" name="com.celadari.jsonlogicscala.deserialize.DeserializerConf">com.celadari.jsonlogicscala.deserialize.DeserializerConf</a>, mapping of default
+unmarshallers (type_codename -&gt; Unmarshaller), method to create a custom configuration.</p>
     </li><li name="com.celadari.jsonlogicscala.deserialize.defaults" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="defaults"></a>
       <a id="defaults:defaults"></a>

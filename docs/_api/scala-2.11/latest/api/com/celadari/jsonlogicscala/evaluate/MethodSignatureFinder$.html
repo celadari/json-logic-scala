@@ -51,7 +51,9 @@
       </span>
       </h4>
       
-          <div id="comment" class="fullcommenttop"><div class="toggleContainer block">
+          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Companion object that defines utility function to find minimum (class inheritance as partial order) classes
+among set of classes.
+</p></div><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
           <div class="superTypes hiddenContent"><span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
         </div></div>
@@ -280,23 +282,43 @@
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
-    </li><li name="com.celadari.jsonlogicscala.evaluate.MethodSignatureFinder#maxMins" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="maxMins(classObj:Class[_],classesToScan:Set[Class[_]]):Set[Class[_]]"></a>
-      <a id="maxMins(Class[_],Set[Class[_]]):Set[Class[_]]"></a>
+    </li><li name="com.celadari.jsonlogicscala.evaluate.MethodSignatureFinder#mins" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="mins(classObjs:Set[Class[_]]):Set[Class[_]]"></a>
+      <a id="mins(Set[Class[_]]):Set[Class[_]]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">maxMins</span><span class="params">(<span name="classObj">classObj: <span class="extype" name="scala.Predef.Class">Class</span>[_]</span>, <span name="classesToScan">classesToScan: <span class="extype" name="scala.Predef.Set">Set</span>[<span class="extype" name="scala.Predef.Class">Class</span>[_]]</span>)</span><span class="result">: <span class="extype" name="scala.Predef.Set">Set</span>[<span class="extype" name="scala.Predef.Class">Class</span>[_]]</span>
+        <span class="name">mins</span><span class="params">(<span name="classObjs">classObjs: <span class="extype" name="scala.Predef.Set">Set</span>[<span class="extype" name="scala.Predef.Class">Class</span>[_]]</span>)</span><span class="result">: <span class="extype" name="scala.Predef.Set">Set</span>[<span class="extype" name="scala.Predef.Class">Class</span>[_]]</span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../index.html#com.celadari.jsonlogicscala.evaluate.MethodSignatureFinder$@maxMins(classObj:Class[_],classesToScan:Set[Class[_]]):Set[Class[_]]" title="Permalink" target="_top">
+      <a href="../../../../index.html#com.celadari.jsonlogicscala.evaluate.MethodSignatureFinder$@mins(classObjs:Set[Class[_]]):Set[Class[_]]" title="Permalink" target="_top">
         <img src="../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      <p class="shortcomment cmt">Returns minimum super-classes of classOb</p><div class="fullcomment"><div class="comment cmt"><p>Returns minimum super-classes of classOb</p></div><dl class="attributes block"> <div class="block">Example:
+      <p class="shortcomment cmt">Returns minimum classes among set of classes.</p><div class="fullcomment"><div class="comment cmt"><p>Returns minimum classes among set of classes.</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>set of minimums.</p></dd></dl><dl class="attributes block"> <div class="block">Example:
+               <ol><li class="cmt"><p>class A, class B extends A, class C, class D extends B, trait E, class F extends B with E, class G extends B with E
+         then result is set {class C, class D, class F, class G}</p></li></ol>
+            </div></dl></div>
+    </li><li name="com.celadari.jsonlogicscala.evaluate.MethodSignatureFinder#minsSup" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="minsSup(classObj:Class[_],classesToScan:Set[Class[_]]):Set[Class[_]]"></a>
+      <a id="minsSup(Class[_],Set[Class[_]]):Set[Class[_]]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">minsSup</span><span class="params">(<span name="classObj">classObj: <span class="extype" name="scala.Predef.Class">Class</span>[_]</span>, <span name="classesToScan">classesToScan: <span class="extype" name="scala.Predef.Set">Set</span>[<span class="extype" name="scala.Predef.Class">Class</span>[_]]</span>)</span><span class="result">: <span class="extype" name="scala.Predef.Set">Set</span>[<span class="extype" name="scala.Predef.Class">Class</span>[_]]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../index.html#com.celadari.jsonlogicscala.evaluate.MethodSignatureFinder$@minsSup(classObj:Class[_],classesToScan:Set[Class[_]]):Set[Class[_]]" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Returns minimum super-classes of classOb among set of classes.</p><div class="fullcomment"><div class="comment cmt"><p>Returns minimum super-classes of classOb among set of classes.</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>set of minimum super-classes of classOb.</p></dd></dl><dl class="attributes block"> <div class="block">Example:
                <ol><li class="cmt"><p>A   B     C
         / \ / \  /
        D   E   F
@@ -304,40 +326,25 @@
             G
     maxMins of G is Set(E,F)</p></li></ol>
             </div></dl></div>
-    </li><li name="com.celadari.jsonlogicscala.evaluate.MethodSignatureFinder#maxMinsAndCastedValues" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="maxMinsAndCastedValues(values:Array[Any],classesToScan:Set[Class[_]]):(Set[Class[_]],Array[Any])"></a>
-      <a id="maxMinsAndCastedValues(Array[Any],Set[Class[_]]):(Set[Class[_]],Array[Any])"></a>
+    </li><li name="com.celadari.jsonlogicscala.evaluate.MethodSignatureFinder#minsSupAndCastedValues" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="minsSupAndCastedValues(values:Array[Any],classesToScan:Set[Class[_]]):(Set[Class[_]],Array[Any])"></a>
+      <a id="minsSupAndCastedValues(Array[Any],Set[Class[_]]):(Set[Class[_]],Array[Any])"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">maxMinsAndCastedValues</span><span class="params">(<span name="values">values: <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Any">Any</span>]</span>, <span name="classesToScan">classesToScan: <span class="extype" name="scala.Predef.Set">Set</span>[<span class="extype" name="scala.Predef.Class">Class</span>[_]]</span>)</span><span class="result">: (<span class="extype" name="scala.Predef.Set">Set</span>[<span class="extype" name="scala.Predef.Class">Class</span>[_]], <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Any">Any</span>])</span>
+        <span class="name">minsSupAndCastedValues</span><span class="params">(<span name="values">values: <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Any">Any</span>]</span>, <span name="classesToScan">classesToScan: <span class="extype" name="scala.Predef.Set">Set</span>[<span class="extype" name="scala.Predef.Class">Class</span>[_]]</span>)</span><span class="result">: (<span class="extype" name="scala.Predef.Set">Set</span>[<span class="extype" name="scala.Predef.Class">Class</span>[_]], <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Any">Any</span>])</span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../index.html#com.celadari.jsonlogicscala.evaluate.MethodSignatureFinder$@maxMinsAndCastedValues(values:Array[Any],classesToScan:Set[Class[_]]):(Set[Class[_]],Array[Any])" title="Permalink" target="_top">
+      <a href="../../../../index.html#com.celadari.jsonlogicscala.evaluate.MethodSignatureFinder$@minsSupAndCastedValues(values:Array[Any],classesToScan:Set[Class[_]]):(Set[Class[_]],Array[Any])" title="Permalink" target="_top">
         <img src="../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      
-    </li><li name="com.celadari.jsonlogicscala.evaluate.MethodSignatureFinder#maxs" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="maxs(classObjs:Set[Class[_]]):Set[Class[_]]"></a>
-      <a id="maxs(Set[Class[_]]):Set[Class[_]]"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">maxs</span><span class="params">(<span name="classObjs">classObjs: <span class="extype" name="scala.Predef.Set">Set</span>[<span class="extype" name="scala.Predef.Class">Class</span>[_]]</span>)</span><span class="result">: <span class="extype" name="scala.Predef.Set">Set</span>[<span class="extype" name="scala.Predef.Class">Class</span>[_]]</span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../../../../index.html#com.celadari.jsonlogicscala.evaluate.MethodSignatureFinder$@maxs(classObjs:Set[Class[_]]):Set[Class[_]]" title="Permalink" target="_top">
-        <img src="../../../../lib/permalink.png" alt="Permalink" />
-      </a>
-    </span>
-      
+      <p class="shortcomment cmt">Returns tuple of (set of classes, array).</p><div class="fullcomment"><div class="comment cmt"><p>Returns tuple of (set of classes, array).
+Set of classes corresponds to set of minimum classes of common ancestor class of all elements in values.
+Returned array is values whose elements are casted as common ancestor.</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>tuple of (minimum_classes, casted_values).</p></dd></dl></div>
     </li><li name="scala.AnyRef#ne" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="ne(x$1:AnyRef):Boolean"></a>
       <a id="ne(AnyRef):Boolean"></a>

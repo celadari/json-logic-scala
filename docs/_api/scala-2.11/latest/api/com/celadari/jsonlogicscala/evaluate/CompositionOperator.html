@@ -51,7 +51,12 @@
       </span>
       </h4>
       
-          <div id="comment" class="fullcommenttop"><div class="toggleContainer block">
+          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Defines interface of class/object defining a composition operator.
+Unlike other operators, these operators are more complex and new to inform sub-nodes in syntax tree of values before
+evaluating its current node. This is performed by updating the map &quot;logicOperatorToValue&quot; which is passed on to sub-nodes.
+Invoked method has to be &quot;composeOperator&quot; and overloading this method doesn't work.</p></div><dl class="attributes block"> <div class="block">Example:
+               <ol><li class="cmt"><p>map, filter, all, none, some</p></li></ol>
+            </div></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
           <div class="superTypes hiddenContent"><a href="Operator.html" class="extype" name="com.celadari.jsonlogicscala.evaluate.Operator">Operator</a>, <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
         </div><div class="toggleContainer block">
@@ -97,7 +102,7 @@
 
         <div id="values" class="values members">
               <h3>Abstract Value Members</h3>
-              <ol><li name="com.celadari.jsonlogicscala.evaluate.CompositionOperator#checkInputs" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+              <ol><li name="com.celadari.jsonlogicscala.evaluate.CompositionOperator#checkInputs" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
       <a id="checkInputs(conditions:Array[com.celadari.jsonlogicscala.tree.JsonLogicCore]):Unit"></a>
       <a id="checkInputs(Array[JsonLogicCore]):Unit"></a>
       <h4 class="signature">
@@ -113,8 +118,9 @@
         <img src="../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      
-    </li><li name="com.celadari.jsonlogicscala.evaluate.CompositionOperator#composeOperator" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <p class="shortcomment cmt">Checks if conditions satisfies this operator's constraints.</p><div class="fullcomment"><div class="comment cmt"><p>Checks if conditions satisfies this operator's constraints.
+Should throw an exception if not.</p></div></div>
+    </li><li name="com.celadari.jsonlogicscala.evaluate.CompositionOperator#composeOperator" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
       <a id="composeOperator(values:Array[Any],logicArr:Array[com.celadari.jsonlogicscala.tree.JsonLogicCore],conditionCaller:com.celadari.jsonlogicscala.tree.ComposeLogic,reduceLogic:com.celadari.jsonlogicscala.evaluate.EvaluatorLogic,logicOperatorToValue:Map[com.celadari.jsonlogicscala.tree.ComposeLogic,Map[String,Any]]):Any"></a>
       <a id="composeOperator(Array[Any],Array[JsonLogicCore],ComposeLogic,EvaluatorLogic,Map[ComposeLogic,Map[String,Any]]):Any"></a>
       <h4 class="signature">
@@ -130,7 +136,7 @@
         <img src="../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      
+      <p class="shortcomment cmt">Returns value by this composition operator.</p><div class="fullcomment"><div class="comment cmt"><p>Returns value by this composition operator.</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>operated value by operator.</p></dd></dl></div>
     </li></ol>
             </div>
 
@@ -263,23 +269,27 @@
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
-    </li><li name="com.celadari.jsonlogicscala.evaluate.CompositionOperator#evalOperator" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="evalOperator(conditions:Array[com.celadari.jsonlogicscala.tree.JsonLogicCore],conditionCaller:com.celadari.jsonlogicscala.tree.ComposeLogic,reduceLogic:com.celadari.jsonlogicscala.evaluate.EvaluatorLogic,logicOperatorToValue:Map[com.celadari.jsonlogicscala.tree.ComposeLogic,Map[String,Any]]):Any"></a>
-      <a id="evalOperator(Array[JsonLogicCore],ComposeLogic,EvaluatorLogic,Map[ComposeLogic,Map[String,Any]]):Any"></a>
+    </li><li name="com.celadari.jsonlogicscala.evaluate.CompositionOperator#evalOperator" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="evalOperator(conditionCaller:com.celadari.jsonlogicscala.tree.ComposeLogic,reduceLogic:com.celadari.jsonlogicscala.evaluate.EvaluatorLogic,logicOperatorToValue:Map[com.celadari.jsonlogicscala.tree.ComposeLogic,Map[String,Any]]):Any"></a>
+      <a id="evalOperator(ComposeLogic,EvaluatorLogic,Map[ComposeLogic,Map[String,Any]]):Any"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">evalOperator</span><span class="params">(<span name="conditions">conditions: <span class="extype" name="scala.Array">Array</span>[<a href="../tree/JsonLogicCore.html" class="extype" name="com.celadari.jsonlogicscala.tree.JsonLogicCore">JsonLogicCore</a>]</span>, <span name="conditionCaller">conditionCaller: <a href="../tree/ComposeLogic.html" class="extype" name="com.celadari.jsonlogicscala.tree.ComposeLogic">ComposeLogic</a></span>, <span name="reduceLogic">reduceLogic: <a href="EvaluatorLogic.html" class="extype" name="com.celadari.jsonlogicscala.evaluate.EvaluatorLogic">EvaluatorLogic</a></span>, <span name="logicOperatorToValue">logicOperatorToValue: <span class="extype" name="scala.Predef.Map">Map</span>[<a href="../tree/ComposeLogic.html" class="extype" name="com.celadari.jsonlogicscala.tree.ComposeLogic">ComposeLogic</a>, <span class="extype" name="scala.Predef.Map">Map</span>[<span class="extype" name="scala.Predef.String">String</span>, <span class="extype" name="scala.Any">Any</span>]]</span>)</span><span class="result">: <span class="extype" name="scala.Any">Any</span></span>
+        <span class="name">evalOperator</span><span class="params">(<span name="conditionCaller">conditionCaller: <a href="../tree/ComposeLogic.html" class="extype" name="com.celadari.jsonlogicscala.tree.ComposeLogic">ComposeLogic</a></span>, <span name="reduceLogic">reduceLogic: <a href="EvaluatorLogic.html" class="extype" name="com.celadari.jsonlogicscala.evaluate.EvaluatorLogic">EvaluatorLogic</a></span>, <span name="logicOperatorToValue">logicOperatorToValue: <span class="extype" name="scala.Predef.Map">Map</span>[<a href="../tree/ComposeLogic.html" class="extype" name="com.celadari.jsonlogicscala.tree.ComposeLogic">ComposeLogic</a>, <span class="extype" name="scala.Predef.Map">Map</span>[<span class="extype" name="scala.Predef.String">String</span>, <span class="extype" name="scala.Any">Any</span>]]</span>)</span><span class="result">: <span class="extype" name="scala.Any">Any</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../index.html#com.celadari.jsonlogicscala.evaluate.CompositionOperator@evalOperator(conditions:Array[com.celadari.jsonlogicscala.tree.JsonLogicCore],conditionCaller:com.celadari.jsonlogicscala.tree.ComposeLogic,reduceLogic:com.celadari.jsonlogicscala.evaluate.EvaluatorLogic,logicOperatorToValue:Map[com.celadari.jsonlogicscala.tree.ComposeLogic,Map[String,Any]]):Any" title="Permalink" target="_top">
+      <a href="../../../../index.html#com.celadari.jsonlogicscala.evaluate.CompositionOperator@evalOperator(conditionCaller:com.celadari.jsonlogicscala.tree.ComposeLogic,reduceLogic:com.celadari.jsonlogicscala.evaluate.EvaluatorLogic,logicOperatorToValue:Map[com.celadari.jsonlogicscala.tree.ComposeLogic,Map[String,Any]]):Any" title="Permalink" target="_top">
         <img src="../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      
+      <p class="shortcomment cmt">Returns evaluated result of corresponding condition (internal node in syntax tree).</p><div class="fullcomment"><div class="comment cmt"><p>Returns evaluated result of corresponding condition (internal node in syntax tree).
+This method carries a map of map of (composition_operator -&gt; map(variable_name -&gt; variable_value)) to fetch
+the value of variable (depends on the composition_operator and the values this composition_operator is applied to).
+This map of map is necessary as a composition_operator can be composed with another composition_operator which requires
+to be able to distinguish between values which composition_operator they belong to.</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>evaluated result.</p></dd></dl></div>
     </li><li name="scala.AnyRef#getClass" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="getClass():Class[_]"></a>
       <a id="getClass():Class[_]"></a>

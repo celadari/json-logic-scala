@@ -182,17 +182,17 @@
       
       
     </li><li class="current-entities indented4">
-                        <a class="object" href="Deserializer$.html" title=""></a>
-                        <a class="class" href="Deserializer.html" title=""></a>
-                        <a href="Deserializer.html" title="">Deserializer</a>
+                        <a class="object" href="Deserializer$.html" title="Companion object holding implicit deserializer."></a>
+                        <a class="class" href="Deserializer.html" title="Responsible for deserializing json into scala com.celadari.jsonlogicscala.tree.JsonLogicCore data structure."></a>
+                        <a href="Deserializer.html" title="Responsible for deserializing json into scala com.celadari.jsonlogicscala.tree.JsonLogicCore data structure.">Deserializer</a>
                       </li><li class="current-entities indented4">
-                        <a class="object" href="DeserializerConf$.html" title=""></a>
-                        <a class="class" href="DeserializerConf.html" title=""></a>
-                        <a href="DeserializerConf.html" title="">DeserializerConf</a>
+                        <a class="object" href="DeserializerConf$.html" title="Companion object to hold implicit: com.celadari.jsonlogicscala.deserialize.DeserializerConf, mapping of default unmarshallers (type_codename -&gt; Unmarshaller), method to create a custom configuration."></a>
+                        <a class="class" href="DeserializerConf.html" title="Represents a deserializer's configuration."></a>
+                        <a href="DeserializerConf.html" title="Represents a deserializer's configuration.">DeserializerConf</a>
                       </li><li class="current-entities indented4">
                         <span class="separator"></span>
-                        <a class="trait" href="Unmarshaller.html" title=""></a>
-                        <a href="Unmarshaller.html" title="">Unmarshaller</a>
+                        <a class="trait" href="Unmarshaller.html" title="Defines interface of class/object defining unmarshal method."></a>
+                        <a href="Unmarshaller.html" title="Defines interface of class/object defining unmarshal method.">Unmarshaller</a>
                       </li><li name="com.celadari.jsonlogicscala.evaluate" visbl="pub" class="indented4 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="evaluate"></a><a id="evaluate:evaluate"></a>
       <span class="permalink">
@@ -320,7 +320,7 @@
 
         <div id="types" class="types members">
               <h3>Type Members</h3>
-              <ol><li name="com.celadari.jsonlogicscala.deserialize.Deserializer" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+              <ol><li name="com.celadari.jsonlogicscala.deserialize.Deserializer" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="DeserializerextendsAnyRef"></a><a id="Deserializer:Deserializer"></a>
       <span class="permalink">
       <a href="../../../../com/celadari/jsonlogicscala/deserialize/Deserializer.html" title="Permalink">
@@ -332,11 +332,14 @@
         <span class="kind">class</span>
       </span>
       <span class="symbol">
-        <a title="" href="Deserializer.html"><span class="name">Deserializer</span></a><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
+        <a title="Responsible for deserializing json into scala com.celadari.jsonlogicscala.tree.JsonLogicCore data structure." href="Deserializer.html"><span class="name">Deserializer</span></a><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
       </span>
       
-      
-    </li><li name="com.celadari.jsonlogicscala.deserialize.DeserializerConf" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <p class="shortcomment cmt">Responsible for deserializing json into scala <a href="../tree/JsonLogicCore.html" class="extype" name="com.celadari.jsonlogicscala.tree.JsonLogicCore">com.celadari.jsonlogicscala.tree.JsonLogicCore</a> data structure.</p><div class="fullcomment"><div class="comment cmt"><p>Responsible for deserializing json into scala <a href="../tree/JsonLogicCore.html" class="extype" name="com.celadari.jsonlogicscala.tree.JsonLogicCore">com.celadari.jsonlogicscala.tree.JsonLogicCore</a> data structure.
+May be extended to fit custom use cases. Providing the right configuration via
+<a href="DeserializerConf.html" class="extype" name="com.celadari.jsonlogicscala.deserialize.DeserializerConf">com.celadari.jsonlogicscala.deserialize.DeserializerConf</a> is enough to cover most cases.
+You may redefine methods to handle extreme uncommon cases.</p></div></div>
+    </li><li name="com.celadari.jsonlogicscala.deserialize.DeserializerConf" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="DeserializerConfextendsProductwithSerializable"></a><a id="DeserializerConf:DeserializerConf"></a>
       <span class="permalink">
       <a href="../../../../com/celadari/jsonlogicscala/deserialize/DeserializerConf.html" title="Permalink">
@@ -348,11 +351,12 @@
         <span class="kind">case class</span>
       </span>
       <span class="symbol">
-        <a title="" href="DeserializerConf.html"><span class="name">DeserializerConf</span></a><span class="params">(<span name="unmarshallerMetaInfAdd">unmarshallerMetaInfAdd: <span class="extype" name="scala.Predef.Map">Map</span>[<span class="extype" name="scala.Predef.String">String</span>, <a href="Unmarshaller.html" class="extype" name="com.celadari.jsonlogicscala.deserialize.Unmarshaller">Unmarshaller</a>]</span>, <span name="unmarshallersManualAdd">unmarshallersManualAdd: <span class="extype" name="scala.Predef.Map">Map</span>[<span class="extype" name="scala.Predef.String">String</span>, <a href="Unmarshaller.html" class="extype" name="com.celadari.jsonlogicscala.deserialize.Unmarshaller">Unmarshaller</a>]</span>, <span name="isPriorityToManualAdd">isPriorityToManualAdd: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">true</span></span>)</span><span class="result"> extends <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+        <a title="Represents a deserializer's configuration." href="DeserializerConf.html"><span class="name">DeserializerConf</span></a><span class="params">(<span name="unmarshallerMetaInfAdd">unmarshallerMetaInfAdd: <span class="extype" name="scala.Predef.Map">Map</span>[<span class="extype" name="scala.Predef.String">String</span>, <a href="Unmarshaller.html" class="extype" name="com.celadari.jsonlogicscala.deserialize.Unmarshaller">Unmarshaller</a>]</span>, <span name="unmarshallersManualAdd">unmarshallersManualAdd: <span class="extype" name="scala.Predef.Map">Map</span>[<span class="extype" name="scala.Predef.String">String</span>, <a href="Unmarshaller.html" class="extype" name="com.celadari.jsonlogicscala.deserialize.Unmarshaller">Unmarshaller</a>]</span>, <span name="isPriorityToManualAdd">isPriorityToManualAdd: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">true</span></span>)</span><span class="result"> extends <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
       </span>
       
-      
-    </li><li name="com.celadari.jsonlogicscala.deserialize.Unmarshaller" visbl="pub" class="indented0 " data-isabs="true" fullComment="no" group="Ungrouped">
+      <p class="shortcomment cmt">Represents a deserializer's configuration.</p><div class="fullcomment"><div class="comment cmt"><p>Represents a deserializer's configuration.
+It informs the deserializer how to map a type_codename to a <a href="Unmarshaller.html" class="extype" name="com.celadari.jsonlogicscala.deserialize.Unmarshaller">com.celadari.jsonlogicscala.deserialize.Unmarshaller</a>.</p></div></div>
+    </li><li name="com.celadari.jsonlogicscala.deserialize.Unmarshaller" visbl="pub" class="indented0 " data-isabs="true" fullComment="yes" group="Ungrouped">
       <a id="UnmarshallerextendsAnyRef"></a><a id="Unmarshaller:Unmarshaller"></a>
       <span class="permalink">
       <a href="../../../../com/celadari/jsonlogicscala/deserialize/Unmarshaller.html" title="Permalink">
@@ -364,10 +368,12 @@
         <span class="kind">trait</span>
       </span>
       <span class="symbol">
-        <a title="" href="Unmarshaller.html"><span class="name">Unmarshaller</span></a><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
+        <a title="Defines interface of class/object defining unmarshal method." href="Unmarshaller.html"><span class="name">Unmarshaller</span></a><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
       </span>
       
-      
+      <p class="shortcomment cmt">Defines interface of class/object defining unmarshal method.</p><div class="fullcomment"><div class="comment cmt"><p>Defines interface of class/object defining unmarshal method.
+This method deserializes a specific scala data structure to json format.
+</p></div></div>
     </li></ol>
             </div>
 
@@ -376,7 +382,7 @@
         <div class="values members">
               <h3>Value Members</h3>
               <ol>
-                <li name="com.celadari.jsonlogicscala.deserialize.Deserializer" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+                <li name="com.celadari.jsonlogicscala.deserialize.Deserializer" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="Deserializer"></a><a id="Deserializer:Deserializer"></a>
       <span class="permalink">
       <a href="../../../../com/celadari/jsonlogicscala/deserialize/Deserializer$.html" title="Permalink">
@@ -388,10 +394,13 @@
         <span class="kind">object</span>
       </span>
       <span class="symbol">
-        <a title="" href="Deserializer$.html"><span class="name">Deserializer</span></a>
+        <a title="Companion object holding implicit deserializer." href="Deserializer$.html"><span class="name">Deserializer</span></a>
       </span>
       
-      
+      <p class="shortcomment cmt">Companion object holding implicit deserializer.</p><div class="fullcomment"><div class="comment cmt"><p>Companion object holding implicit deserializer.
+Useful to invoke methods using implicit <a href="Deserializer.html" class="extype" name="com.celadari.jsonlogicscala.deserialize.Deserializer">com.celadari.jsonlogicscala.deserialize.Deserializer</a> that do not require
+custom Deserializer.
+</p></div></div>
     </li><li name="com.celadari.jsonlogicscala.deserialize.DeserializerConf" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="DeserializerConf"></a><a id="DeserializerConf:DeserializerConf"></a>
       <span class="permalink">
@@ -404,10 +413,11 @@
         <span class="kind">object</span>
       </span>
       <span class="symbol">
-        <a title="" href="DeserializerConf$.html"><span class="name">DeserializerConf</span></a><span class="result"> extends <span class="extype" name="scala.Serializable">Serializable</span></span>
+        <a title="Companion object to hold implicit: com.celadari.jsonlogicscala.deserialize.DeserializerConf, mapping of default unmarshallers (type_codename -&gt; Unmarshaller), method to create a custom configuration." href="DeserializerConf$.html"><span class="name">DeserializerConf</span></a><span class="result"> extends <span class="extype" name="scala.Serializable">Serializable</span></span>
       </span>
       
-      
+      <p class="shortcomment cmt">Companion object to hold implicit: <a href="DeserializerConf.html" class="extype" name="com.celadari.jsonlogicscala.deserialize.DeserializerConf">com.celadari.jsonlogicscala.deserialize.DeserializerConf</a>, mapping of default
+unmarshallers (type_codename -&gt; Unmarshaller), method to create a custom configuration.</p>
     </li>
               </ol>
             </div>

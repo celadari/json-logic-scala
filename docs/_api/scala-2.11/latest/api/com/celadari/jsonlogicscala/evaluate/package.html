@@ -66,7 +66,7 @@
 
         <div id="types" class="types members">
               <h3>Type Members</h3>
-              <ol><li name="com.celadari.jsonlogicscala.evaluate.CompositionOperator" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+              <ol><li name="com.celadari.jsonlogicscala.evaluate.CompositionOperator" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
       <a id="CompositionOperatorextendsOperator"></a>
       <a id="CompositionOperator:CompositionOperator"></a>
       <h4 class="signature">
@@ -82,8 +82,13 @@
         <img src="../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      
-    </li><li name="com.celadari.jsonlogicscala.evaluate.EvaluatorLogic" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <p class="shortcomment cmt">Defines interface of class/object defining a composition operator.</p><div class="fullcomment"><div class="comment cmt"><p>Defines interface of class/object defining a composition operator.
+Unlike other operators, these operators are more complex and new to inform sub-nodes in syntax tree of values before
+evaluating its current node. This is performed by updating the map &quot;logicOperatorToValue&quot; which is passed on to sub-nodes.
+Invoked method has to be &quot;composeOperator&quot; and overloading this method doesn't work.</p></div><dl class="attributes block"> <div class="block">Example:
+               <ol><li class="cmt"><p>map, filter, all, none, some</p></li></ol>
+            </div></dl></div>
+    </li><li name="com.celadari.jsonlogicscala.evaluate.EvaluatorLogic" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="EvaluatorLogicextendsAnyRef"></a>
       <a id="EvaluatorLogic:EvaluatorLogic"></a>
       <h4 class="signature">
@@ -99,8 +104,11 @@
         <img src="../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      
-    </li><li name="com.celadari.jsonlogicscala.evaluate.EvaluatorLogicConf" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <p class="shortcomment cmt">Responsible for evaluating scala data structure <a href="../tree/JsonLogicCore.html" class="extype" name="com.celadari.jsonlogicscala.tree.JsonLogicCore">com.celadari.jsonlogicscala.tree.JsonLogicCore</a>.</p><div class="fullcomment"><div class="comment cmt"><p>Responsible for evaluating scala data structure <a href="../tree/JsonLogicCore.html" class="extype" name="com.celadari.jsonlogicscala.tree.JsonLogicCore">com.celadari.jsonlogicscala.tree.JsonLogicCore</a>.
+May be extended to fit custom use cases. Providing the right configuration via
+<a href="EvaluatorLogicConf.html" class="extype" name="com.celadari.jsonlogicscala.evaluate.EvaluatorLogicConf">com.celadari.jsonlogicscala.evaluate.EvaluatorLogicConf</a> is enough to cover most cases.
+You may redefine methods to handle extreme uncommon cases.</p></div></div>
+    </li><li name="com.celadari.jsonlogicscala.evaluate.EvaluatorLogicConf" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="EvaluatorLogicConfextendsProductwithSerializable"></a>
       <a id="EvaluatorLogicConf:EvaluatorLogicConf"></a>
       <h4 class="signature">
@@ -116,8 +124,9 @@
         <img src="../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      
-    </li><li name="com.celadari.jsonlogicscala.evaluate.EvaluatorValueLogic" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <p class="shortcomment cmt">Represents an evaluator's configuration.</p><div class="fullcomment"><div class="comment cmt"><p>Represents an evaluator's configuration.
+It informs the evaluator how to map an operator_codename to an actual method.</p></div></div>
+    </li><li name="com.celadari.jsonlogicscala.evaluate.EvaluatorValueLogic" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
       <a id="EvaluatorValueLogicextendsAnyRef"></a>
       <a id="EvaluatorValueLogic:EvaluatorValueLogic"></a>
       <h4 class="signature">
@@ -133,7 +142,18 @@
         <img src="../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      
+      <p class="shortcomment cmt">Defines interface of class/object defining an evaluator_value_logic.</p><div class="fullcomment"><div class="comment cmt"><p>Defines interface of class/object defining an evaluator_value_logic.
+A class|object implementing this interface is called before evaluation and transforms leaf values in syntax tree.</p><p>               AND
+            /       \
+          &lt;         &lt;
+        /   \      / \
+       A     5    B  -4</p><p>if you define an evaluator_value_logic defined for int values and returns absolute value then evaluation will be on
+the following tree</p><p>               AND
+            /       \
+          &lt;         &lt;
+        /   \      / \
+       A     5    B   4
+</p></div></div>
     </li><li name="com.celadari.jsonlogicscala.evaluate.MethodConf" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="MethodConfextendsProductwithSerializable"></a>
       <a id="MethodConf:MethodConf"></a>
@@ -150,8 +170,8 @@
         <img src="../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      
-    </li><li name="com.celadari.jsonlogicscala.evaluate.MethodSignatureFinder" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <p class="shortcomment cmt">Represents an operator's information for evaluation.</p>
+    </li><li name="com.celadari.jsonlogicscala.evaluate.MethodSignatureFinder" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="MethodSignatureFinderextendsAnyRef"></a>
       <a id="MethodSignatureFinder:MethodSignatureFinder"></a>
       <h4 class="signature">
@@ -167,8 +187,27 @@
         <img src="../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      
-    </li><li name="com.celadari.jsonlogicscala.evaluate.Operator" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <p class="shortcomment cmt">Responsible for finding paths of a compatible classes in case there exists multiple overloaded method versions
+of operator's method.</p><div class="fullcomment"><div class="comment cmt"><p>Responsible for finding paths of a compatible classes in case there exists multiple overloaded method versions
+of operator's method.</p></div><dl class="attributes block"> <div class="block">Example:
+               <ol><li class="cmt"><p>
+class A, class B extends A
+conditionsValues(a, b, c) (a object of A, b object of B, c object of C)
+overloaded methods have the following signatures:
+overloaded_method(A, A): B
+overloaded_method(A, B): A
+overloaded_method(A, C): D
+overloaded_method(A, D): A
+overloaded_method(B, A): A
+overloaded_method(B, C): A
+overloaded_method(D, C): A
+then compatible paths are
+Array((overloaded_method(A, A): B), (overloaded_method(B, C): A))
+Array((overloaded_method(A, B): A), (overloaded_method(A, C): D))
+This search is used on reduce type operators as conditions might not be the same type and which overloaded method
+to be applied must be found before evaluation.</p></li></ol>
+            </div></dl></div>
+    </li><li name="com.celadari.jsonlogicscala.evaluate.Operator" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
       <a id="OperatorextendsAnyRef"></a>
       <a id="Operator:Operator"></a>
       <h4 class="signature">
@@ -184,8 +223,10 @@
         <img src="../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      
-    </li><li name="com.celadari.jsonlogicscala.evaluate.UnaryOperator" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <p class="shortcomment cmt">Defines interface of class/object defining an operator.</p><div class="fullcomment"><div class="comment cmt"><p>Defines interface of class/object defining an operator. There is no constraint on method name.
+Name of invoked method during evaluation is known in <a href="MethodConf.html" class="extype" name="com.celadari.jsonlogicscala.evaluate.MethodConf">com.celadari.jsonlogicscala.evaluate.MethodConf</a> configuration.
+</p></div></div>
+    </li><li name="com.celadari.jsonlogicscala.evaluate.UnaryOperator" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
       <a id="UnaryOperatorextendsOperator"></a>
       <a id="UnaryOperator:UnaryOperator"></a>
       <h4 class="signature">
@@ -201,7 +242,11 @@
         <img src="../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      
+      <p class="shortcomment cmt">Defines interface of class/object defining an unary operator.</p><div class="fullcomment"><div class="comment cmt"><p>Defines interface of class/object defining an unary operator.
+Unlike binary|multiple input operators, unary operators take only one input.
+Invoked method has to be &quot;unaryOperator&quot; and overloading this method doesn't work.</p></div><dl class="attributes block"> <div class="block">Example:
+               <ol><li class="cmt"><p>negate operator, getOrDefaultOperator</p></li></ol>
+            </div></dl></div>
     </li></ol>
             </div>
 
@@ -225,7 +270,8 @@
         <img src="../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      
+      <p class="shortcomment cmt">Companion object containing class <a href="CompositionOperator$$ComposeJsonLogicCore.html" class="extype" name="com.celadari.jsonlogicscala.evaluate.CompositionOperator.ComposeJsonLogicCore">com.celadari.jsonlogicscala.evaluate.CompositionOperator.ComposeJsonLogicCore</a>'s
+definition.</p>
     </li><li name="com.celadari.jsonlogicscala.evaluate.EvaluatorLogicConf" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="EvaluatorLogicConf"></a>
       <a id="EvaluatorLogicConf:EvaluatorLogicConf"></a>
@@ -242,7 +288,8 @@
         <img src="../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      
+      <p class="shortcomment cmt">Companion object to hold implicit: <a href="EvaluatorLogicConf.html" class="extype" name="com.celadari.jsonlogicscala.evaluate.EvaluatorLogicConf">com.celadari.jsonlogicscala.evaluate.EvaluatorLogicConf</a>, mapping of default
+operators (type_codename -&gt; method_conf), and method to create a custom configuration.</p>
     </li><li name="com.celadari.jsonlogicscala.evaluate.EvaluatorValueLogic" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="EvaluatorValueLogic"></a>
       <a id="EvaluatorValueLogic:EvaluatorValueLogic"></a>
@@ -259,7 +306,7 @@
         <img src="../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      
+      <p class="shortcomment cmt">Companion object to hold default <a href="EvaluatorValueLogic.html" class="extype" name="com.celadari.jsonlogicscala.evaluate.EvaluatorValueLogic">com.celadari.jsonlogicscala.evaluate.EvaluatorValueLogic</a>.</p>
     </li><li name="com.celadari.jsonlogicscala.evaluate.MethodSignatureFinder" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="MethodSignatureFinder"></a>
       <a id="MethodSignatureFinder:MethodSignatureFinder"></a>
@@ -276,7 +323,8 @@
         <img src="../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      
+      <p class="shortcomment cmt">Companion object that defines utility function to find minimum (class inheritance as partial order) classes
+among set of classes.</p>
     </li><li name="com.celadari.jsonlogicscala.evaluate.defaults" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="defaults"></a>
       <a id="defaults:defaults"></a>

@@ -150,37 +150,37 @@
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="index.html" class="extype" name="com.celadari.jsonlogicscala.evaluate">evaluate</a></dd></dl></div>
     </li><li class="current-entities indented4">
-                        <a class="object" href="CompositionOperator$.html" title=""></a>
-                        <a class="trait" href="CompositionOperator.html" title=""></a>
-                        <a href="CompositionOperator.html" title="">CompositionOperator</a>
+                        <a class="object" href="CompositionOperator$.html" title="Companion object containing class com.celadari.jsonlogicscala.evaluate.CompositionOperator.ComposeJsonLogicCore's definition."></a>
+                        <a class="trait" href="CompositionOperator.html" title="Defines interface of class/object defining a composition operator."></a>
+                        <a href="CompositionOperator.html" title="Defines interface of class/object defining a composition operator.">CompositionOperator</a>
                       </li><li class="current-entities indented4">
                         <span class="separator"></span>
-                        <a class="class" href="EvaluatorLogic.html" title=""></a>
-                        <a href="EvaluatorLogic.html" title="">EvaluatorLogic</a>
+                        <a class="class" href="EvaluatorLogic.html" title="Responsible for evaluating scala data structure com.celadari.jsonlogicscala.tree.JsonLogicCore."></a>
+                        <a href="EvaluatorLogic.html" title="Responsible for evaluating scala data structure com.celadari.jsonlogicscala.tree.JsonLogicCore.">EvaluatorLogic</a>
                       </li><li class="current-entities indented4">
-                        <a class="object" href="EvaluatorLogicConf$.html" title=""></a>
-                        <a class="class" href="EvaluatorLogicConf.html" title=""></a>
-                        <a href="EvaluatorLogicConf.html" title="">EvaluatorLogicConf</a>
+                        <a class="object" href="EvaluatorLogicConf$.html" title="Companion object to hold implicit: com.celadari.jsonlogicscala.evaluate.EvaluatorLogicConf, mapping of default operators (type_codename -&gt; method_conf), and method to create a custom configuration."></a>
+                        <a class="class" href="EvaluatorLogicConf.html" title="Represents an evaluator's configuration."></a>
+                        <a href="EvaluatorLogicConf.html" title="Represents an evaluator's configuration.">EvaluatorLogicConf</a>
                       </li><li class="current-entities indented4">
-                        <a class="object" href="EvaluatorValueLogic$.html" title=""></a>
-                        <a class="trait" href="EvaluatorValueLogic.html" title=""></a>
-                        <a href="EvaluatorValueLogic.html" title="">EvaluatorValueLogic</a>
-                      </li><li class="current-entities indented4">
-                        <span class="separator"></span>
-                        <a class="class" href="" title=""></a>
-                        <a href="" title="">MethodConf</a>
-                      </li><li class="current-entities indented4">
-                        <a class="object" href="MethodSignatureFinder$.html" title=""></a>
-                        <a class="class" href="MethodSignatureFinder.html" title=""></a>
-                        <a href="MethodSignatureFinder.html" title="">MethodSignatureFinder</a>
+                        <a class="object" href="EvaluatorValueLogic$.html" title="Companion object to hold default com.celadari.jsonlogicscala.evaluate.EvaluatorValueLogic."></a>
+                        <a class="trait" href="EvaluatorValueLogic.html" title="Defines interface of class/object defining an evaluator_value_logic."></a>
+                        <a href="EvaluatorValueLogic.html" title="Defines interface of class/object defining an evaluator_value_logic.">EvaluatorValueLogic</a>
                       </li><li class="current-entities indented4">
                         <span class="separator"></span>
-                        <a class="trait" href="Operator.html" title=""></a>
-                        <a href="Operator.html" title="">Operator</a>
+                        <a class="class" href="" title="Represents an operator's information for evaluation."></a>
+                        <a href="" title="Represents an operator's information for evaluation.">MethodConf</a>
+                      </li><li class="current-entities indented4">
+                        <a class="object" href="MethodSignatureFinder$.html" title="Companion object that defines utility function to find minimum (class inheritance as partial order) classes among set of classes."></a>
+                        <a class="class" href="MethodSignatureFinder.html" title="Responsible for finding paths of a compatible classes in case there exists multiple overloaded method versions of operator's method."></a>
+                        <a href="MethodSignatureFinder.html" title="Responsible for finding paths of a compatible classes in case there exists multiple overloaded method versions of operator's method.">MethodSignatureFinder</a>
                       </li><li class="current-entities indented4">
                         <span class="separator"></span>
-                        <a class="trait" href="UnaryOperator.html" title=""></a>
-                        <a href="UnaryOperator.html" title="">UnaryOperator</a>
+                        <a class="trait" href="Operator.html" title="Defines interface of class/object defining an operator."></a>
+                        <a href="Operator.html" title="Defines interface of class/object defining an operator.">Operator</a>
+                      </li><li class="current-entities indented4">
+                        <span class="separator"></span>
+                        <a class="trait" href="UnaryOperator.html" title="Defines interface of class/object defining an unary operator."></a>
+                        <a href="UnaryOperator.html" title="Defines interface of class/object defining an unary operator.">UnaryOperator</a>
                       </li>
               </ul>
             </div>
@@ -209,7 +209,7 @@
       </h4>
 
       
-          <div id="comment" class="fullcommenttop"><div class="toggleContainer block">
+          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Represents an operator's information for evaluation.</p></div><div class="toggleContainer block">
           <span class="toggle">
             Linear Supertypes
           </span>
@@ -274,7 +274,7 @@
         <span class="name">MethodConf</span><span class="params">(<span name="operator">operator: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="methodName">methodName: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="ownerMethodOpt">ownerMethodOpt: <span class="extype" name="scala.Option">Option</span>[<a href="Operator.html" class="extype" name="com.celadari.jsonlogicscala.evaluate.Operator">Operator</a>]</span>, <span name="isReduceTypeOperator">isReduceTypeOperator: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">true</span></span>, <span name="isCompositionOperator">isCompositionOperator: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">false</span></span>, <span name="isUnaryOperator">isUnaryOperator: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">false</span></span>)</span>
       </span>
       
-      
+      <p class="shortcomment cmt"></p>
     </li></ol>
             </div>
 
