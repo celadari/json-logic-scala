@@ -150,37 +150,37 @@
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="index.html" class="extype" name="com.celadari.jsonlogicscala.evaluate">evaluate</a></dd></dl></div>
     </li><li class="current-entities indented4">
-                        <a class="object" href="CompositionOperator$.html" title=""></a>
-                        <a class="trait" href="CompositionOperator.html" title=""></a>
-                        <a href="CompositionOperator.html" title="">CompositionOperator</a>
+                        <a class="object" href="CompositionOperator$.html" title="Companion object containing class com.celadari.jsonlogicscala.evaluate.CompositionOperator.ComposeJsonLogicCore's definition."></a>
+                        <a class="trait" href="CompositionOperator.html" title="Defines interface of class/object defining a composition operator."></a>
+                        <a href="CompositionOperator.html" title="Defines interface of class/object defining a composition operator.">CompositionOperator</a>
                       </li><li class="current-entities indented4">
                         <span class="separator"></span>
-                        <a class="class" href="EvaluatorLogic.html" title=""></a>
-                        <a href="EvaluatorLogic.html" title="">EvaluatorLogic</a>
+                        <a class="class" href="EvaluatorLogic.html" title="Responsible for evaluating scala data structure com.celadari.jsonlogicscala.tree.JsonLogicCore."></a>
+                        <a href="EvaluatorLogic.html" title="Responsible for evaluating scala data structure com.celadari.jsonlogicscala.tree.JsonLogicCore.">EvaluatorLogic</a>
                       </li><li class="current-entities indented4">
-                        <a class="object" href="EvaluatorLogicConf$.html" title=""></a>
-                        <a class="class" href="EvaluatorLogicConf.html" title=""></a>
-                        <a href="EvaluatorLogicConf.html" title="">EvaluatorLogicConf</a>
+                        <a class="object" href="EvaluatorLogicConf$.html" title="Companion object to hold implicit: com.celadari.jsonlogicscala.evaluate.EvaluatorLogicConf, mapping of default operators (type_codename -&gt; method_conf), and method to create a custom configuration."></a>
+                        <a class="class" href="EvaluatorLogicConf.html" title="Represents an evaluator's configuration."></a>
+                        <a href="EvaluatorLogicConf.html" title="Represents an evaluator's configuration.">EvaluatorLogicConf</a>
                       </li><li class="current-entities indented4">
-                        <a class="object" href="EvaluatorValueLogic$.html" title=""></a>
-                        <a class="trait" href="EvaluatorValueLogic.html" title=""></a>
-                        <a href="EvaluatorValueLogic.html" title="">EvaluatorValueLogic</a>
-                      </li><li class="current-entities indented4">
-                        <span class="separator"></span>
-                        <a class="class" href="MethodConf.html" title=""></a>
-                        <a href="MethodConf.html" title="">MethodConf</a>
-                      </li><li class="current-entities indented4">
-                        <a class="object" href="MethodSignatureFinder$.html" title=""></a>
-                        <a class="class" href="" title=""></a>
-                        <a href="" title="">MethodSignatureFinder</a>
+                        <a class="object" href="EvaluatorValueLogic$.html" title="Companion object to hold default com.celadari.jsonlogicscala.evaluate.EvaluatorValueLogic."></a>
+                        <a class="trait" href="EvaluatorValueLogic.html" title="Defines interface of class/object defining an evaluator_value_logic."></a>
+                        <a href="EvaluatorValueLogic.html" title="Defines interface of class/object defining an evaluator_value_logic.">EvaluatorValueLogic</a>
                       </li><li class="current-entities indented4">
                         <span class="separator"></span>
-                        <a class="trait" href="Operator.html" title=""></a>
-                        <a href="Operator.html" title="">Operator</a>
+                        <a class="class" href="MethodConf.html" title="Represents an operator's information for evaluation."></a>
+                        <a href="MethodConf.html" title="Represents an operator's information for evaluation.">MethodConf</a>
+                      </li><li class="current-entities indented4">
+                        <a class="object" href="MethodSignatureFinder$.html" title="Companion object that defines utility function to find minimum (class inheritance as partial order) classes among set of classes."></a>
+                        <a class="class" href="" title="Responsible for finding paths of a compatible classes in case there exists multiple overloaded method versions of operator's method."></a>
+                        <a href="" title="Responsible for finding paths of a compatible classes in case there exists multiple overloaded method versions of operator's method.">MethodSignatureFinder</a>
                       </li><li class="current-entities indented4">
                         <span class="separator"></span>
-                        <a class="trait" href="UnaryOperator.html" title=""></a>
-                        <a href="UnaryOperator.html" title="">UnaryOperator</a>
+                        <a class="trait" href="Operator.html" title="Defines interface of class/object defining an operator."></a>
+                        <a href="Operator.html" title="Defines interface of class/object defining an operator.">Operator</a>
+                      </li><li class="current-entities indented4">
+                        <span class="separator"></span>
+                        <a class="trait" href="UnaryOperator.html" title="Defines interface of class/object defining an unary operator."></a>
+                        <a href="UnaryOperator.html" title="Defines interface of class/object defining an unary operator.">UnaryOperator</a>
                       </li>
               </ul>
             </div>
@@ -211,7 +211,25 @@
       </h4>
 
       
-          <div id="comment" class="fullcommenttop"><div class="toggleContainer block">
+          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Responsible for finding paths of a compatible classes in case there exists multiple overloaded method versions
+of operator's method.</p></div><dl class="attributes block"> <div class="block">Example:
+               <ol><li class="cmt"><p>
+class A, class B extends A
+conditionsValues(a, b, c) (a object of A, b object of B, c object of C)
+overloaded methods have the following signatures:
+overloaded_method(A, A): B
+overloaded_method(A, B): A
+overloaded_method(A, C): D
+overloaded_method(A, D): A
+overloaded_method(B, A): A
+overloaded_method(B, C): A
+overloaded_method(D, C): A
+then compatible paths are
+Array((overloaded_method(A, A): B), (overloaded_method(B, C): A))
+Array((overloaded_method(A, B): A), (overloaded_method(A, C): D))
+This search is used on reduce type operators as conditions might not be the same type and which overloaded method
+to be applied must be found before evaluation.</p></li></ol>
+            </div></dl><div class="toggleContainer block">
           <span class="toggle">
             Linear Supertypes
           </span>
@@ -457,7 +475,7 @@
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
-    </li><li name="com.celadari.jsonlogicscala.evaluate.MethodSignatureFinder#eval" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+    </li><li name="com.celadari.jsonlogicscala.evaluate.MethodSignatureFinder#eval" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="eval():Unit"></a>
       <span class="permalink">
       <a href="../../../../com/celadari/jsonlogicscala/evaluate/MethodSignatureFinder.html#eval():Unit" title="Permalink">
@@ -472,7 +490,7 @@
         <span class="name">eval</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       
-      
+      <p class="shortcomment cmt">Triggers search for compatible paths with &quot;conditionsValues&quot; and &quot;confMethod&quot;.</p><div class="fullcomment"><div class="comment cmt"><p>Triggers search for compatible paths with &quot;conditionsValues&quot; and &quot;confMethod&quot;.</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>set of compatible paths.</p></dd></dl></div>
     </li><li name="com.celadari.jsonlogicscala.evaluate.MethodSignatureFinder#explorePath" visbl="prt" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="explorePath(value:Any,ownerMethodOpt:Option[Class[_]],path:Array[(java.lang.reflect.Method,Boolean)]):Set[Array[(java.lang.reflect.Method,Boolean)]]"></a><a id="explorePath(Any,Option[Class[_]],Array[(Method,Boolean)]):Set[Array[(Method,Boolean)]]"></a>
       <span class="permalink">
@@ -488,7 +506,10 @@
         <span class="name">explorePath</span><span class="params">(<span name="value">value: <span class="extype" name="scala.Any">Any</span></span>, <span name="ownerMethodOpt">ownerMethodOpt: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Predef.Class">Class</span>[_]]</span>, <span name="path">path: <span class="extype" name="scala.Array">Array</span>[(<span class="extype" name="java.lang.reflect.Method">Method</span>, <span class="extype" name="scala.Boolean">Boolean</span>)]</span>)</span><span class="result">: <span class="extype" name="scala.Predef.Set">Set</span>[<span class="extype" name="scala.Array">Array</span>[(<span class="extype" name="java.lang.reflect.Method">Method</span>, <span class="extype" name="scala.Boolean">Boolean</span>)]]</span>
       </span>
       
-      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[this] </dd></dl></div>
+      <p class="shortcomment cmt">Returns set of paths.</p><div class="fullcomment"><div class="comment cmt"><p>Returns set of paths.
+Set of paths corresponds to the different possible paths that extend &quot;path&quot; by adding an overloaded method
+compatible with &quot;path&quot;'s last element (class/type is <a href="MethodConf.html" class="extype" name="com.celadari.jsonlogicscala.evaluate.MethodConf">com.celadari.jsonlogicscala.evaluate.MethodConf</a>) return
+type as first input and value as second input.</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>set of compatible paths.</p></dd></dl><dl class="attributes block"> <dt>Attributes</dt><dd>protected[this] </dd></dl></div>
     </li><li name="com.celadari.jsonlogicscala.evaluate.MethodSignatureFinder#filterExplorable" visbl="prt" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="filterExplorable(objClass:Class[_],value:Any,path:Array[(java.lang.reflect.Method,Boolean)]):Set[java.lang.reflect.Method]"></a><a id="filterExplorable(Class[_],Any,Array[(Method,Boolean)]):Set[Method]"></a>
       <span class="permalink">
@@ -504,7 +525,9 @@
         <span class="name">filterExplorable</span><span class="params">(<span name="objClass">objClass: <span class="extype" name="scala.Predef.Class">Class</span>[_]</span>, <span name="value">value: <span class="extype" name="scala.Any">Any</span></span>, <span name="path">path: <span class="extype" name="scala.Array">Array</span>[(<span class="extype" name="java.lang.reflect.Method">Method</span>, <span class="extype" name="scala.Boolean">Boolean</span>)]</span>)</span><span class="result">: <span class="extype" name="scala.Predef.Set">Set</span>[<span class="extype" name="java.lang.reflect.Method">Method</span>]</span>
       </span>
       
-      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[this] </dd></dl></div>
+      <p class="shortcomment cmt">Returns set of overloaded methods of &quot;objClass&quot; that are compatible with return type of the last method
+of &quot;path&quot; and &quot;value&quot; as first and second input.</p><div class="fullcomment"><div class="comment cmt"><p>Returns set of overloaded methods of &quot;objClass&quot; that are compatible with return type of the last method
+of &quot;path&quot; and &quot;value&quot; as first and second input.</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>set of overloaded methods.</p></dd></dl><dl class="attributes block"> <dt>Attributes</dt><dd>protected[this] </dd></dl></div>
     </li><li name="com.celadari.jsonlogicscala.evaluate.MethodSignatureFinder#findFirstMethods" visbl="prt" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="findFirstMethods(ownerMethod:Any,value1:Any,value2Opt:Option[Any]):Set[java.lang.reflect.Method]"></a><a id="findFirstMethods(Any,Any,Option[Any]):Set[Method]"></a>
       <span class="permalink">
@@ -520,8 +543,8 @@
         <span class="name">findFirstMethods</span><span class="params">(<span name="ownerMethod">ownerMethod: <span class="extype" name="scala.Any">Any</span></span>, <span name="value1">value1: <span class="extype" name="scala.Any">Any</span></span>, <span name="value2Opt">value2Opt: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Any">Any</span>]</span>)</span><span class="result">: <span class="extype" name="scala.Predef.Set">Set</span>[<span class="extype" name="java.lang.reflect.Method">Method</span>]</span>
       </span>
       
-      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[this] </dd></dl></div>
-    </li><li name="com.celadari.jsonlogicscala.evaluate.MethodSignatureFinder#findPaths" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <p class="shortcomment cmt">Returns set of overloaded methods that are compatible with value1 and value2Opt (if defined) as input.</p><div class="fullcomment"><div class="comment cmt"><p>Returns set of overloaded methods that are compatible with value1 and value2Opt (if defined) as input.</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>set of overloaded methods.</p></dd></dl><dl class="attributes block"> <dt>Attributes</dt><dd>protected[this] </dd></dl></div>
+    </li><li name="com.celadari.jsonlogicscala.evaluate.MethodSignatureFinder#findPaths" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="findPaths():Set[Array[(java.lang.reflect.Method,Boolean)]]"></a><a id="findPaths():Set[Array[(Method,Boolean)]]"></a>
       <span class="permalink">
       <a href="../../../../com/celadari/jsonlogicscala/evaluate/MethodSignatureFinder.html#findPaths():Set[Array[(java.lang.reflect.Method,Boolean)]]" title="Permalink">
@@ -536,7 +559,8 @@
         <span class="name">findPaths</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Predef.Set">Set</span>[<span class="extype" name="scala.Array">Array</span>[(<span class="extype" name="java.lang.reflect.Method">Method</span>, <span class="extype" name="scala.Boolean">Boolean</span>)]]</span>
       </span>
       
-      
+      <p class="shortcomment cmt">Returns set of optimized compatible paths with &quot;conditionsValues&quot; and &quot;confMethod&quot;.</p><div class="fullcomment"><div class="comment cmt"><p>Returns set of optimized compatible paths with &quot;conditionsValues&quot; and &quot;confMethod&quot;.
+If search has not yet been triggered, it is triggered, otherwise returns cached value.</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>set of compatible paths.</p></dd></dl></div>
     </li><li name="scala.AnyRef#getClass" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="getClass():Class[_]"></a>
       <span class="permalink">
@@ -594,7 +618,10 @@
         <span class="name">initializePaths</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       
-      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[this] </dd></dl></div>
+      <p class="shortcomment cmt">Initiates parameters values before paths search.</p><div class="fullcomment"><div class="comment cmt"><p>Initiates parameters values before paths search.
+Required as first search compares classes/types of &quot;conditionsValues&quot;'s first element and second element while
+next searches compares classes/types of last element of &quot;paths&quot; and current element of &quot;conditionsValues&quot;.
+</p></div><dl class="attributes block"> <dt>Attributes</dt><dd>protected[this] </dd></dl></div>
     </li><li name="com.celadari.jsonlogicscala.evaluate.MethodSignatureFinder#isEvaluated" visbl="prt" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="isEvaluated:Boolean"></a>
       <span class="permalink">
@@ -685,7 +712,7 @@
                 <span class="name">@HotSpotIntrinsicCandidate</span><span class="args">()</span>
               
         </dd></dl></div>
-    </li><li name="com.celadari.jsonlogicscala.evaluate.MethodSignatureFinder#optimizePaths" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+    </li><li name="com.celadari.jsonlogicscala.evaluate.MethodSignatureFinder#optimizePaths" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="optimizePaths():Unit"></a>
       <span class="permalink">
       <a href="../../../../com/celadari/jsonlogicscala/evaluate/MethodSignatureFinder.html#optimizePaths():Unit" title="Permalink">
@@ -700,7 +727,18 @@
         <span class="name">optimizePaths</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       
-      
+      <p class="shortcomment cmt">Optimizes found paths by removing a path if there exists another path with a method with sub-types input arguments.</p><div class="fullcomment"><div class="comment cmt"><p>Optimizes found paths by removing a path if there exists another path with a method with sub-types input arguments.</p></div><dl class="attributes block"> <div class="block">Example:
+               <ol><li class="cmt"><p>
+class A, class B extends A, class C, class D extends C, class E
+path1: Array((method(A, C), _), ...)
+path2: Array((method(A, D), _), ...)
+path3: Array((method(B, C), _), ...)
+path4: Array((method(B, D), _), ...)
+path5: Array((method(A, E), _), ...)
+optimized paths are
+path1: Array((method(B, D), _), ...)
+path5: Array((method(A, E), _), ...)</p></li></ol>
+            </div></dl></div>
     </li><li name="com.celadari.jsonlogicscala.evaluate.MethodSignatureFinder#paths" visbl="prt" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="paths:Set[Array[(java.lang.reflect.Method,Boolean)]]"></a><a id="paths:Set[Array[(Method,Boolean)]]"></a>
       <span class="permalink">

@@ -66,7 +66,7 @@
 
         <div id="types" class="types members">
               <h3>Type Members</h3>
-              <ol><li name="com.celadari.jsonlogicscala.tree.types.ArrayTypeValue" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+              <ol><li name="com.celadari.jsonlogicscala.tree.types.ArrayTypeValue" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="ArrayTypeValueextendsTypeValuewithProductwithSerializable"></a>
       <a id="ArrayTypeValue:ArrayTypeValue"></a>
       <h4 class="signature">
@@ -82,8 +82,8 @@
         <img src="../../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      
-    </li><li name="com.celadari.jsonlogicscala.tree.types.MapTypeValue" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <p class="shortcomment cmt">Represents a Array[paramType] type.</p><div class="fullcomment"><div class="comment cmt"><p>Represents a Array[paramType] type.</p></div><dl class="attributes block"> <dt>Note</dt><dd><span class="cmt"><p>inherited operator has fixed value of &quot;array&quot;.</p></span></dd></dl></div>
+    </li><li name="com.celadari.jsonlogicscala.tree.types.MapTypeValue" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="MapTypeValueextendsTypeValuewithProductwithSerializable"></a>
       <a id="MapTypeValue:MapTypeValue"></a>
       <h4 class="signature">
@@ -99,8 +99,8 @@
         <img src="../../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      
-    </li><li name="com.celadari.jsonlogicscala.tree.types.OptionTypeValue" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <p class="shortcomment cmt">Represents a Map[String, paramType] type.</p><div class="fullcomment"><div class="comment cmt"><p>Represents a Map[String, paramType] type.</p></div><dl class="attributes block"> <dt>Note</dt><dd><span class="cmt"><p>inherited operator has fixed value of &quot;map&quot;.</p></span></dd></dl></div>
+    </li><li name="com.celadari.jsonlogicscala.tree.types.OptionTypeValue" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="OptionTypeValueextendsTypeValuewithProductwithSerializable"></a>
       <a id="OptionTypeValue:OptionTypeValue"></a>
       <h4 class="signature">
@@ -116,7 +116,7 @@
         <img src="../../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      
+      <p class="shortcomment cmt">Represents an Option[paramType].</p><div class="fullcomment"><div class="comment cmt"><p>Represents an Option[paramType].</p></div><dl class="attributes block"> <dt>Note</dt><dd><span class="cmt"><p>inherited operator has fixed value of &quot;option&quot;.</p></span></dd></dl></div>
     </li><li name="com.celadari.jsonlogicscala.tree.types.SimpleTypeValue" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="SimpleTypeValueextendsTypeValuewithProductwithSerializable"></a>
       <a id="SimpleTypeValue:SimpleTypeValue"></a>
@@ -133,8 +133,8 @@
         <img src="../../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      
-    </li><li name="com.celadari.jsonlogicscala.tree.types.TypeValue" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <p class="shortcomment cmt">Represents a simple type (Int, String, ...), user defined classes and types which are not Option, Array, Map.</p>
+    </li><li name="com.celadari.jsonlogicscala.tree.types.TypeValue" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
       <a id="TypeValueextendsAnyRef"></a>
       <a id="TypeValue:TypeValue"></a>
       <h4 class="signature">
@@ -150,7 +150,8 @@
         <img src="../../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      
+      <p class="shortcomment cmt">Represents information about type data.</p><div class="fullcomment"><div class="comment cmt"><p>Represents information about type data. Important to static-typed languages such as scala to inform serializer/deserializer
+which marshaller/unmarshaller to invoke.</p></div></div>
     </li></ol>
             </div>
 
@@ -158,7 +159,7 @@
 
         <div id="values" class="values members">
               <h3>Value Members</h3>
-              <ol><li name="com.celadari.jsonlogicscala.tree.types.AnyTypeValue" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+              <ol><li name="com.celadari.jsonlogicscala.tree.types.AnyTypeValue" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="AnyTypeValue"></a>
       <a id="AnyTypeValue:AnyTypeValue"></a>
       <h4 class="signature">
@@ -174,7 +175,11 @@
         <img src="../../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      
+      <p class="shortcomment cmt">Represents an unknown type.</p><div class="fullcomment"><div class="comment cmt"><p>Represents an unknown type. Evaluating, serializing, deserializing a tree with a leaf node with
+<a href="AnyTypeValue$.html" class="extype" name="com.celadari.jsonlogicscala.tree.types.AnyTypeValue">com.celadari.jsonlogicscala.tree.types.AnyTypeValue</a> as typeOpt parameters throws an exception.
+Can only be used to manipulate a <a href="../ValueLogic.html" class="extype" name="com.celadari.jsonlogicscala.tree.ValueLogic">com.celadari.jsonlogicscala.tree.ValueLogic</a> as temporary scala data structure
+before setting correct typeOpt parameter.
+</p></div></div>
     </li><li name="com.celadari.jsonlogicscala.tree.types.ArrayTypeValue" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="ArrayTypeValue"></a>
       <a id="ArrayTypeValue:ArrayTypeValue"></a>
@@ -191,7 +196,7 @@
         <img src="../../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      
+      <p class="shortcomment cmt">Companion object holding implicit writer json and constant codename for <a href="ArrayTypeValue.html" class="extype" name="com.celadari.jsonlogicscala.tree.types.ArrayTypeValue">com.celadari.jsonlogicscala.tree.types.ArrayTypeValue</a>.</p>
     </li><li name="com.celadari.jsonlogicscala.tree.types.DefaultTypes" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="DefaultTypes"></a>
       <a id="DefaultTypes:DefaultTypes"></a>
@@ -208,7 +213,7 @@
         <img src="../../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      
+      <p class="shortcomment cmt">Contains codename of default types.</p>
     </li><li name="com.celadari.jsonlogicscala.tree.types.MapTypeValue" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="MapTypeValue"></a>
       <a id="MapTypeValue:MapTypeValue"></a>
@@ -225,7 +230,7 @@
         <img src="../../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      
+      <p class="shortcomment cmt">Companion object holding implicit writer json and constant codename for <a href="MapTypeValue.html" class="extype" name="com.celadari.jsonlogicscala.tree.types.MapTypeValue">com.celadari.jsonlogicscala.tree.types.MapTypeValue</a>.</p>
     </li><li name="com.celadari.jsonlogicscala.tree.types.OptionTypeValue" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="OptionTypeValue"></a>
       <a id="OptionTypeValue:OptionTypeValue"></a>
@@ -242,7 +247,7 @@
         <img src="../../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      
+      <p class="shortcomment cmt">Companion object holding implicit writer json and constant codename for <a href="OptionTypeValue.html" class="extype" name="com.celadari.jsonlogicscala.tree.types.OptionTypeValue">com.celadari.jsonlogicscala.tree.types.OptionTypeValue</a>.</p>
     </li><li name="com.celadari.jsonlogicscala.tree.types.SimpleTypeValue" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="SimpleTypeValue"></a>
       <a id="SimpleTypeValue:SimpleTypeValue"></a>
@@ -259,8 +264,8 @@
         <img src="../../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      
-    </li><li name="com.celadari.jsonlogicscala.tree.types.TypeValue" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <p class="shortcomment cmt">Companion object holding implicit writer json.</p>
+    </li><li name="com.celadari.jsonlogicscala.tree.types.TypeValue" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="TypeValue"></a>
       <a id="TypeValue:TypeValue"></a>
       <h4 class="signature">
@@ -276,7 +281,9 @@
         <img src="../../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      
+      <p class="shortcomment cmt">Companion object holding implicit reader and writer json.</p><div class="fullcomment"><div class="comment cmt"><p>Companion object holding implicit reader and writer json.
+Also defines methods serialize/deserialize <a href="TypeValue.html" class="extype" name="com.celadari.jsonlogicscala.tree.types.TypeValue">com.celadari.jsonlogicscala.tree.types.TypeValue</a> to json and vice-versa.
+</p></div></div>
     </li></ol>
             </div>
 

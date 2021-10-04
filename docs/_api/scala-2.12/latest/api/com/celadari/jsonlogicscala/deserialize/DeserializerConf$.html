@@ -150,17 +150,17 @@
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="index.html" class="extype" name="com.celadari.jsonlogicscala.deserialize">deserialize</a></dd></dl></div>
     </li><li class="current-entities indented4">
-                        <a class="object" href="Deserializer$.html" title=""></a>
-                        <a class="class" href="Deserializer.html" title=""></a>
-                        <a href="Deserializer.html" title="">Deserializer</a>
+                        <a class="object" href="Deserializer$.html" title="Companion object holding implicit deserializer."></a>
+                        <a class="class" href="Deserializer.html" title="Responsible for deserializing json into scala com.celadari.jsonlogicscala.tree.JsonLogicCore data structure."></a>
+                        <a href="Deserializer.html" title="Responsible for deserializing json into scala com.celadari.jsonlogicscala.tree.JsonLogicCore data structure.">Deserializer</a>
                       </li><li class="current-entities indented4">
-                        <a class="object" href="" title=""></a>
-                        <a class="class" href="DeserializerConf.html" title=""></a>
-                        <a href="DeserializerConf.html" title="">DeserializerConf</a>
+                        <a class="object" href="" title="Companion object to hold implicit: com.celadari.jsonlogicscala.deserialize.DeserializerConf, mapping of default unmarshallers (type_codename -&gt; Unmarshaller), method to create a custom configuration."></a>
+                        <a class="class" href="DeserializerConf.html" title="Represents a deserializer's configuration."></a>
+                        <a href="DeserializerConf.html" title="Represents a deserializer's configuration.">DeserializerConf</a>
                       </li><li class="current-entities indented4">
                         <span class="separator"></span>
-                        <a class="trait" href="Unmarshaller.html" title=""></a>
-                        <a href="Unmarshaller.html" title="">Unmarshaller</a>
+                        <a class="trait" href="Unmarshaller.html" title="Defines interface of class/object defining unmarshal method."></a>
+                        <a href="Unmarshaller.html" title="Defines interface of class/object defining unmarshal method.">Unmarshaller</a>
                       </li>
               </ul>
             </div>
@@ -191,7 +191,9 @@
       </h4>
 
       
-          <div id="comment" class="fullcommenttop"><div class="toggleContainer block">
+          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Companion object to hold implicit: <a href="DeserializerConf.html" class="extype" name="com.celadari.jsonlogicscala.deserialize.DeserializerConf">com.celadari.jsonlogicscala.deserialize.DeserializerConf</a>, mapping of default
+unmarshallers (type_codename -&gt; Unmarshaller), method to create a custom configuration.
+</p></div><div class="toggleContainer block">
           <span class="toggle">
             Linear Supertypes
           </span>
@@ -311,7 +313,7 @@
         <span class="name">DEFAULT_UNMARSHALLERS</span><span class="result">: <span class="extype" name="scala.Predef.Map">Map</span>[<span class="extype" name="scala.Predef.String">String</span>, <a href="Unmarshaller.html" class="extype" name="com.celadari.jsonlogicscala.deserialize.Unmarshaller">Unmarshaller</a>]</span>
       </span>
       
-      
+      <p class="shortcomment cmt">Maps default type_codenames to default unmarshallers.</p>
     </li><li name="scala.Any#asInstanceOf" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="asInstanceOf[T0]:T0"></a>
       <span class="permalink">
@@ -354,7 +356,7 @@
                 <span class="name">@HotSpotIntrinsicCandidate</span><span class="args">()</span>
               
         </dd></dl></div>
-    </li><li name="com.celadari.jsonlogicscala.deserialize.DeserializerConf#createConf" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+    </li><li name="com.celadari.jsonlogicscala.deserialize.DeserializerConf#createConf" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="createConf(path:String,unmarshallersManualAdd:Map[String,com.celadari.jsonlogicscala.deserialize.Unmarshaller],isPriorityToManualAdd:Boolean):com.celadari.jsonlogicscala.deserialize.DeserializerConf"></a><a id="createConf(String,Map[String,Unmarshaller],Boolean):DeserializerConf"></a>
       <span class="permalink">
       <a href="../../../../com/celadari/jsonlogicscala/deserialize/DeserializerConf$.html#createConf(path:String,unmarshallersManualAdd:Map[String,com.celadari.jsonlogicscala.deserialize.Unmarshaller],isPriorityToManualAdd:Boolean):com.celadari.jsonlogicscala.deserialize.DeserializerConf" title="Permalink">
@@ -369,7 +371,7 @@
         <span class="name">createConf</span><span class="params">(<span name="path">path: <span class="extype" name="scala.Predef.String">String</span> = <span class="symbol">&quot;META-INF/services/&quot;</span></span>, <span name="unmarshallersManualAdd">unmarshallersManualAdd: <span class="extype" name="scala.Predef.Map">Map</span>[<span class="extype" name="scala.Predef.String">String</span>, <a href="Unmarshaller.html" class="extype" name="com.celadari.jsonlogicscala.deserialize.Unmarshaller">Unmarshaller</a>] = <span class="symbol"><span class="name"><a href="#DEFAULT_UNMARSHALLERS:Map[String,com.celadari.jsonlogicscala.deserialize.Unmarshaller]">DEFAULT_UNMARSHALLERS</a></span></span></span>, <span name="isPriorityToManualAdd">isPriorityToManualAdd: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">true</span></span>)</span><span class="result">: <a href="DeserializerConf.html" class="extype" name="com.celadari.jsonlogicscala.deserialize.DeserializerConf">DeserializerConf</a></span>
       </span>
       
-      
+      <p class="shortcomment cmt">Returns a custom deserializer configuration.</p><div class="fullcomment"><div class="comment cmt"><p>Returns a custom deserializer configuration.</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>custom deserializer configuration.</p></dd></dl></div>
     </li><li name="com.celadari.jsonlogicscala.deserialize.DeserializerConf#deserializerConf" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="deserializerConf:com.celadari.jsonlogicscala.deserialize.DeserializerConf"></a><a id="deserializerConf:DeserializerConf"></a>
       <span class="permalink">

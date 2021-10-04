@@ -51,7 +51,8 @@
       </span>
       </h4>
       
-          <div id="comment" class="fullcommenttop"><div class="toggleContainer block">
+          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Represents an evaluator's configuration.
+It informs the evaluator how to map an operator_codename to an actual method.</p></div><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
           <div class="superTypes hiddenContent"><span class="extype" name="scala.Serializable">Serializable</span>, <span class="extype" name="java.io.Serializable">Serializable</span>, <span class="extype" name="scala.Product">Product</span>, <span class="extype" name="scala.Equals">Equals</span>, <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
         </div></div>
@@ -106,7 +107,7 @@
         <img src="../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      
+      <p class="shortcomment cmt"></p>
     </li></ol>
             </div>
 
@@ -337,7 +338,7 @@
                 <span class="name">@HotSpotIntrinsicCandidate</span><span class="args">()</span>
               
         </dd></dl></div>
-    </li><li name="com.celadari.jsonlogicscala.evaluate.EvaluatorLogicConf#operatorToMethodConf" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+    </li><li name="com.celadari.jsonlogicscala.evaluate.EvaluatorLogicConf#operatorToMethodConf" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="operatorToMethodConf:Map[String,com.celadari.jsonlogicscala.evaluate.MethodConf]"></a>
       <a id="operatorToMethodConf:Map[String,MethodConf]"></a>
       <h4 class="signature">
@@ -353,7 +354,10 @@
         <img src="../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      
+      <p class="shortcomment cmt">Maps codename_operator to <a href="MethodConf.html" class="extype" name="com.celadari.jsonlogicscala.evaluate.MethodConf">com.celadari.jsonlogicscala.evaluate.MethodConf</a>.</p><div class="fullcomment"><div class="comment cmt"><p>Maps codename_operator to <a href="MethodConf.html" class="extype" name="com.celadari.jsonlogicscala.evaluate.MethodConf">com.celadari.jsonlogicscala.evaluate.MethodConf</a>.
+If &quot;isPriorityToManualAdd&quot; is true, if a codename_operator is defined in both &quot;operatorToMethodConfMetaInfAdd&quot;
+and &quot;operatorToMethodConfManualAdd&quot; then manual add is selected, otherwise fetched META-INF is selected.
+</p></div></div>
     </li><li name="com.celadari.jsonlogicscala.evaluate.EvaluatorLogicConf#operatorToMethodConfManualAdd" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="operatorToMethodConfManualAdd:Map[String,com.celadari.jsonlogicscala.evaluate.MethodConf]"></a>
       <a id="operatorToMethodConfManualAdd:Map[String,MethodConf]"></a>
@@ -405,7 +409,7 @@
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
-    </li><li name="com.celadari.jsonlogicscala.evaluate.EvaluatorLogicConf#valueLogicTypeToReducer" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+    </li><li name="com.celadari.jsonlogicscala.evaluate.EvaluatorLogicConf#valueLogicTypeToReducer" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="valueLogicTypeToReducer:Map[com.celadari.jsonlogicscala.tree.types.TypeValue,com.celadari.jsonlogicscala.evaluate.EvaluatorValueLogic]"></a>
       <a id="valueLogicTypeToReducer:Map[TypeValue,EvaluatorValueLogic]"></a>
       <h4 class="signature">
@@ -421,7 +425,10 @@
         <img src="../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      
+      <p class="shortcomment cmt">Maps type to <a href="EvaluatorValueLogic.html" class="extype" name="com.celadari.jsonlogicscala.evaluate.EvaluatorValueLogic">com.celadari.jsonlogicscala.evaluate.EvaluatorValueLogic</a>.</p><div class="fullcomment"><div class="comment cmt"><p>Maps type to <a href="EvaluatorValueLogic.html" class="extype" name="com.celadari.jsonlogicscala.evaluate.EvaluatorValueLogic">com.celadari.jsonlogicscala.evaluate.EvaluatorValueLogic</a>.
+If &quot;isPriorityToManualAdd&quot; is true, if a type is defined in both &quot;valueLogicTypeToReducerMetaInfAdd&quot;
+and &quot;valueLogicTypeToReducerManualAdd&quot; then manual add is selected, otherwise fetched META-INF is selected.
+</p></div></div>
     </li><li name="com.celadari.jsonlogicscala.evaluate.EvaluatorLogicConf#valueLogicTypeToReducerManualAdd" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="valueLogicTypeToReducerManualAdd:Map[com.celadari.jsonlogicscala.tree.types.TypeValue,com.celadari.jsonlogicscala.evaluate.EvaluatorValueLogic]"></a>
       <a id="valueLogicTypeToReducerManualAdd:Map[TypeValue,EvaluatorValueLogic]"></a>

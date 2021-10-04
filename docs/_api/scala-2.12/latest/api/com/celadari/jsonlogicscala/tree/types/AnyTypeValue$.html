@@ -151,32 +151,32 @@
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../index.html" class="extype" name="com.celadari.jsonlogicscala.tree">tree</a></dd></dl></div>
     </li><li class="current-entities indented5">
                         <span class="separator"></span>
-                        <a class="object" href="" title=""></a>
-                        <a href="" title="">AnyTypeValue</a>
+                        <a class="object" href="" title="Represents an unknown type."></a>
+                        <a href="" title="Represents an unknown type.">AnyTypeValue</a>
                       </li><li class="current-entities indented5">
-                        <a class="object" href="ArrayTypeValue$.html" title=""></a>
-                        <a class="class" href="ArrayTypeValue.html" title=""></a>
-                        <a href="ArrayTypeValue.html" title="">ArrayTypeValue</a>
+                        <a class="object" href="ArrayTypeValue$.html" title="Companion object holding implicit writer json and constant codename for com.celadari.jsonlogicscala.tree.types.ArrayTypeValue."></a>
+                        <a class="class" href="ArrayTypeValue.html" title="Represents a Array[paramType] type."></a>
+                        <a href="ArrayTypeValue.html" title="Represents a Array[paramType] type.">ArrayTypeValue</a>
                       </li><li class="current-entities indented5">
                         <span class="separator"></span>
-                        <a class="object" href="DefaultTypes$.html" title=""></a>
-                        <a href="DefaultTypes$.html" title="">DefaultTypes</a>
+                        <a class="object" href="DefaultTypes$.html" title="Contains codename of default types."></a>
+                        <a href="DefaultTypes$.html" title="Contains codename of default types.">DefaultTypes</a>
                       </li><li class="current-entities indented5">
-                        <a class="object" href="MapTypeValue$.html" title=""></a>
-                        <a class="class" href="MapTypeValue.html" title=""></a>
-                        <a href="MapTypeValue.html" title="">MapTypeValue</a>
+                        <a class="object" href="MapTypeValue$.html" title="Companion object holding implicit writer json and constant codename for com.celadari.jsonlogicscala.tree.types.MapTypeValue."></a>
+                        <a class="class" href="MapTypeValue.html" title="Represents a Map[String, paramType] type."></a>
+                        <a href="MapTypeValue.html" title="Represents a Map[String, paramType] type.">MapTypeValue</a>
                       </li><li class="current-entities indented5">
-                        <a class="object" href="OptionTypeValue$.html" title=""></a>
-                        <a class="class" href="OptionTypeValue.html" title=""></a>
-                        <a href="OptionTypeValue.html" title="">OptionTypeValue</a>
+                        <a class="object" href="OptionTypeValue$.html" title="Companion object holding implicit writer json and constant codename for com.celadari.jsonlogicscala.tree.types.OptionTypeValue."></a>
+                        <a class="class" href="OptionTypeValue.html" title="Represents an Option[paramType]."></a>
+                        <a href="OptionTypeValue.html" title="Represents an Option[paramType].">OptionTypeValue</a>
                       </li><li class="current-entities indented5">
-                        <a class="object" href="SimpleTypeValue$.html" title=""></a>
-                        <a class="class" href="SimpleTypeValue.html" title=""></a>
-                        <a href="SimpleTypeValue.html" title="">SimpleTypeValue</a>
+                        <a class="object" href="SimpleTypeValue$.html" title="Companion object holding implicit writer json."></a>
+                        <a class="class" href="SimpleTypeValue.html" title="Represents a simple type (Int, String, ...), user defined classes and types which are not Option, Array, Map."></a>
+                        <a href="SimpleTypeValue.html" title="Represents a simple type (Int, String, ...), user defined classes and types which are not Option, Array, Map.">SimpleTypeValue</a>
                       </li><li class="current-entities indented5">
-                        <a class="object" href="TypeValue$.html" title=""></a>
-                        <a class="class" href="TypeValue.html" title=""></a>
-                        <a href="TypeValue.html" title="">TypeValue</a>
+                        <a class="object" href="TypeValue$.html" title="Companion object holding implicit reader and writer json."></a>
+                        <a class="class" href="TypeValue.html" title="Represents information about type data."></a>
+                        <a href="TypeValue.html" title="Represents information about type data.">TypeValue</a>
                       </li>
               </ul>
             </div>
@@ -205,7 +205,11 @@
       </h4>
 
       
-          <div id="comment" class="fullcommenttop"><div class="toggleContainer block">
+          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Represents an unknown type. Evaluating, serializing, deserializing a tree with a leaf node with
+<a href="" class="extype" name="com.celadari.jsonlogicscala.tree.types.AnyTypeValue">com.celadari.jsonlogicscala.tree.types.AnyTypeValue</a> as typeOpt parameters throws an exception.
+Can only be used to manipulate a <a href="../ValueLogic.html" class="extype" name="com.celadari.jsonlogicscala.tree.ValueLogic">com.celadari.jsonlogicscala.tree.ValueLogic</a> as temporary scala data structure
+before setting correct typeOpt parameter.
+</p></div><div class="toggleContainer block">
           <span class="toggle">
             Linear Supertypes
           </span>

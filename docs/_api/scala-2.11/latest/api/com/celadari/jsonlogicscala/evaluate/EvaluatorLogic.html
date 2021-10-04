@@ -49,7 +49,10 @@
       </span>
       </h4>
       
-          <div id="comment" class="fullcommenttop"><div class="toggleContainer block">
+          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Responsible for evaluating scala data structure <a href="../tree/JsonLogicCore.html" class="extype" name="com.celadari.jsonlogicscala.tree.JsonLogicCore">com.celadari.jsonlogicscala.tree.JsonLogicCore</a>.
+May be extended to fit custom use cases. Providing the right configuration via
+<a href="EvaluatorLogicConf.html" class="extype" name="com.celadari.jsonlogicscala.evaluate.EvaluatorLogicConf">com.celadari.jsonlogicscala.evaluate.EvaluatorLogicConf</a> is enough to cover most cases.
+You may redefine methods to handle extreme uncommon cases.</p></div><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
           <div class="superTypes hiddenContent"><span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
         </div></div>
@@ -104,7 +107,7 @@
         <img src="../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      
+      <p class="shortcomment cmt"></p>
     </li></ol>
             </div>
 
@@ -258,7 +261,7 @@
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
-    </li><li name="com.celadari.jsonlogicscala.evaluate.EvaluatorLogic#eval" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+    </li><li name="com.celadari.jsonlogicscala.evaluate.EvaluatorLogic#eval" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="eval(jsonLogicCore:com.celadari.jsonlogicscala.tree.JsonLogicCore):Any"></a>
       <a id="eval(JsonLogicCore):Any"></a>
       <h4 class="signature">
@@ -274,8 +277,17 @@
         <img src="../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      
-    </li><li name="com.celadari.jsonlogicscala.evaluate.EvaluatorLogic#evaluate" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <p class="shortcomment cmt">Returns evaluated result of scala data structure <a href="../tree/JsonLogicCore.html" class="extype" name="com.celadari.jsonlogicscala.tree.JsonLogicCore">com.celadari.jsonlogicscala.tree.JsonLogicCore</a>.</p><div class="fullcomment"><div class="comment cmt"><p>Returns evaluated result of scala data structure <a href="../tree/JsonLogicCore.html" class="extype" name="com.celadari.jsonlogicscala.tree.JsonLogicCore">com.celadari.jsonlogicscala.tree.JsonLogicCore</a>.
+A <a href="../tree/JsonLogicCore.html" class="extype" name="com.celadari.jsonlogicscala.tree.JsonLogicCore">com.celadari.jsonlogicscala.tree.JsonLogicCore</a> is a scala data structure that represents a json-logic-typed.
+A json-logic-typed object represents an expression.
+This method evaluates the underlying expression represented by a scala data structure
+<a href="../tree/JsonLogicCore.html" class="extype" name="com.celadari.jsonlogicscala.tree.JsonLogicCore">com.celadari.jsonlogicscala.tree.JsonLogicCore</a>.
+Before evaluation, the underlying syntax tree is traversed
+- using <a href="CompositionOperator$$ComposeJsonLogicCore.html" class="extype" name="com.celadari.jsonlogicscala.evaluate.CompositionOperator.ComposeJsonLogicCore">com.celadari.jsonlogicscala.evaluate.CompositionOperator.ComposeJsonLogicCore</a> - and
+any <a href="../tree/ValueLogic.html" class="extype" name="com.celadari.jsonlogicscala.tree.ValueLogic">com.celadari.jsonlogicscala.tree.ValueLogic</a> object representing a variable
+(of a <a href="CompositionOperator.html" class="extype" name="com.celadari.jsonlogicscala.evaluate.CompositionOperator">com.celadari.jsonlogicscala.evaluate.CompositionOperator</a>) is replaced by an
+<a href="../tree/VariableLogic.html" class="extype" name="com.celadari.jsonlogicscala.tree.VariableLogic">com.celadari.jsonlogicscala.tree.VariableLogic</a> object recursively.</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>evaluated result.</p></dd></dl></div>
+    </li><li name="com.celadari.jsonlogicscala.evaluate.EvaluatorLogic#evaluate" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="evaluate(condition:com.celadari.jsonlogicscala.tree.JsonLogicCore,logicOperatorToValue:Map[com.celadari.jsonlogicscala.tree.ComposeLogic,Map[String,Any]]):Any"></a>
       <a id="evaluate(JsonLogicCore,Map[ComposeLogic,Map[String,Any]]):Any"></a>
       <h4 class="signature">
@@ -291,7 +303,9 @@
         <img src="../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      
+      <p class="shortcomment cmt">Returns evaluated result of corresponding condition (node in syntax tree).</p><div class="fullcomment"><div class="comment cmt"><p>Returns evaluated result of corresponding condition (node in syntax tree).
+This method carries a map of map of (composition_operator -&gt; map(variable_name -&gt; variable_value)) to fetch
+the value of variable (depends on the composition_operator and the values this composition_operator is applied to).</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>evaluated result.</p></dd></dl></div>
     </li><li name="com.celadari.jsonlogicscala.evaluate.EvaluatorLogic#evaluateComposeLogic" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="evaluateComposeLogic(condition:com.celadari.jsonlogicscala.tree.ComposeLogic,logicToValue:Map[com.celadari.jsonlogicscala.tree.ComposeLogic,Map[String,Any]]):Any"></a>
       <a id="evaluateComposeLogic(ComposeLogic,Map[ComposeLogic,Map[String,Any]]):Any"></a>
@@ -308,7 +322,9 @@
         <img src="../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[this] </dd></dl></div>
+      <p class="shortcomment cmt">Returns evaluated result of corresponding condition (internal node in syntax tree).</p><div class="fullcomment"><div class="comment cmt"><p>Returns evaluated result of corresponding condition (internal node in syntax tree).
+This method carries a map of map of (composition_operator -&gt; map(variable_name -&gt; variable_value)) to fetch
+the value of variable (depends on the composition_operator and the values this composition_operator is applied to).</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>evaluated result.</p></dd></dl><dl class="attributes block"> <dt>Attributes</dt><dd>protected[this] </dd></dl></div>
     </li><li name="com.celadari.jsonlogicscala.evaluate.EvaluatorLogic#evaluateValueLogic" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="evaluateValueLogic(condition:com.celadari.jsonlogicscala.tree.ValueLogic[_]):Any"></a>
       <a id="evaluateValueLogic(ValueLogic[_]):Any"></a>
@@ -325,7 +341,7 @@
         <img src="../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[this] </dd></dl></div>
+      <p class="shortcomment cmt">Returns transformed value of leaf node in syntax tree before evaluation.</p><div class="fullcomment"><div class="comment cmt"><p>Returns transformed value of leaf node in syntax tree before evaluation.</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>transformed value.</p></dd></dl><dl class="attributes block"> <dt>Attributes</dt><dd>protected[this] </dd></dl></div>
     </li><li name="scala.AnyRef#getClass" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="getClass():Class[_]"></a>
       <a id="getClass():Class[_]"></a>

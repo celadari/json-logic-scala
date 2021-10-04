@@ -51,7 +51,18 @@
       </span>
       </h4>
       
-          <div id="comment" class="fullcommenttop"><div class="toggleContainer block">
+          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Defines interface of class/object defining an evaluator_value_logic.
+A class|object implementing this interface is called before evaluation and transforms leaf values in syntax tree.</p><p>               AND
+            /       \
+          &lt;         &lt;
+        /   \      / \
+       A     5    B  -4</p><p>if you define an evaluator_value_logic defined for int values and returns absolute value then evaluation will be on
+the following tree</p><p>               AND
+            /       \
+          &lt;         &lt;
+        /   \      / \
+       A     5    B   4
+</p></div><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
           <div class="superTypes hiddenContent"><span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
         </div></div>
@@ -94,7 +105,7 @@
 
         <div id="values" class="values members">
               <h3>Abstract Value Members</h3>
-              <ol><li name="com.celadari.jsonlogicscala.evaluate.EvaluatorValueLogic#evaluateValueLogic" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+              <ol><li name="com.celadari.jsonlogicscala.evaluate.EvaluatorValueLogic#evaluateValueLogic" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
       <a id="evaluateValueLogic(value:Any):Any"></a>
       <a id="evaluateValueLogic(Any):Any"></a>
       <h4 class="signature">
@@ -110,7 +121,7 @@
         <img src="../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      
+      <p class="shortcomment cmt">Returns value by this evaluator_value_logic.</p><div class="fullcomment"><div class="comment cmt"><p>Returns value by this evaluator_value_logic.</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>transformed value.</p></dd></dl></div>
     </li></ol>
             </div>
 
