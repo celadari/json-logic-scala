@@ -4,11 +4,10 @@ author: Charles
 nav_order: 4
 category: Jekyll
 layout: post
-has_children: true
 ---
 
 Json Logic Scala comes a built-in `Serializer` that handles a number of
-[pre-defined Types]({% post_url concept-of-types %}).
+[pre-defined Types]({% link _posts/concept-of-types.md %}).
 
 You may want to serialize more Types than those predefined by the library. For example,
 you may want to serialize a custom class you have implemented.

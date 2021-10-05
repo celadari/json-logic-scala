@@ -25,7 +25,7 @@ A typical example is the logical negate operator.
 Previous json should evaluate to `false` because of negate operator.
 
 ### How to define a custom Unary operator ?
-You need to implement trait `UnaryOperator` and pass it in a `MethodConf` exactly as in ["Add a Custom Operator at Evaluation time"]({% post_url evaluator-define-custom-operator %}).
+You need to implement trait `UnaryOperator` and pass it in a `MethodConf` exactly as in ["Add a Custom Operator at Evaluation time"]({% link _posts/evaluator-define-custom-operator.md %}).
 Implementing trait `UnaryOperator` only means to implement abstract method `def unaryOperator(value: Any): Any`
 
 *Example*
@@ -142,7 +142,7 @@ A composition operator is an operator that takes two inputs
 Common composition operators are: map, filter, reduce, all, some, none
 
 ### How to define a Composition operator ?
-You need to implement trait `CompositionOperator` and pass it in a `MethodConf` exactly as in ["Add a Custom Operator at Evaluation time"]({% post_url evaluator-define-custom-operator %}).
+You need to implement trait `CompositionOperator` and pass it in a `MethodConf` exactly as in ["Add a Custom Operator at Evaluation time"]({% link _posts/evaluator-define-custom-operator.md %}).
 Implementing trait `CompositionOperator` means to implement abstract methods:
 * `def checkInputs(conditions: Array[JsonLogicCore]): Unit`
 * `composeOperator`

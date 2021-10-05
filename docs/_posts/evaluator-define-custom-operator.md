@@ -4,7 +4,6 @@ author: Charles
 nav_order: 6
 category: Jekyll
 layout: post
-has_children: true
 ---
 
 {% include mathjax.html %}
@@ -144,7 +143,7 @@ val evaluator = new EvaluatorLogic
 
 ## Define an operator: as a service
 
-Please refer to [Advanced: Define a Marshaller/Unmarshaller/Operator as a Java Service]({% post_url define-as-a-service %})
+Please refer to [Advanced: Define a Marshaller/Unmarshaller/Operator as a Java Service]({% link _posts/define-as-a-service.md %})
 
 
 

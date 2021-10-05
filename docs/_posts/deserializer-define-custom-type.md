@@ -4,11 +4,10 @@ author: Charles
 nav_order: 5
 category: Jekyll
 layout: post
-has_children: true
 ---
 
 Json Logic Scala comes a built-in `Deserializer` that handles a number of
-[pre-defined Types]({% post_url concept-of-types %}).
+[pre-defined Types]({% link _posts/concept-of-types.md %}).
 
 You may want to parse more Types than those predefined by the library. For example,
 you may want to parse a custom class you have implemented.

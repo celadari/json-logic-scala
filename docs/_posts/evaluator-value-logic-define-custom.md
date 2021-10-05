@@ -88,7 +88,7 @@ evaluator.eval(...)
 
 ## Define an `EvaluatorValueLogic`: as a service
 
-Please refer to [Advanced: Define custom object as Java Services]({% post_url define-as-a-service %})
+Please refer to [Advanced: Define custom object as Java Services]({% link _posts/define-as-a-service.md %})
 
 
 
