@@ -1,50 +1,29 @@
 ---
-title: "Advanced: Define a Marshaller/Unmarshaller/Operator as a Java Service"
+title: "Advanced: Define a Marshaller/Unmarshaller/Operator/EvaluatorValueLogic as a Java Service"
 author: Charles
 nav_order: 9
 category: Jekyll
 layout: post
 ---
 
-## What is Evaluation ?
+# What is to be implemented as a Service ?
 
-The whole idea behind Json-Logic-Typed is to represent expressions in interoperable format
-to be exchanged between different actors (typically frontend and backend).
+Other pages manually add `Marshaller`/`Unmarshaller`/`Operator`/`EvaluatorValueLogic` to
+configuration.
 
-Such json data format enhances conveying information across different platforms/languages.
-Such platforms/languages in turn evaluate the underlying expression on its own.
+All
 
-**Evaluation "evaluates" the underlying expression to provide you a result.**
+Custom (and default) implementations of those interfaces can be seen as providers for them.
+Implementations can be installed in the form of extensions.
 
-## How to define a custom operator ?
-
-A custom operator is defined by its "codename" which is the key in Json-Logic-Typed format.
-
-*Example*:
-
-In the following example, the plus operator has "+" as a codename and must declare an `Operator`
-class/object that defines the computation performed by this operator.
-```json
-{
-  "+": [
-    {"var": "some_value1", "type":  {"codename":  "int"}},
-    {"var": "some_value2", "type":  {"codename":  "int"}}
-  ]
-}
-```
-
-Information on which implemented class/object to associate to "+" operator codename is contained in `EvaluatorLogicConf`.
-The last one being given as init parameter to `EvaluatorLogic`.
-
-There are two approaches: manual and as a service.
+Passing implementations as service providers is done by placing a provider-configuration
+files under a directory in the resource directory META-INF/services. The directory's name is the
+fully-qualified binary name of the interface/service's type.
+The directory contains a list of files; each file representing an implementation of the
+interface (whose fully-qualified binary name) with parameters of its very own.
 
 
-
-## How to implement a custom operator ?
-
-There are two distinct ways of defining an operator.
-
-### First approach: implementing `Operator` trait
+# How to declare a `Serializer` as a service ?
 
 
 
