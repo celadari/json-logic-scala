@@ -1,5 +1,5 @@
 ---
-title: "Add a Custom Transformation before Evaluation"
+title: "Custom EvaluatorValueLogic"
 author: Charles
 nav_order: 7
 category: Jekyll
@@ -27,14 +27,14 @@ each component (frontend/backend/data).
 Let's suppose you receive a json in Json-Logic-Typed format and one of the leaf nodes
 (in the syntax tree) is a string representing a car as: brand + vehicle registration number.
 
-![Original json](assets/non-pretreated-json-logic-tree.png)
+![Original json](../assets/non-pretreated-json-logic-tree.png)
 
 imagine all your defined logic and operators need to be applied on vehicle registration number
 only. All you'd need is an `EvaluatorValueLogic` to handle this to you.
 By doing so, evaluation would not be performed on previous expression (syntax tree) but the
 following one.
 
-![Pre-treated json](assets/pretreated-json-logic-tree.png)
+![Pre-treated json](../assets/pretreated-json-logic-tree.png)
 
 
 ## How to define a custom `EvaluatorValueLogic` ?

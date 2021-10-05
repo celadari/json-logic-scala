@@ -1,5 +1,5 @@
 ---
-title: "Reduce/Unary/Global/Composition operators"
+title: "Kind of operators"
 author: Charles
 nav_order: 8
 category: Jekyll

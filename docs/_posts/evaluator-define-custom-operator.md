@@ -1,5 +1,5 @@
 ---
-title: "Add a Custom Operator at Evaluation time"
+title: "Custom Operator"
 author: Charles
 nav_order: 6
 category: Jekyll
@@ -64,7 +64,7 @@ There are two distinct ways of defining an operator.
 ### First approach: implementing `Operator` trait
 
 *Example:*
-Let's implement an operator "expN" that takes two input $X$, $N$ and computes:
+Let's implement an operator "expN" that takes two input $$X$$, $$N$$ and computes:
 $$\sum_{n=1}^{N} \frac{X^{n}}{n!}$$
 
 Only remaining thing is to do is manually passing information about "expN" operator as an `MethodConf` object to

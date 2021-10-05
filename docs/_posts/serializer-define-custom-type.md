@@ -1,5 +1,5 @@
 ---
-title: "Add a Custom Type to Serializer (Unparsing)"
+title: "Custom Marshaller"
 author: Charles
 nav_order: 4
 category: Jekyll

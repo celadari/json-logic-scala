@@ -1,1 +1,1 @@
-[{"scala-version": "2.13", "json-logic-versions": ["SNAPSHOT-2.0.0", "2.1", "2.0"]}, {"scala-version": "2.12", "json-logic-versions": ["2.1", "2.0"]}, {"scala-version": "2.11", "json-logic-versions": ["2.1", "2.0"]}, {"scala-version": "2.11 2.12 2.13 ", "json-logic-versions": ["1.9.16", "1.9.16", "1.9.16", "1.9.16", "1.9.16", "1.9.16"]}]
+[{"scala-version": "2.13", "json-logic-versions": ["SNAPSHOT-2.0.0", "2.1", "2.0"]}, {"scala-version": "2.12", "json-logic-versions": ["2.1", "2.0"]}, {"scala-version": "2.11", "json-logic-versions": ["2.1", "2.0"]}]
