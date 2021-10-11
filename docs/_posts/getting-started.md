@@ -9,7 +9,7 @@ has_children: true
 
 ## Scala versions
 
-Json-logic-scala supports the following scala versions:
+Json-logic-scala supports the following Scala versions:
 * 2.11
 * 2.12
 * 2.13

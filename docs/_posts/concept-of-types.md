@@ -25,7 +25,7 @@ as implementation doesn't need to know in advance the type behind key "value1".
 
 When dealing with a static-typed language such as Scala, implementation needs to know in advance
 the types in json fields.
-Json-logic-Scala, only accepts Json-Logic-Typed, and addresses this drag by defining the scala data structure
+Json-logic-Scala, only accepts Json-Logic-Typed, and addresses this drag by defining the Scala data structure
 to be used to parse a json field/value according to its annotated Type.
 
 ## How to annotate Type in Json-Logic-Typed format
@@ -46,7 +46,7 @@ A simple type is simply defined by its "codename" field value.
 
 ### Higher Type (option|array|map)
 A higher type is a composition of simple and/or higher types.
-A higher Type represents generic types in scala such as: Array, Option, Map.
+A higher Type represents generic types in Scala such as: Array, Option, Map.
 
 It is recursively defined by its "codename" field value and its "paramType" field value.
 
@@ -80,7 +80,7 @@ In the following example, variable "category_to_price_values" is to be parsed as
 ## Default types in Json Logic Scala
 Json Logic Scala comes with a number of built-in defined Types to avoid you to reinvent the wheel.
 
-| Type  | scala data structure  | is Higher Type    |
+| Type  | Scala data structure  | is Higher Type    |
 |---|---|---|
 |   "boolean"   |    `Boolean`   |  no  |
 |   "int"       |    `Int`       |  no  |

@@ -19,7 +19,7 @@ Play-Json documentation (or at least understand the following classes/traits
 ## What is a Marshaller ?
 
 A marshaller is an object that converts a value from a Json-Logic-Typed
-(leaf node in syntax tree) into a scala data type.
+(leaf node in syntax tree) into a Scala data type.
 
 A marshaller is defined by trait `Marshaller` and must implement method
 
@@ -46,7 +46,7 @@ object UnmarshallerA {
 
 ## What is a Serializer ?
 
-A `Serializer` converts a scala data structure `JsonLogicScala` into a json in Json-Logic-Typed format.
+A `Serializer` converts a Scala data structure `JsonLogicScala` into a json in Json-Logic-Typed format.
 
 A `Serializer` parses a json following the Json-Logic-Typed format and to every found Type
 relies on its associated `Marshaller`.

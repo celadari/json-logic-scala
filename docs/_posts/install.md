@@ -26,4 +26,4 @@ compile group: 'org.celadari', name: 'json-logic-scala_2.13', version: '2.0'
   <version>2.0</version>
 </dependency>
 ```
-*Note: Sbt automatically manages scala versions. Desired scala version must be specified if using Gradle or Maven.*
+*Note: Sbt automatically manages Scala versions. Desired Scala version must be specified if using Gradle or Maven.*

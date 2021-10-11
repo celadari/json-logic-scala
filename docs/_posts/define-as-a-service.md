@@ -26,7 +26,7 @@ Each file contains a number of parameters to define an implementation/service pr
 
 There are several possible parameters:
 * `className`: binary fully qualified name of current implementation.
-* `singleton`: boolean to indicate if scala `object`, otherwise scala `class`.
+* `singleton`: boolean to indicate if Scala `object`, otherwise Scala `class`.
 * `codename`: Type codename this implementation should be associated with. See [Types]({% link _posts/concept-of-types.md %})
 * `constructorArgNames`: list of constructor argument names in single `String` separated by `sep`.
 * `sep`: string separator in `constructorArgNames`.

@@ -1,5 +1,5 @@
 ---
-title: Serialize scala data structure to json
+title: Serialize Scala data structure to json
 author: Charles
 nav_order: 4
 category: Jekyll
@@ -7,13 +7,13 @@ layout: post
 parent: Getting started
 ---
 
-Converting a scala data structure to a json-logic-typed data is a serialize operation performed by
+Converting a Scala data structure to a json-logic-typed data is a serialize operation performed by
 utility class `Serializer`.
 
-* A `Serializer` is a class responsible for converting a scala structure to json.
+* A `Serializer` is a class responsible for converting a Scala structure to json.
 Configuration is provided with a `SerializerConf` object, if no object is provided the default one is used
 instead.
-* A `SerializerConf` provides mapping from scala data structure to type information in json-logic-typed format.
+* A `SerializerConf` provides mapping from Scala data structure to type information in json-logic-typed format.
 
 
 
