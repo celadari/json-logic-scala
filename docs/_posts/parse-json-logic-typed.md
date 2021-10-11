@@ -1,5 +1,5 @@
 ---
-title: Parse json to scala data structure
+title: Parse json to Scala data structure
 author: Charles
 nav_order: 4
 category: Jekyll
@@ -7,13 +7,13 @@ layout: post
 parent: Getting started
 ---
 
-Converting a json-logic-typed data to a scala data structure is a deserialize operation performed by
+Converting a json-logic-typed data to a Scala data structure is a deserialize operation performed by
 utility class `Deserializer`.
 
-* A `Deserializer` is a class responsible for parsing json data and convert it to a scala structure.
+* A `Deserializer` is a class responsible for parsing json data and convert it to a Scala structure.
 Configuration is provided with a `DeserializerConf` object, if no object is provided the default one is used
 instead.
-* A `DeserializerConf` provides mapping from type in json-logic-typed to scala data structure.
+* A `DeserializerConf` provides mapping from type in json-logic-typed to Scala data structure.
 
 ### Parsing examples:
 

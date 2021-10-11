@@ -19,7 +19,7 @@ Play-Json documentation (or at least understand the following classes/traits
 ## What is an Unmarshaller ?
 
 An unmarshaller is an object that converts a value from a json in Json-Logic-Typed
-(leaf node in syntax tree) format to a scala data structure `JsonLogicCore`.
+(leaf node in syntax tree) format to a Scala data structure `JsonLogicCore`.
 
 An unmarshaller is defined by trait `Unmarshaller` and must implement method
 
@@ -45,7 +45,7 @@ object UnmarshallerA {
 
 ## What is a Deserializer ?
 
-A `Deserializer` parses a json in Json-Logic-Typed format into a scala data structure `JsonLogicScala`.
+A `Deserializer` parses a json in Json-Logic-Typed format into a Scala data structure `JsonLogicScala`.
 
 A `Deserializer` parses a json following the Json-Logic-Typed format and to every found Type
 relies on its associated `Unmarshaller`.

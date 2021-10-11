@@ -1,5 +1,5 @@
 ---
-title: Evaluate json scala data structure
+title: Evaluate json Scala data structure
 author: Charles
 nav_order: 5
 category: Jekyll
@@ -8,13 +8,13 @@ parent: Getting started
 ---
 
 Json-logic-format represents expressions.
-The previous pages deal with parsing a json in json-logic-typed format to a scala data structure and vice versa. 
+The previous pages deal with parsing a json in json-logic-typed format to a Scala data structure and vice versa. 
 
-**This page is about evaluating the represented expression in scala.** More precisely it is about evaluating a scala
+**This page is about evaluating the represented expression in Scala.** More precisely it is about evaluating a Scala
 data structure `JsonLogicCore` representing a json-logic-typed json.
 
 
-Evaluating a `JsonLogicCore` scala data structure is an evaluate operation performed by
+Evaluating a `JsonLogicCore` Scala data structure is an evaluate operation performed by
 utility class `EvaluatorLogic`.
 
 * `EvaluatorLogic` is a class responsible for evaluating `JsonLogicCore` into an `Any` value.
