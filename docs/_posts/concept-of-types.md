@@ -6,33 +6,44 @@ category: Jekyll
 layout: post
 ---
 
-## Behind the concept of "Type" in Json-Logic-Typed
+# Behind the concept of "Type" in Json-Logic-Typed
 
-As a reminder Json Logic Typed is a json logic format which annotates value data-type.
+Json Logic Typed is a variant of the jsonLogic format that annotates data-type
+values.
 
-The whole concept of Json-Logic-Typed is to annotate type information about values in Json-Logic format.
-Providing type information enables choosing the right data structure at parsing time when dealing
-with static-typed languages such as Scala.
+When using statically typed languages like Scala,
+providing type information lets an application choosing the right data structure
+at parsing time.
 
-As an example:
+Consider the following example:
+
 ```json
 {
   "value1": 45
 }
 ```
-the following JSON can be easily parsed in a dynamically-typed language - python/perl/javascript - as
-as implementation doesn't need to know in advance the type behind key "value1".
 
-When dealing with a static-typed language such as Scala, implementation needs to know in advance
-the types in json fields.
-Json-logic-Scala, only accepts Json-Logic-Typed, and addresses this drag by defining the Scala data structure
-to be used to parse a json field/value according to its annotated Type.
+This JSON snippet can be easily parsed in a dynamically-typed language like
+Python, Perl, or Javascript.
+In these languages, the implementation doesn't need to know in advance the type
+behind the key `value1`.
 
-## How to annotate Type in Json-Logic-Typed format
-Type is annotated after field "type" in a "var" operator json (leaf node in corresponding syntax tree).
+On the other hand, in typed languages like Scala, the implementation
+needs to know in advance the types in the JSON fields.
+
+Json-logic-Scala accepts only JSON in  Json-Logic-Typed format.
+To address this drag, json-logic-scala defines a Scala data structure that you
+can use to parse a JSON field or value according to its annotated Type.
+
+## How to annotate type in Json-Logic-Typed format
+
+Type is annotated after the field "type" in a "var" operator JSON
+(i.e. the leaf node in corresponding syntax tree).
 
 ### Simple Type
-A simple type is simply defined by its "codename" field value.
+
+A simple type is simply defined by its `codename` field value.
+
 ```json
 [{
     "...": [
