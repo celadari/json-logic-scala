@@ -6,37 +6,41 @@ category: Jekyll
 layout: post
 ---
 
-# What is to be implemented as a Service ?
+# Define custom objects as Java services
 
-Other pages manually add `Marshaller`/`Unmarshaller`/`MethodConf`/`EvaluatorValueLogic` to
-configuration.
+## What is to be implemented as a Service ?
+
+Other pages demonstrate how to manually add
+`Marshaller`/`Unmarshaller`/`MethodConf`/`EvaluatorValueLogic` to configuration.
 
 Custom (and default) implementations of those interfaces can be seen as providers for them.
 Implementations can be installed in the form of extensions.
 
-Passing implementations as service providers is done by placing a provider-configuration
-files under a directory in the resource directory META-INF/services. The directory's name is the
+To pass implementations as service providers, place provider-configuration files
+under a directory in the resource directory `META-INF/services`. The directory's name is the
 fully-qualified binary name of the interface/service's type.
-The directory contains a list of files; each file representing an implementation of the
-interface (whose fully-qualified binary name) with parameters of its very own.
 
-# File parameters
+The directory contains a list of files. Each file represents an implementation
+of the interface (whose fully-qualified binary name), with parameters of its very own.
+
+## File parameters
 
 Each file contains a number of parameters to define an implementation/service provider.
 
 There are several possible parameters:
 * `className`: binary fully qualified name of current implementation.
 * `singleton`: boolean to indicate if Scala `object`, otherwise Scala `class`.
-* `codename`: Type codename this implementation should be associated with. See [Types]({% link _posts/concept-of-types.md %})
-* `constructorArgNames`: list of constructor argument names in single `String` separated by `sep`.
+* `codename`: Type codename that this implementation should be associated with. See [Types]({% link _posts/concept-of-types.md %})
+* `constructorArgNames`: list of constructor argument names in single a `String`,
+separated by `sep`.
 * `sep`: string separator in `constructorArgNames`.
 
-**Constructor arguments must be provided as well in the file in the form of `argumentName=argumentValue`**.
+**You must also provide Constructor arguments in the file in the form
+`argumentName=argumentValue`**.
 
+## How to declare a `Marshaller` as a service
 
-# How to declare a `Marshaller` as a service ?
-
-You only need to add a directory named `com.celadari.jsonlogicscala.serialize.Marshaller`
+Just add a directory named `com.celadari.jsonlogicscala.serialize.Marshaller`
 in your `META-INF/services/` directory.
 
 ```
