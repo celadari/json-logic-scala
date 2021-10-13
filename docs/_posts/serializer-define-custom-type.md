@@ -1,9 +1,10 @@
 ---
 title: "Custom Marshaller"
 author: Charles
-nav_order: 4
+nav_order: 2
 category: Jekyll
 layout: post
+parent: Marshall and Unmarshall
 ---
 
 Json Logic Scala comes a built-in `Serializer` that handles a number of
@@ -12,16 +13,12 @@ Json Logic Scala comes a built-in `Serializer` that handles a number of
 You may want to serialize more Types than those predefined by the library. For example,
 you may want to serialize a custom class you have implemented.
 
-**Json Logic Scala relies on the Play-Json library** You may need to read the
-Play-Json documentation (or at least understand the following classes/traits 
-`JsValue`, `JsObject`).
-
 ## What is a Marshaller ?
 
 A marshaller is an object that converts a value from a Json-Logic-Typed
 (leaf node in syntax tree) into a Scala data type.
 
-A marshaller is defined by trait `Marshaller` and must implement method
+A marshaller is defined by trait `Marshaller` and must implement the method:
 
 ```scala
 def marshal(value: Any): JsValue
@@ -30,7 +27,8 @@ def marshal(value: Any): JsValue
 Each Type is associated with its own `Marshaller`.
 
 *Example*:
-If you define custom class A, you may define its `Marshaller`
+If you define a custom class A, you may define its `Marshaller`:
+
 ```scala
 class A(val param1: String, val param2: Int)
 
@@ -50,4 +48,5 @@ A `Serializer` converts a Scala data structure `JsonLogicScala` into a json in J
 
 A `Serializer` parses a json following the Json-Logic-Typed format and to every found Type
 relies on its associated `Marshaller`.
-Association between Type and `Marshaller` is provided in `SerializerConf` object.
+
+The association between Type and `Marshaller` is provided in the `SerializerConf` object.
