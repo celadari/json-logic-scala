@@ -10,47 +10,89 @@ parent: Getting started
 
 # Scala data structures: global view (part 2/2)
 
-The main takeaway difference between json-logic format and json-logic-typed format is that json-logic-format
-not only represents an expression but contains information about value types (Int, String, Boolean, ...).
+Data in plain JsonLogic format represents only expressions and values.
+With JsonLogic-typed, you can also include information about *value types*
+(e.g. `Int`, `String`, `Boolean`).
 
-### Purpose of `TypeValue`
-**Json-logic-scala contains Scala data structures to represent type information in json-logic-typed and utilities to make
-conversion between data (json) and data representation (scala data structure).**
+When they represent value types in JsonLogic-typed, the Scala data structures
+are basic recursive structures.
 
-`SerializerConf` and `DeserializerConf` inform `Serializer` and `DeserializerConf` how to map `TypeValue`
-to Scala types. Thus enabling serialization and deserialization.
+## The JsonLogicCore object represents typed JsonLogic
 
+`JsonLogicCore` is a Scala data structure that lets you represent
+typed JsonLogic. The interface exposes one attribute: `operator`, which has a
+type `String``.
 
-**Scala data structures to represent value types in json-logic-typed format are basic recursive structures.**
+`JsonLogicCore` object has the following subtypes:
 
-* A `TypeValue` object is a Scala data structure representation of a value type in json-logic-typed format. Interface exposes one 
-attribute `codename` of type String.
+*  `ValueLogic`: a Scala data structure that represents a data-node in
+json-logic-typed datum. It consists of several attributes, including:
+   * `operator` of type String,
+   * `typeCodenameOpt` of type Option[TypeValue]
+ ([TypeValue is detailed in another section]({% link _posts/json-logic-typed-scala-representation-part-2.md %}))
+   * `valueOpt` of generic-type Option[T].
+* `ComposeLogic`: a Scala data structure that represents an operator-node in
+json-logic-typed datum. It consists of two attributes:
+    * `operator` of type String
+    * `conditions` of type Array[JsonLogicCore]
 
-* A `SimpleTypeValue` - subtype of `TypeValue` - object is a Scala data structure representation of a simple value (String, Int, Boolean)
-type in json-logic-typed format. By simple, it means no generic types. Check subtypes of `TypeValue` below for generic types representing (Map, Array, Option).
+<!--How about adding examples?-->
 
-* An `OptionTypeValue` - subtype of `TypeValue` - object is a Scala data structure representation of an optional value (Option[String], Option[Int], ...)
-in json-logic-typed format. It consists of two attributes: `codename` (set to `"option""`) and `paramType` of type `TypeValue`.
+## The `TypeValue` object represents a value type
 
-* An `MapTypeValue` - subtype of `TypeValue` - object is a Scala data structure representation of a map - keys must be string type - (Map[String, String], Map[String, Int], ...)
-in json-logic-typed format. It consists of two attributes: `codename` (set to `"map""`) and `paramType` of type `TypeValue`.
+> &#128712;  The `Serializer` and `Deserializer` classes define how `TypeValue` maps to Scala types. 
+> For more information about how to use and configure these classes,
+> see the page [Parse JSON to Scala](./parse-json-logic-typed).
 
-* An `ArrayTypeValue` - subtype of `TypeValue` - object is a Scala data structure representation of an array (Array[String], Array[Int], ...)
-in json-logic-typed format. It consists of two attributes: `codename` (set to `"array""`) and `paramType` of type `TypeValue`.
+ `TypeValue` is a Scala data structure that represents a value type in
+ json-logic-typed format. The interface exposes one  attribute:`codename`, of
+type `String`.
+
+`TypeValue` has a the following subtypes:
+
+* `SimpleTypeValue`: a Scala data structure representation of a _simple value_
+(`String`, `Int`, `Boolean`)
+In this case, simple means no generic types.
+
+* An `OptionTypeValue`: a Scala data structure representation of an optional value (Option[String], Option[Int], ...)
+in json-logic-typed format. It consists of two attributes:
+    * `codename` (set to `"option""`)
+    * `paramType` of type `TypeValue`.
+
+* An `MapTypeValue`: a Scala data structure representation of a map .
+Keys must be in JsonLogic-typed format, of type `String` ─ (Map[String, String], Map[String, Int], ...)
+It consists of two attributes:
+    * `codename` (set to `"map""`)
+    * `paramType`, of type `TypeValue`.
+
+* An `ArrayTypeValue`: a Scala data structure representation of an array (Array[String], Array[Int], ...)
+in json-logic-typed format. It consists of two attributes:
+   * `codename` (set to `"array""`)
+   * `paramType` of type `TypeValue`.
 
 ### Predefined generic types
-*`OptionTypeValue`, `MapTypeValue`, `ArrayTypeValue`* each represents a generic Scala type (respectively Option[], Map[], Array[]) and may be composed if necessary.
 
-For example, the Scala type `Array[Map[String, Option[Int]]]` can be represented by the following `TypeValue` structure `ArrayTypeValue(MapTypeValue(SimpleTypeValue(INT_CODENAME)))` where `INT_CODENAME` is a String codename.
+*`OptionTypeValue`, `MapTypeValue`, and `ArrayTypeValue`* each represent a
+generic Scala type (respectively, option[], map[], and array[]).
 
-### Purpose of generic types
-**`OptionTypeValue`, `MapTypeValue`, `ArrayTypeValue` makes it much more convenient to work with Option, Map, Array instead of defining a new `SimpleType` - thus `SerializerConf` and `DeserializerConf` - to each sub-subtype (Array[Int], Array[String], ..., Option[Int], Option[String], ...)**
+Instead of defining a new `simpletype` to each sub-subtype, these generic types
+make it much more convenient to work with options, maps, and arrays.
 
-### Summary table
+They also can be composed if necessary. 
+For example, the Scala type `Array[Map[String, Option[Int]]]` can be represented
+by the following `TypeValue` structure 
 
-| `TypeValue` object  | Can be used to represent Scala data structures  |
-|---|---|
-| `SimpleTypeValue`  |  `Int`, `String`, `Boolean` but also custom types you might implement yourself `MyOwnClassA`, `MyOwnClassB`, ... |
-| `OptionTypeValue`  | `Option[Int]`, `Option[String]` but can also represent composed generic types `Option[Option[Int]]`, `Option[Array[Int]]` and even involve custom data types `Option[Array[MyOwnClassA]]`, ... |
-| `MapTypeValue`  | `Map[String, Int]`, `Map[String, String]` but can also represent composed generic types `Map[String, Option[Int]]`, `Map[String, Array[Int]]` and even involve custom data types `Map[String, Array[MyOwnClassA]]`, ... |
-| `ArrayTypeValue` | `Array[Int]`, `Array[String]` but can also represent composed generic types `Array[Option[Int]]`, `Array[Array[Int]]` and even involve custom data types `Array[Option[MyOwnClassA]]`, ... |
+```scala
+ArrayTypeValue(MapTypeValue(SimpleTypeValue(INT_CODENAME)))
+```
+
+where `INT_CODENAME` is a string codename.
+
+### Reference of `TypeValue` objects
+
+| `TypeValue` object | Can be used to represent Scala data structures | And can also represent |
+|--------------------|--------------------------------------------------------------------------------------------------------------|------------|
+| `SimpleTypeValue`  | `Int`, `String`, `Boolean` | Custom types you might implement yourself `MyOwnClassA`, `MyOwnClassB`, ...    |
+| `OptionTypeValue`  | `Option[Int]`, `Option[String]` | The composed generic types `Option[Option[Int]]`, `Option[Array[Int]]`, even involve custom data types `Option[Array[MyOwnClassA]]`, ...|
+| `MapTypeValue`     | `Map[String, Int]`, `Map[String, String]` |The composed generic types `Map[String, Option[Int]]`, `Map[String, Array[Int]]` and even involve custom data types `Map[String, Array[MyOwnClassA]]`, ... |
+| `ArrayTypeValue`   | `Array[Int]`, `Array[String]` |the composed generic types `Array[Option[Int]]`, `Array[Array[Int]]` and even involve custom data types `Array[Option[MyOwnClassA]]`, ...|
