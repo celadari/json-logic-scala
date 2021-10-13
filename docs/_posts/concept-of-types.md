@@ -56,13 +56,16 @@ A simple type is simply defined by its `codename` field value.
 ```
 
 ### Higher Type (option|array|map)
+
 A higher type is a composition of simple and/or higher types.
-A higher Type represents generic types in Scala such as: Array, Option, Map.
+A higher type represents generic types in Scala like arrays, options, and maps.
 
-It is recursively defined by its "codename" field value and its "paramType" field value.
+It is recursively defined by its `codename` field value and its `paramType` field value.
 
-Example 1:
-In the following example, variable "price_values" is to be parsed as an `Array[Int]`
+**Example 1**:
+
+In the following example, the variable "price_values" is to be parsed as an `Array[Int]`
+
 ```json
 [{
     "...": [
@@ -74,9 +77,12 @@ In the following example, variable "price_values" is to be parsed as an `Array[I
 }]
 ```
 
-Example 2:
+**Example 2**:
+
 Higher Types can be composed.
-In the following example, variable "category_to_price_values" is to be parsed as an `Map[String, Array[Int]]`
+In the following example, the variable "category_to_price_values" is parsed as
+an `Map[String, Array[Int]]`
+
 ```json
 [{
     "...": [
@@ -89,7 +95,8 @@ In the following example, variable "category_to_price_values" is to be parsed as
 ```
 
 ## Default types in Json Logic Scala
-Json Logic Scala comes with a number of built-in defined Types to avoid you to reinvent the wheel.
+So that you don't have to reinvent the wheel, Json Logic Scala comes with a
+number of built-in defined Types.
 
 | Type  | Scala data structure  | is Higher Type    |
 |---|---|---|
@@ -106,7 +113,8 @@ Json Logic Scala comes with a number of built-in defined Types to avoid you to r
 |   "array"      |    `Array`      |  yes  |
 |   "map"      |    `Map`      |  yes  |
 
-Higher Types require "paramType" field to be defined in json.
+Higher Types require `paramType` field to be defined in json.
 
-**This means that if you stick to those codenames for Type annotation in your json, you can simply use
-default `Serializer`/`Deserializer` to parse/unparse your json.**
+**Key takeaway**: If you stick to those codenames for Type annotation in your JSON,
+you can simply use the default `Serializer` and `Deserializer` to parse/unparse your
+JSON.
