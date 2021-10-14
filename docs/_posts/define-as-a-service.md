@@ -65,7 +65,9 @@ project
 
 
 **Example**
-You may implement following class
+
+You may implement the following class
+
 ```scala
 // package com.myownpackage.definitions
 class A(...)

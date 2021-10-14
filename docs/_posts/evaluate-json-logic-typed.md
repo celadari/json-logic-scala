@@ -16,6 +16,7 @@ structure](parse-json-logic-typed), and the [reverse process of serialization](s
 In all these cases, the underlying data might be an _expression_ that you want to
 evaluate. json-logic-scala provides utilities to evaluate these expressions.
 This section goes over how to do this.
+
 More precisely, this section is about evaluating the [Scala data structure `JsonLogicCore`](json-logic-typed-scala-representation-part-2),
 which represents json-logic-typed JSON.
 
@@ -33,17 +34,20 @@ A class implementing this trait will be applied to transform leaf values (in an 
 and mappings from the operator codename to the right method to be used for evaluation.
 
 ### Evaluation example:
-The following expression
+
+Consider the following expression:
 
 $$\mathbf{price} \ge 20\ \&\ \mathbf{label}\neq\mathbf{label2}$$
 $$\mathbf{price} \ge 20\ \&\ \mathbf{label}\neq\mathbf{label2}$$
 
-leads to the following abstract syntax tree
+It is represented by the following abstract syntax tree:
+
 <p align="center">
     <img src="/assets/boolean_logical_tree.png" alt="drawing" width="500"/>
 </p>
 
-if evaluated with the following `EvaluatorValueLogic`
+
+If evaluated with the following `EvaluatorValueLogic`
 
 ```scala
 class IncrementLeafInt(intToBeAdded: Int) extends EvaluatorValueLogic {
@@ -65,7 +69,7 @@ is equivalent to an evaluation on the following abstract tree:
 
 Evaluation starts by applying the class extending `EvaluatorValueLogic`
 on all syntax tree node leaves that are associated with this `TypeValue`
-([see the explanation on `TypeValue`](_posts/json-logic-typed-scala-representation-part-2.md))
+([see the explanation on `TypeValue`](json-logic-typed-scala-representation-part-2.html#the-typevalue-object-represents-a-value-type)
 
 ### A detailed example of code using EvaluatorValueLogic
 

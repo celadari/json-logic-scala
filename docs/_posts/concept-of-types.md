@@ -12,7 +12,7 @@ Json Logic Typed is a variant of the jsonLogic format that annotates data-type
 values.
 
 When using statically typed languages like Scala,
-providing type information lets an application choosing the right data structure
+providing type information lets an application choose the right data structure
 at parsing time.
 
 Consider the following example:
@@ -25,19 +25,19 @@ Consider the following example:
 
 This JSON snippet can be easily parsed in a dynamically-typed language like
 Python, Perl, or Javascript.
-In these languages, the implementation doesn't need to know in advance the type
-behind the key `value1`.
+In these languages, the implementation does not need a predefined type
+for the key `value1`.
 
 On the other hand, in typed languages like Scala, the implementation
-needs to know in advance the types in the JSON fields.
+needs to know the values' types in advance.
 
-Json-logic-Scala accepts only JSON in  Json-Logic-Typed format.
-To address this drag, json-logic-scala defines a Scala data structure that you
+Json-logic-Scala accepts only JSON in Json-Logic-Typed format.
+To address this, json-logic-scala defines a Scala data structure that you
 can use to parse a JSON field or value according to its annotated Type.
 
 ## How to annotate type in Json-Logic-Typed format
 
-Type is annotated after the field "type" in a "var" operator JSON
+Type is annotated after the field `"type"` in a `"var"` operator JSON
 (i.e. the leaf node in corresponding syntax tree).
 
 ### Simple Type
@@ -64,7 +64,7 @@ It is recursively defined by its `codename` field value and its `paramType` fiel
 
 **Example 1**:
 
-In the following example, the variable "price_values" is to be parsed as an `Array[Int]`
+In the following example, the variable `price_values` is to be parsed as an `Array[Int]`
 
 ```json
 [{
@@ -80,7 +80,7 @@ In the following example, the variable "price_values" is to be parsed as an `Arr
 **Example 2**:
 
 Higher Types can be composed.
-In the following example, the variable "category_to_price_values" is parsed as
+In the following example, the variable `category_to_price_values` is parsed as
 an `Map[String, Array[Int]]`
 
 ```json
