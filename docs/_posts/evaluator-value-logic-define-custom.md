@@ -20,7 +20,7 @@ The object lets you to enable custom pre-treatments on JSON in
 Json-Logic-Typed format.
 
 Imagine you need to share a common JSON in Json-Logic-Typed format between several
-components (frontend/backend/data). 
+components (frontend/backend/data).
 Imagine now that you would to need to elaborate a custom pre-treatment specific to
 each of these component.
 
@@ -31,7 +31,7 @@ Let's suppose you receive JSON in Json-Logic-Typed format and one of the leaf no
 ![Original json](../assets/non-pretreated-json-logic-tree.png)
 
 Imagine that all your defined logic and operators needs be applied on only
-the vehicle registration number. 
+the vehicle registration number.
 
  `EvaluatorValueLogic` is all you need to handle this for you.
 For example, evaluation could be performed not on the previous expression

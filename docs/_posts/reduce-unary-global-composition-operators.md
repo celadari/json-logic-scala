@@ -28,7 +28,7 @@ A typical example is the logical negate operator.
 
 Because of the negate operator, the previous JSON should evaluate to `false`.
 
-### How to define a custom Unary operator 
+### How to define a custom Unary operator
 
 You need to implement the trait `UnaryOperator` and pass it in a `MethodConf` ─
 exactly as in ["Add a Custom Operator at Evaluation time"]({% link _posts/evaluator-define-custom-operator.md %}).
@@ -106,7 +106,7 @@ A _composition operator_ is an operator that takes two inputs:
 
 Common composition operators are: map, filter, reduce, all, some, none
 
-### How to define a Composition operator 
+### How to define a Composition operator
 
 You need to implement the trait `CompositionOperator` and pass it in a `MethodConf`─
 exactly as in ["Add a Custom Operator at Evaluation time"]({% link _posts/evaluator-define-custom-operator.md %}).
