@@ -22,7 +22,7 @@ which represents json-logic-typed JSON.
 ## The `EvaluatorLogic` class
 
 To evaluate a `JsonLogicCore` Scala data structure, use the  `EvaluatorLogic`
-utility class. 
+utility class.
 
 * The `EvaluatorLogic` class is responsible for evaluating `JsonLogicCore` into an `Any` value.
 Configuration is provided with a `EvaluatorLogicConf` object. If no `EvaluatorLogicConf`
@@ -63,7 +63,7 @@ is equivalent to an evaluation on the following abstract tree:
 
 ### Summary: how `EvaluatorValueLogic` evaluates
 
-Evaluation starts by applying the class extending `EvaluatorValueLogic` 
+Evaluation starts by applying the class extending `EvaluatorValueLogic`
 on all syntax tree node leaves that are associated with this `TypeValue`
 ([see the explanation on `TypeValue`](_posts/json-logic-typed-scala-representation-part-2.md))
 

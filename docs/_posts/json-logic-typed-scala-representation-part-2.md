@@ -40,7 +40,7 @@ json-logic-typed datum. It consists of two attributes:
 
 ## The `TypeValue` object represents a value type
 
-> &#128712;  The `Serializer` and `Deserializer` classes define how `TypeValue` maps to Scala types. 
+> &#128712;  The `Serializer` and `Deserializer` classes define how `TypeValue` maps to Scala types.
 > For more information about how to use and configure these classes,
 > see the page [Parse JSON to Scala](./parse-json-logic-typed).
 
@@ -78,9 +78,9 @@ generic Scala type (respectively, option[], map[], and array[]).
 Instead of defining a new `simpletype` to each sub-subtype, these generic types
 make it much more convenient to work with options, maps, and arrays.
 
-They also can be composed if necessary. 
+They also can be composed if necessary.
 For example, the Scala type `Array[Map[String, Option[Int]]]` can be represented
-by the following `TypeValue` structure 
+by the following `TypeValue` structure
 
 ```scala
 ArrayTypeValue(MapTypeValue(SimpleTypeValue(INT_CODENAME)))

@@ -8,7 +8,7 @@ parent: Getting started
 ---
 
 {% include mathjax.html %}
-   
+
 # Scala data structures: global view (part 1/2)
 
 Json-logic-scala lets you represent Scala data structures as typed JsonLogic data.
@@ -18,7 +18,7 @@ data structure.
 ## Different representations of logic
 
 To help understand how Scala data structures can be serialized into JSON (and deserialized),
-you can use the abstract syntax tree to conceptualize expressions. 
+you can use the abstract syntax tree to conceptualize expressions.
 
 Consider the following expression:
 

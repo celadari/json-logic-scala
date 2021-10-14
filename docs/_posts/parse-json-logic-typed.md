@@ -7,7 +7,7 @@ layout: post
 parent: Getting started
 ---
 
-The `Deserializer` utility class converts json-logic-typed data 
+The `Deserializer` utility class converts json-logic-typed data
 Scala data structure.
 
 Configure the `Deserializer` class with the `DeserializerConf` object.
