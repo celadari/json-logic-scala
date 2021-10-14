@@ -15,10 +15,10 @@ you may want to serialize a custom class you have implemented.
 
 ## What is a Marshaller ?
 
-A marshaller is an object that converts a value from a Json-Logic-Typed
+A marshaller is an object that converts a value from Json-Logic-Typed
 (leaf node in syntax tree) into a Scala data type.
 
-A marshaller is defined by trait `Marshaller` and must implement the method:
+A marshaller is defined by the trait `Marshaller` and must implement the method:
 
 ```scala
 def marshal(value: Any): JsValue

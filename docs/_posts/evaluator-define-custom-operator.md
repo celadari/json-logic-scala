@@ -13,7 +13,7 @@ layout: post
 
 A central goal of Json-Logic-Typed is to represent expressions in interoperable format.
 This allows the expressions to be exchanged between different actors
-(typically frontend and backend).
+(typically the frontend and backend).
 
 Such a JSON data format enhances how you can convey information across
 different platforms and languages.
@@ -28,7 +28,7 @@ Json-Logic-Typed format.
 
 *Example*:
 
-In the following example, the plus operator has "+" as a codename and must declare
+In the following example, the plus operator has `+` as a codename and must declare
 an `Operator` class/object that defines the computation performed by this operator.
 
 ```json
@@ -40,10 +40,10 @@ an `Operator` class/object that defines the computation performed by this operat
 }
 ```
 
-"`EvaluatorLogicConf` contains the information on how the implementation associates
-a class or object to a "+" operator codename, with the last one being given as
+`EvaluatorLogicConf` contains the information on how the implementation associates
+a class or object to a `+` operator codename, with the last one being given as
 init parameter to `EvaluatorLogic`.
-"
+
 Information provided to `EvaluatorLogicConf` is a mapping of `MethodConf` objects.
 `MethodConf` holds an operator's information for evaluation. There are 6 parameters:
 * `operator`: `String` codename.
@@ -74,7 +74,7 @@ There are two distinct ways to define an operator.
 Let's implement an operator "expN" that takes two input $$X$$, $$N$$ and computes:
 $$\sum_{n=1}^{N} \frac{X^{n}}{n!}$$
 
-The only remaining thing is to do is manually pass the information about the
+The only thing left to do is manually pass the information about the
 "expN" operator as an `MethodConf` object to the `EvaluatorLogicConf.createConf`
 method.
 

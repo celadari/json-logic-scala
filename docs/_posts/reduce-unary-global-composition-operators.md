@@ -31,8 +31,9 @@ Because of the negate operator, the previous JSON should evaluate to `false`.
 ### How to define a custom Unary operator
 
 You need to implement the trait `UnaryOperator` and pass it in a `MethodConf` ─
-exactly as in ["Add a Custom Operator at Evaluation time"]({% link _posts/evaluator-define-custom-operator.md %}).
-Implementing trait `UnaryOperator` means to implement only the abstract method
+exactly as in [Add a Custom Operator at Evaluation time]({% link _posts/evaluator-define-custom-operator.md %}).
+
+To implement the trait `UnaryOperator` means to implement only the abstract method
 `def unaryOperator(value: Any): Any`
 
 **Example**
@@ -109,9 +110,9 @@ Common composition operators are: map, filter, reduce, all, some, none
 ### How to define a Composition operator
 
 You need to implement the trait `CompositionOperator` and pass it in a `MethodConf`─
-exactly as in ["Add a Custom Operator at Evaluation time"]({% link _posts/evaluator-define-custom-operator.md %}).
+exactly as in [Add a Custom Operator at Evaluation time]({% link _posts/evaluator-define-custom-operator.md %}).
 
-Implementing the trait `CompositionOperator` means to implement abstract methods:
+To implement the trait `CompositionOperator` means to implement abstract methods:
 * `def checkInputs(conditions: Array[JsonLogicCore]): Unit`
 * `composeOperator`
 ```scala
@@ -196,7 +197,7 @@ is not generic.
 
 **Example**:
 
-In the following example, the sum of the modulo 2 operator has "sum_modulo_2"
+In the following example, the sum of the modulo 2 operator has `sum_modulo_2`
 as a codename. It must declare an `Operator` class/object that defines the
 computation performed by this operator.
 

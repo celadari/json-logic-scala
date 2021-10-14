@@ -19,14 +19,16 @@ This object transforms leaf values in the abstract syntax tree.
 The object lets you to enable custom pre-treatments on JSON in
 Json-Logic-Typed format.
 
-Imagine you need to share a common JSON in Json-Logic-Typed format between several
+Imagine you need to share common JSON in Json-Logic-Typed format between several
 components (frontend/backend/data).
-Imagine now that you would to need to elaborate a custom pre-treatment specific to
-each of these component.
+You also need to elaborate a custom pre-treatment specific to
+each of these components.
 
-*Example*
-Let's suppose you receive JSON in Json-Logic-Typed format and one of the leaf nodes
-(in the syntax tree) is a string representing a car as: brand + vehicle registration number.
+**Example**
+
+Let's suppose you receive JSON in Json-Logic-Typed format.
+One of the leaf nodes (in the syntax tree) is a string representing a car as:
+brand + vehicle registration number.
 
 ![Original json](../assets/non-pretreated-json-logic-tree.png)
 
@@ -42,7 +44,7 @@ For example, evaluation could be performed not on the previous expression
 ## How to define a custom `EvaluatorValueLogic` ?
 
 A custom object that implements  `EvaluatorValueLogic` is defined by the Type
-it is associated to.
+that it is associated to.
 
 **Example**:
 In the previous example, the associated Type with the `EvaluatorValueLogic`

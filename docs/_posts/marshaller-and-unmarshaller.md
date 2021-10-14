@@ -18,7 +18,7 @@ in Json-logic-scala:
 
 * `Marshaller` transforms a Scala data structure into a _JSON value_
 
-* `Serializer` transformas a Scala data structure into a JSON representation
+* `Serializer` transforms a Scala data structure into a JSON representation
 
 The `Unmarshaller` and `Deserializer` objects perform the reverse processes:
 
@@ -30,7 +30,8 @@ The `Unmarshaller` and `Deserializer` objects perform the reverse processes:
 
 ## Note on custom implementations
 
-**Json Logic Scala relies on the Play-Json library**
+> &#128712;
+> Json Logic Scala relies on the [Play-Json library](https://github.com/playframework/play-json).
 
 To implement custom marshall and unmarshall operations, you may need to read the
 Play-Json documentation (or at least understand the classes/traits described

@@ -27,8 +27,9 @@ def unmarshal(jsValue: JsValue): Any
 
 Each Type is associated with its own `Unmarshaller`.
 
-*Example*:
+**Example**:
 If you define the custom class A, you may define its `Unmarshaller`
+
 ```scala
 class A(val param1: String, val param2: Int)
 

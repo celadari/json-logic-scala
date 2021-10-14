@@ -8,7 +8,7 @@ parent: Getting started
 ---
 
 The `Deserializer` utility class converts json-logic-typed data
-Scala data structure.
+into Scala data structure.
 
 Configure the `Deserializer` class with the `DeserializerConf` object.
 This object defines how types in json-logic-typed map to a Scala data structure.
@@ -25,7 +25,7 @@ val jsonString: String = ...
 val jsonLogicCore = Json.parse(jsonString).as[JsonLogicCore]
 ```
 
-* With custom `DeserializerConf`
+* With a custom `DeserializerConf`
 
 ```scala
 import play.api.libs.json.Json
@@ -36,7 +36,7 @@ implicit val deserializer = new Deserializer()
 val jsonLogicCore = deserializer.deserialize(jsonString)
 ```
 
-* You may also customize `Deserializer` to your own case if needed
+* You can also customize `Deserializer` to your own case
 
 ```scala
 import play.api.libs.json.Json

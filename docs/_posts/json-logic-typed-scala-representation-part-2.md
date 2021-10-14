@@ -10,20 +10,20 @@ parent: Getting started
 
 # Scala data structures: global view (part 2/2)
 
-Data in plain JsonLogic format represents only expressions and values.
-With JsonLogic-typed, you can also include information about *value types*
+In plain JsonLogic format, data represents only expressions and values.
+With Json-Logic-typed, you can also include information about *value types*
 (e.g. `Int`, `String`, `Boolean`).
 
-When they represent value types in JsonLogic-typed, the Scala data structures
+When they represent value types in Json-Logic-typed, the Scala data structures
 are basic recursive structures.
 
 ## The JsonLogicCore object represents typed JsonLogic
 
 `JsonLogicCore` is a Scala data structure that lets you represent
 typed JsonLogic. The interface exposes one attribute: `operator`, which has a
-type `String``.
+type `String`.
 
-`JsonLogicCore` object has the following subtypes:
+The `JsonLogicCore` object has the following subtypes:
 
 *  `ValueLogic`: a Scala data structure that represents a data-node in
 json-logic-typed datum. It consists of several attributes, including:
@@ -93,6 +93,6 @@ where `INT_CODENAME` is a string codename.
 | `TypeValue` object | Can be used to represent Scala data structures | And can also represent |
 |--------------------|--------------------------------------------------------------------------------------------------------------|------------|
 | `SimpleTypeValue`  | `Int`, `String`, `Boolean` | Custom types you might implement yourself `MyOwnClassA`, `MyOwnClassB`, ...    |
-| `OptionTypeValue`  | `Option[Int]`, `Option[String]` | The composed generic types `Option[Option[Int]]`, `Option[Array[Int]]`, even involve custom data types `Option[Array[MyOwnClassA]]`, ...|
+| `OptionTypeValue`  | `Option[Int]`, `Option[String]` | The composed generic types `Option[Option[Int]]`, `Option[Array[Int]]`, and even involve custom data types `Option[Array[MyOwnClassA]]`, ...|
 | `MapTypeValue`     | `Map[String, Int]`, `Map[String, String]` |The composed generic types `Map[String, Option[Int]]`, `Map[String, Array[Int]]` and even involve custom data types `Map[String, Array[MyOwnClassA]]`, ... |
 | `ArrayTypeValue`   | `Array[Int]`, `Array[String]` |the composed generic types `Array[Option[Int]]`, `Array[Array[Int]]` and even involve custom data types `Array[Option[MyOwnClassA]]`, ...|
