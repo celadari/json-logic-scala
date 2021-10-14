@@ -64,8 +64,7 @@ project
 ```
 
 
-*Example*
-
+**Example**
 You may implement following class
 ```scala
 // package com.myownpackage.definitions
@@ -82,8 +81,8 @@ class MarshallerClassA(param1: Int, param2: String) extends Marshaller {
 }
 ```
 
-and instead of passing it manually to `Serializer.createConf` you may just define file `classA`
-in directory `META-INF/services/com.celadari.jsonlogicscala.serialize.Marshaller/`
+Instead of passing it manually to `Serializer.createConf`, you can just define
+file `classA` in the directory `META-INF/services/com.celadari.jsonlogicscala.serialize.Marshaller/`
 
 ```properties
 className=com.myownpackage.marshallers.MarshallerClassA
@@ -95,9 +94,9 @@ sep=;
 codename=classA
 ```
 
-# How to declare a `Unmarshaller` as a service ?
+## How to declare a `Unmarshaller` as a service ?
 
-You only need to add a directory named `com.celadari.jsonlogicscala.deserialize.Unmarshaller`
+Just add a directory named `com.celadari.jsonlogicscala.deserialize.Unmarshaller`
 in your `META-INF/services/` directory.
 
 ```
@@ -120,9 +119,10 @@ project
 └
 ```
 
-*Example*
+**Example**
 
-You may implement following class
+You can implement the following class:
+
 ```scala
 // package com.myownpackage.definitions
 class A(...)
@@ -138,8 +138,8 @@ class UnmarshallerClassA(param1: Int, param2: String) extends Unmarshaller {
 }
 ```
 
-and instead of passing it manually to `Deserializer.createConf` you may just define file `classA`
-in directory `META-INF/services/com.celadari.jsonlogicscala.deserialize.Unmarshaller/`
+Instead of passing it manually to `Deserializer.createConf`, you can just define
+the file `classA` in the directory `META-INF/services/com.celadari.jsonlogicscala.deserialize.Unmarshaller/`
 
 ```properties
 className=com.myownpackage.unmarshallers.UnmarshallerClassA
@@ -152,9 +152,9 @@ codename=classA
 ```
 
 
-# How to declare an `EvaluatorValueLogic` as a service ?
+## How to declare an `EvaluatorValueLogic` as a service
 
-You only need to add a directory named `com.celadari.jsonlogicscala.evaluate.EvaluatorValueLogic`
+Just add a directory named `com.celadari.jsonlogicscala.evaluate.EvaluatorValueLogic`
 in your `META-INF/services/` directory.
 
 ```
@@ -177,9 +177,10 @@ project
 └
 ```
 
-*Example*
+**Example**
 
-You may implement following classes and replace objects `A` by objects `B` before evaluation.
+You can implement the following classes, replacing objects `A` with objects `B` before evaluation.
+
 ```scala
 // package com.myownpackage.definitions
 class A(...)
@@ -193,8 +194,8 @@ class EvaluatorValueLogicClassA(param1: Int, param2: String) extends EvaluatorVa
 }
 ```
 
-and instead of passing it manually to `EvaluatorLogicConf.createConf` you may just define file `classA`
-in directory `META-INF/services/com.celadari.jsonlogicscala.evaluate.EvaluatorValueLogic/`
+Instead of passing it manually to `EvaluatorLogicConf.createConf`, you can just
+the define file `classA` in the directory `META-INF/services/com.celadari.jsonlogicscala.evaluate.EvaluatorValueLogic/`
 
 ```properties
 className=com.myownpackage.evaluators.EvaluatorValueLogicClassA
@@ -206,9 +207,9 @@ sep=;
 codename=classA
 ```
 
-# How to declare a `MethodConf` as a service ?
+## How to declare `MethodConf` as a service
 
-You only need to add a directory named `com.celadari.jsonlogicscala.evaluate.MethodConf`
+Just add a directory named `com.celadari.jsonlogicscala.evaluate.MethodConf`
 in your `META-INF/services/` directory.
 
 ```
@@ -231,18 +232,19 @@ project
 └
 ```
 
-*Example*
+**Example**:
 
-You may implement following classes and replace objects `A` by objects `B` before evaluation.
+You can implement following classes, replacing objects `A` with objects `B` before evaluation.
 ```scala
+
 // package com.myownpackage.operators
 object OperatorA extends Operator {
   ...
 }
 ```
 
-and instead of passing it manually to `EvaluatorLogicConf.createConf` you may just define file `classA`
-in directory `META-INF/services/com.celadari.jsonlogicscala.evaluate.MethodConf/`
+Instead of passing it manually to `EvaluatorLogicConf.createConf`, you can just define
+file `classA` in the directory `META-INF/services/com.celadari.jsonlogicscala.evaluate.MethodConf/`
 
 ```properties
 className=com.myownpackage.operators.OperatorA
