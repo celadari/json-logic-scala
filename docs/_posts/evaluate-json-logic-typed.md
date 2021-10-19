@@ -18,7 +18,7 @@ evaluate. json-logic-scala provides utilities to evaluate these expressions.
 This section goes over how to do this.
 
 More precisely, this section is about evaluating the [Scala data structure `JsonLogicCore`](json-logic-typed-scala-representation-part-2),
-which represents json-logic-typed JSON.
+which represents JsonLogic-Typed JSON.
 
 ## The `EvaluatorLogic` class
 

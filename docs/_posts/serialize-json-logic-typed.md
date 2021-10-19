@@ -7,11 +7,11 @@ layout: post
 parent: Getting started
 ---
 
-The `Serializer` utility class converts a Scala data structure to json-logic-typed
+The `Serializer` utility class converts a Scala data structure to JsonLogic-Typed
 data.
 
 Configure the`Serializer` class with the `SerializerConf` object.
-This object defines how Scala data structures map to the json-logic-typed format.
+This object defines how Scala data structures map to the JsonLogic-Typed format.
 If no custom object is provided, the default `SerializerConf` is used .
 
 ### Serializing examples:
