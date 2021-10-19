@@ -41,8 +41,8 @@ an `Operator` class/object that defines the computation performed by this operat
 ```
 
 `EvaluatorLogicConf` contains the information on how the implementation associates
-a class or object to a `+` operator codename, with the last one being given as
-init parameter to `EvaluatorLogic`.
+a class or object to a `+` operator codename. To use, pass `EvaluatorLogicConf` as
+an init parameter to `EvaluatorLogic`.
 
 Information provided to `EvaluatorLogicConf` is a mapping of `MethodConf` objects.
 `MethodConf` holds an operator's information for evaluation. There are 6 parameters:
