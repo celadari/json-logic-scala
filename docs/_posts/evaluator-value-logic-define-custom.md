@@ -50,8 +50,8 @@ that it is associated to.
 In the previous example, the associated Type with the `EvaluatorValueLogic`
 implementation object would be `{"codename": "string"}`.
 
-`EvaluatorLogicConf` defines how Types are mapped with `EvaluatorValueLogic`,
-with the last one being given as init parameter to `EvaluatorLogic`.
+`EvaluatorLogicConf` defines how Types are mapped with `EvaluatorValueLogic`.
+To use, pass `EvaluatorLogicConf` as an init parameter to `EvaluatorLogic`.
 
 In the `EvaluatorLogicConf` object, information is contained through the parameters
 `valueLogicTypeToReducerMetaInfAdd` and `valueLogicTypeToReducerManualAdd`.
