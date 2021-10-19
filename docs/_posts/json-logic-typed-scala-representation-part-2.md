@@ -26,13 +26,13 @@ type `String`.
 The `JsonLogicCore` object has the following subtypes:
 
 *  `ValueLogic`: a Scala data structure that represents a data-node in
-json-logic-typed datum. It consists of several attributes, including:
+^JsonLogic-Typed datum. It consists of several attributes, including:
    * `operator` of type String,
    * `typeCodenameOpt` of type Option[TypeValue]
  ([TypeValue is detailed in another section]({% link _posts/json-logic-typed-scala-representation-part-2.md %}))
    * `valueOpt` of generic-type Option[T].
 * `ComposeLogic`: a Scala data structure that represents an operator-node in
-json-logic-typed datum. It consists of two attributes:
+^JsonLogic-Typed datum. It consists of two attributes:
     * `operator` of type String
     * `conditions` of type Array[JsonLogicCore]
 
@@ -45,7 +45,7 @@ json-logic-typed datum. It consists of two attributes:
 > see the page [Parse JSON to Scala](./parse-json-logic-typed).
 
  `TypeValue` is a Scala data structure that represents a value type in
- json-logic-typed format. The interface exposes one  attribute:`codename`, of
+ JsonLogic-Typed format. The interface exposes one  attribute:`codename`, of
 type `String`.
 
 `TypeValue` has a the following subtypes:
@@ -55,7 +55,7 @@ type `String`.
 In this case, simple means no generic types.
 
 * An `OptionTypeValue`: a Scala data structure representation of an optional value (Option[String], Option[Int], ...)
-in json-logic-typed format. It consists of two attributes:
+in JsonLogic-Typed format. It consists of two attributes:
     * `codename` (set to `"option""`)
     * `paramType` of type `TypeValue`.
 
@@ -66,7 +66,7 @@ It consists of two attributes:
     * `paramType`, of type `TypeValue`.
 
 * An `ArrayTypeValue`: a Scala data structure representation of an array (Array[String], Array[Int], ...)
-in json-logic-typed format. It consists of two attributes:
+in JsonLogic-Typed format. It consists of two attributes:
    * `codename` (set to `"array""`)
    * `paramType` of type `TypeValue`.
 

@@ -24,7 +24,7 @@ The `Unmarshaller` and `Deserializer` objects perform the reverse processes:
 
 * `Unmarshaller` transforms a JSON value to a Scala data structure
 
-* `Deserializer` parses JSON in json-logic-typed format into the Scala data structure
+* `Deserializer` parses JSON in JsonLogic-Typed format into the Scala data structure
 `JsonLogicCore`, which corresponds to a leaf node in the abstract syntax tree.
     * To parse values in leaf nodes, `Deserializer` relies on several `Unmarshaller` objects
 

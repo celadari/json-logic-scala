@@ -7,11 +7,11 @@ layout: post
 parent: Getting started
 ---
 
-The `Deserializer` utility class converts json-logic-typed data
+The `Deserializer` utility class converts JsonLogic-Typed data
 into Scala data structure.
 
 Configure the `Deserializer` class with the `DeserializerConf` object.
-This object defines how types in json-logic-typed map to a Scala data structure.
+This object defines how types in JsonLogic-Typed map to a Scala data structure.
 If no custom object is provided, the default `DeserializerConf` is used .
 
 ### Parsing examples:
