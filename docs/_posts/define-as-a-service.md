@@ -18,10 +18,11 @@ Implementations can be installed in the form of extensions.
 
 To pass implementations as service providers, place provider-configuration files
 under a directory in the resource directory `META-INF/services`. The directory's name is the
-fully-qualified binary name of the interface/service's type.
+fully qualified binary name of the interface/service's type.
 
 The directory contains a list of files. Each file represents an implementation
-of the interface (whose fully-qualified binary name), with parameters of its very own.
+of the interface, with a fully qualified binary name, and with parameters of its
+own.
 
 ## File parameters
 
