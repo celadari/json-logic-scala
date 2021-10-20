@@ -1,7 +1,7 @@
 ---
 title: API Documentation
 author: Charles
-nav_order: 2
+nav_order: 10
 category: Jekyll
 layout: default
 has_children: false

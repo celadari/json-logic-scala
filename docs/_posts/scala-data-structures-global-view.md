@@ -1,14 +1,14 @@
 ---
-title: "Data structures: Scala representation (part 2)"
+title: " JSON to Scala structures (and vice versa)"
 author: Charles
 nav_order: 3
 category: Jekyll
 layout: post
-parent: Getting started
+parent: Data representation
 ---
 {% include mathjax.html %}
 
-# Scala data structures: global view (part 2/2)
+# Scala data structures: global view
 
 In plain JsonLogic format, data represents only expressions and values.
 With Json-Logic-typed, you can also include information about *value types*
@@ -16,6 +16,17 @@ With Json-Logic-typed, you can also include information about *value types*
 
 When they represent value types in Json-Logic-typed, the Scala data structures
 are basic recursive structures.
+
+<!-- markdown-toc start - Don't edit this section. Run M-x markdown-toc-refresh-toc -->
+**Table of Contents**
+
+- [The JsonLogicCore object represents typed JsonLogic](#the-jsonlogiccore-object-represents-typed-jsonlogic)
+- [The `TypeValue` object represents a value type](#the-typevalue-object-represents-a-value-type)
+    - [Predefined generic types](#predefined-generic-types)
+    - [Reference of `TypeValue` objects](#reference-of-typevalue-objects)
+
+<!-- markdown-toc end -->
+
 
 ## The JsonLogicCore object represents typed JsonLogic
 
@@ -29,7 +40,7 @@ The `JsonLogicCore` object has the following subtypes:
 ^JsonLogic-Typed datum. It consists of several attributes, including:
    * `operator` of type String,
    * `typeCodenameOpt` of type Option[TypeValue]
- ([TypeValue is detailed in another section]({% link _posts/json-logic-typed-scala-representation-part-2.md %}))
+ ([TypeValue is detailed in another section]({% link _posts/scala-data-structures-global-view.md %}))
    * `valueOpt` of generic-type Option[T].
 * `ComposeLogic`: a Scala data structure that represents an operator-node in
 ^JsonLogic-Typed datum. It consists of two attributes:

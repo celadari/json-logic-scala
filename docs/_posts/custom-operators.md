@@ -1,27 +1,15 @@
 ---
-title: "Custom Operator"
+title: "Custom operators"
 author: Charles
-nav_order: 6
+nav_order: 650
 category: Jekyll
 layout: post
+parent: Customize classes
 ---
 
 {% include mathjax.html %}
 
-
-## What is Evaluation ?
-
-A central goal of Json-Logic-Typed is to represent expressions in interoperable format.
-This allows the expressions to be exchanged between different actors
-(typically the frontend and backend).
-
-Such a JSON data format enhances how you can convey information across
-different platforms and languages.
-These platforms can in turn evaluate the underlying expression on their own.
-
-**Evaluation "evaluates" the underlying expression to provide you a result.**
-
-## How to manually define a custom operator ?
+# How to manually define a custom operator
 
 A _custom operator_ is defined by its `codename`, which is the key in
 Json-Logic-Typed format.

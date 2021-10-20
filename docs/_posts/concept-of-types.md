@@ -1,19 +1,14 @@
 ---
-title: "Concept of Type for Parsing/Unparsing"
+title: "About JsonLogic-typed"
 author: Charles
 nav_order: 3
 category: Jekyll
 layout: post
 ---
 
-# Behind the concept of "Type" in Json-Logic-Typed
+# A typed version of JsonLogic
 
-Json Logic Typed is a variant of the jsonLogic format that annotates data-type
-values.
-
-When using statically typed languages like Scala,
-providing type information lets an application choose the right data structure
-at parsing time.
+JsonLogic-typed is a typed variant of the [JsonLogic](https://jsonlogic.com) format. 
 
 Consider the following example:
 
@@ -23,8 +18,8 @@ Consider the following example:
 }
 ```
 
-This JSON snippet can be easily parsed in a dynamically-typed language like
-Python, Perl, or Javascript.
+Dynamically-typed languages, like Python, Perl, or Javascript, can easily parse
+this JSON snippet.
 In these languages, the implementation does not need a predefined type
 for the key `value1`.
 
@@ -32,6 +27,7 @@ On the other hand, in typed languages like Scala, the implementation
 needs to know the values' types in advance.
 
 Json-logic-Scala accepts only JSON in Json-Logic-Typed format.
+
 To address this, json-logic-scala defines a Scala data structure that you
 can use to parse a JSON field or value according to its annotated Type.
 
@@ -62,7 +58,7 @@ A higher type represents generic types in Scala like arrays, options, and maps.
 
 It is recursively defined by its `codename` field value and its `paramType` field value.
 
-**Example 1**:
+**
 
 In the following example, the variable `price_values` is to be parsed as an `Array[Int]`
 

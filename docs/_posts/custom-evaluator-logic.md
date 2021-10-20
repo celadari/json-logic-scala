@@ -1,9 +1,10 @@
 ---
 title: "Custom EvaluatorValueLogic"
 author: Charles
-nav_order: 7
+nav_order: 640
 category: Jekyll
 layout: post
+parent: "Customize classes"
 ---
 
 {% include mathjax.html %}

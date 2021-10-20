@@ -1,13 +1,11 @@
 ---
-title: Getting started
+title: Quick start
 author: Charles
-nav_order: 1
+nav_order: 2
 category: Jekyll
 layout: post
 has_children: true
 ---
-
-## Scala versions
 
 Json-logic-scala supports the following Scala versions:
 * 2.11
