@@ -4,10 +4,29 @@ author: Charles
 nav_order: 8
 category: Jekyll
 layout: post
+parent: "Data representation"
 ---
 # Kinds of operators
 
 {:toc}
+
+<!-- markdown-toc start - Don't edit this section. Run M-x markdown-toc-refresh-toc -->
+**Table of Contents**
+
+- [Kinds of operators](#kinds-of-operators)
+    - [Unary operator](#unary-operator)
+        - [How to define a custom Unary operator](#how-to-define-a-custom-unary-operator)
+    - [Reduce operator](#reduce-operator)
+        - [How to define a Reduce operator](#how-to-define-a-reduce-operator)
+    - [Composition Operator](#composition-operator)
+        - [How to define a Composition operator](#how-to-define-a-composition-operator)
+            - [`checkInputs` method](#checkinputs-method)
+            - [`composeOperator` method](#composeoperator-method)
+    - [Global operator](#global-operator)
+        - [How to define a Global operator ?](#how-to-define-a-global-operator-)
+
+<!-- markdown-toc end -->
+
 
 ## Unary operator
 
@@ -31,7 +50,7 @@ Because of the negate operator, the previous JSON should evaluate to `false`.
 ### How to define a custom Unary operator
 
 You need to implement the trait `UnaryOperator` and pass it in a `MethodConf` ─
-exactly as in [Add a Custom Operator at Evaluation time]({% link _posts/evaluator-define-custom-operator.md %}).
+exactly as in [Add a Custom Operator at Evaluation time]({% link _posts/custom-operators.md %}).
 
 To implement the trait `UnaryOperator` means to implement only the abstract method
 `def unaryOperator(value: Any): Any`
@@ -110,7 +129,7 @@ Common composition operators are: map, filter, reduce, all, some, none
 ### How to define a Composition operator
 
 You need to implement the trait `CompositionOperator` and pass it in a `MethodConf`─
-exactly as in [Add a Custom Operator at Evaluation time]({% link _posts/evaluator-define-custom-operator.md %}).
+exactly as in [Add a Custom Operator at Evaluation time]({% link _posts/custom-operators.md %}).
 
 To implement the trait `CompositionOperator` means to implement abstract methods:
 * `def checkInputs(conditions: Array[JsonLogicCore]): Unit`

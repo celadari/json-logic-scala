@@ -1,10 +1,10 @@
 ---
 title: Serialize Scala data structure to JSON
 author: Charles
-nav_order: 4
+nav_order: 420
 category: Jekyll
 layout: post
-parent: Getting started
+parent: "Parse, Serialize, Evaluate"
 ---
 
 The `Serializer` utility class converts a Scala data structure to JsonLogic-Typed

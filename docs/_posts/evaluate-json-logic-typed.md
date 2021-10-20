@@ -1,13 +1,23 @@
 ---
 title: Evaluate json Scala data structure
 author: Charles
-nav_order: 5
+nav_order: 590
 category: Jekyll
 layout: post
-parent: Getting started
+parent: "Parse, Serialize, Evaluate"
 ---
 {% include mathjax.html %}
 
+A central goal of Json-Logic-Typed is to represent expressions in interoperable format.
+
+This allows the expressions to be exchanged between different actors
+(typically the frontend and backend).
+
+Such a JSON data format enhances how you can convey information across
+different platforms and languages.
+These platforms can in turn evaluate the underlying expression on their own.
+
+**Evaluation "evaluates" the underlying expression to provide you a result.**
 # Use json-logic-scala to evaluate expressions
 
 The previous pages cover [parsing a typed version of JsonLogic into a Scala data
@@ -17,7 +27,7 @@ In all these cases, the underlying data might be an _expression_ that you want t
 evaluate. json-logic-scala provides utilities to evaluate these expressions.
 This section goes over how to do this.
 
-More precisely, this section is about evaluating the [Scala data structure `JsonLogicCore`](json-logic-typed-scala-representation-part-2),
+More precisely, this section is about evaluating the [Scala data structure `JsonLogicCore`](scala-data-structures-global-view),
 which represents JsonLogic-Typed JSON.
 
 ## The `EvaluatorLogic` class
@@ -53,7 +63,7 @@ If evaluated with the following `EvaluatorValueLogic`
 class IncrementLeafInt(intToBeAdded: Int) extends EvaluatorValueLogic {
   def evaluateValueLogic(value: Any): Any = {
     value match {
-      case int: Int => int + intToBeAdded
+      case int: Int => if (int < 20) int - intToBeAdded else int + intToBeAdded
       case any => throw new IllegalArgumentException(...)
     }
   }
@@ -69,7 +79,7 @@ is equivalent to an evaluation on the following abstract tree:
 
 Evaluation starts by applying the class extending `EvaluatorValueLogic`
 on all syntax tree node leaves that are associated with this `TypeValue`
-([see the explanation on `TypeValue`](json-logic-typed-scala-representation-part-2.html#the-typevalue-object-represents-a-value-type)
+([see the explanation on `TypeValue`](scala-data-structures-global-view#the-typevalue-object-represents-a-value-type)
 
 ### A detailed example of code using EvaluatorValueLogic
 

@@ -1,9 +1,10 @@
 ---
 title: "Advanced: Define Custom objects as Java Services"
 author: Charles
-nav_order: 9
+nav_order: 650
 category: Jekyll
 layout: post
+parent: "Customize classes"
 ---
 
 # Define custom objects as Java services

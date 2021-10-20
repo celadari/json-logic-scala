@@ -26,7 +26,7 @@ GEM
       ffi (>= 1.15.0)
     eventmachine (1.2.7)
     execjs (2.8.1)
-    faraday (1.7.1)
+    faraday (1.8.0)
       faraday-em_http (~> 1.0)
       faraday-em_synchrony (~> 1.0)
       faraday-excon (~> 1.1)
@@ -168,13 +168,17 @@ GEM
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
     mercenary (0.3.6)
+    mini_portile2 (2.6.1)
     minima (2.5.1)
       jekyll (>= 3.5, < 5.0)
       jekyll-feed (~> 0.9)
       jekyll-seo-tag (~> 2.1)
     minitest (5.14.4)
     multipart-post (2.1.1)
-    nokogiri (1.12.4-x86_64-linux)
+    nokogiri (1.12.5)
+      mini_portile2 (~> 2.6.1)
+      racc (~> 1.4)
+    nokogiri (1.12.5-x86_64-linux)
       racc (~> 1.4)
     octokit (4.21.0)
       faraday (>= 0.9)
@@ -213,11 +217,12 @@ GEM
       thread_safe (~> 0.1)
     unf (0.1.4)
       unf_ext
-    unf_ext (0.0.7.7)
-    unicode-display_width (1.7.0)
+    unf_ext (0.0.8)
+    unicode-display_width (1.8.0)
     zeitwerk (2.4.2)
 
 PLATFORMS
+  ruby
   x86_64-linux
 
 DEPENDENCIES
@@ -225,4 +230,4 @@ DEPENDENCIES
   just-the-docs
 
 BUNDLED WITH
-   2.2.25
+   2.2.29

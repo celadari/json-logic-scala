@@ -1,10 +1,10 @@
 ---
 title: Parse JSON to a Scala data structure
 author: Charles
-nav_order: 4
+nav_order: 410
 category: Jekyll
 layout: post
-parent: Getting started
+parent: "Parse, Serialize, Evaluate"
 ---
 
 The `Deserializer` utility class converts JsonLogic-Typed data

@@ -1,10 +1,10 @@
 ---
 title: Install
 author: Charles
-nav_order: 1
+nav_order: 210
 category: Jekyll
 layout: post
-parent: Getting started
+parent: Quick start
 ---
 
 ## Sbt
