@@ -1,0 +1,5 @@
+className=com.celadari.jsonlogicscala.evaluate.impl.EvaluatorValueLogicImplInt
+singleton=false
+sep=;
+constructorArgNames=num
+offset=0

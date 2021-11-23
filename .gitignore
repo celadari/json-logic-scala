@@ -1,3 +1,5 @@
+# Copyright 2019 celadari. All rights reserved. MIT license.
+
 *.class
 *.log
 
@@ -14,3 +16,5 @@ project/plugins/project/
 
 # IntelliJ stuff
 .idea/
+
+.bsp

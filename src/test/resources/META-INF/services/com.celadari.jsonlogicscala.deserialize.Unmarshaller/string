@@ -1,0 +1,7 @@
+className=com.celadari.jsonlogicscala.deserialize.impl.UnmarshallerStringImpl
+singleton=false
+prefix=before
+suffix=after
+constructorArgNames=prefix;suffix
+sep=;
+codename=string

@@ -1,4 +1,17 @@
 # Json Logic Scala
+
+[![Scala versions](https://img.shields.io/badge/scala-2.11%7C2.12%7C2.13-blue.svg)]()
+[![Linter](https://github.com/celadari/json-logic-scala/actions/workflows/linter.yml/badge.svg)](https://github.com/celadari/json-logic-scala/actions/workflows/linter.yml)
+[![Unittests](https://github.com/celadari/json-logic-scala/actions/workflows/tests.yml/badge.svg)](https://github.com/celadari/json-logic-scala/actions/workflows/tests.yml)
+[![Build](https://github.com/celadari/json-logic-scala/actions/workflows/build.yml/badge.svg)](https://github.com/celadari/json-logic-scala/actions/workflows/build.yml)
+[![codecov](https://codecov.io/gh/celadari/json-logic-scala/branch/v2/graph/badge.svg?token=9LEB1I50R3)](https://codecov.io/gh/celadari/json-logic-scala)
+[![License](https://img.shields.io/badge/license-MIT-blue.svg)]()
+
+![Json Logic Scala](.img/jsonlogicscala_logo.jpg)
+
+---
+
+
 Build complex rules, serialize them as JSON, and execute them in Scala.
 
 Json-logic-scala enables you to serialize in JSON format logical expressions.
@@ -17,31 +30,38 @@ scala.
 ### Scala Versions
 
 This project is compiled, tested, and published for the following Scala versions:
-* 2.10.7
 * 2.11.12
 * 2.12.6
-* 2.13.1
+* 2.13.2
 
 # Table of Contents
 1. [Installation]()
+
 2. [Main concepts: Boolean-Algebra-Tree]()
 
     2.1 [`ComposeLogic`: Internal Node]()
 
     2.2 [`ValueLogic`: Leaf Node]()
+
 3. [Example]()
+
 4. [Read/Write json]()
 
-    4.1 [Read json: Define `Decoder`]()
+    4.1 [Type information]()
 
-    4.2 [Write json: Define `Encoder`]()
-5. [Evaluating logical expression: `reduce`]()
+    4.2 [Default built-in types]()
 
-    5.1 [`reduceValueLogic` method]()
-    
-    5.2 [`reduceComposeLogic` method]()
-6. [More examples]()
-7. [Scaladoc API]()
+    4.3 [Read json: Define `Deserializer`]()
+
+    4.4 [Write json: Define `Serializer`]()
+
+5. [Evaluating logical expression: `eval` method]()
+6. [Define custom operators]()
+7. [Define EvaluatorValueLogic]()
+8. [Define objects as Java services]()
+9. [Scaladoc API]()
+10. [Contributors]()
+
 
 ## 1. Installation
 
@@ -49,19 +69,19 @@ To get started, add json-logic-scala as a dependency to your project:
 
 * sbt
     ```sbt
-    libraryDependencies += "com.github.celadari" %% "json-logic-scala" % "latest.integration"
+    libraryDependencies += "com.celadari" %% "json-logic-scala" % "2.0"
     ```
 
 * Gradle
     ```gradle
-    compile group: 'com.github.celadari', name: 'json-logic-scala_2.12', version: 'latest.integration'
+    compile group: 'com.celadari', name: 'json-logic-scala_2.12', version: '2.0'
     ```
 * Maven
     ```maven
     <dependency>
-      <groupId>com.github.celadari</groupId>
+      <groupId>com.celadari</groupId>
       <artifactId>play-json_2.12</artifactId>
-      <version>latest.integration</version>
+      <version>2.0</version>
     </dependency>
     ```
 Json-logic-scala supports Scala 2.11 and 2.12. Choosing the right JAR is automatically managed in sbt. If you're using Gradle or Maven then you need to use the correct version in the artifactId.
@@ -102,7 +122,10 @@ It is defined by two fields:
 It represents a basic value for an operand in order to produce a condition.
 It is defined by two fields.
 - `operator`: `String` whose value is supposed to be always `"var"`.
-- `value`: `T` the value object itself to feed an operand.
+- `valueOpt`: `Option[T]` the value object itself to feed an operand.
+- `typeOpt`: `Option[TypeValue]` the type associated to this value.
+- `variableNameOpt`: `Option[String]` name of variable it references if inside composition function.
+- `pathNameOpt`: `Option[String]` key associated to this value in json snippet.
 
 ## 3. Example
 Let's suppose you have a parquet/csv file on disk and you want to remember/transfer
@@ -155,15 +178,48 @@ For the values:
 To use **Json Logic Scala**, you should start by defining or importing a
 `JsonLogicCore` instance (we'll see how to evaluate it latter below).
 
-### Type information
-A Leaf Node has the following json-logic-scala format
-```json
-{"var": {...}, "type": "something"}
-```
-The `"var"` field represents the Leaf Node itself while the `"type"` fields is a string naming the type of the Leaf Node.
-This is due to Scala being a strong static type language and types just cannot be inferred automatically from a json string.
-Thus, the `"type"` fields is required for telling the JVM how to parse the `"var"` field.
+### 4.1 Type information
+Type is annotated after the field `"type"` in a `"var"` operator JSON
+(i.e. the leaf node in corresponding syntax tree).
 
+#### Simple Type
+
+A simple type is simply defined by its `codename` field value.
+
+```json
+[{
+    "...": [
+            {"var":  "price_value", "type":  {"codename":  "int"}}
+    ]
+},
+{
+    "price_value": ...
+}]
+```
+
+#### Higher Type (option|array|map)
+
+A higher type is a composition of simple and/or higher types.
+A higher type represents generic types in Scala like arrays, options, and maps.
+
+It is recursively defined by its `codename` field value and its `paramType` field value.
+
+**
+
+In the following example, the variable `price_values` is to be parsed as an `Array[Int]`
+
+```json
+[{
+    "...": [
+            {"var":  "price_values", "type":  {"codename":  "array", "paramType": {"codename":  "int"}}}
+    ]
+},
+{
+    "price_values": ...
+}]
+```
+
+### 4.2 Default built-in types
 *Json-logic-scala* **comes with built-in naming convention for basic types**
 
 | `"type"` field | Scala type |
@@ -176,222 +232,75 @@ Thus, the `"type"` fields is required for telling the JVM how to parse the `"var
 |`"float"`       | `Float`    |
 |`"double"`      | `Double`   |
 |`"boolean"`     | `Boolean`  |
+|`"array"`       | `Array`    |
+|`"map"`         | `Map`      |
+|`"option"`      | `Option`   |
 
 
-### 4.1 Read json: Define Decoder
-A decoder defines how to read/parse a JSON string/[JsValue](https://www.playframework.com/documentation/latest/api/scala/play/api/libs/json/JsValue.html)
-to a `JsonLogicCore` instance.
 
-* **`Decoder` class must be instantiated** if you need to parse a Json string to a Scala object.
-    ```scala
-    implicit val decoder = new Decoder
-    val myVal = Json.parse(json).as[JsonLogicCore]
-    ```
+### 4.3 Read json: Define Deserializer
+The `Deserializer` utility class converts JsonLogic-Typed data
+into Scala data structure.
 
-* **Custom scala object/classes**:
-    - You *don't need to change built-in naming convention*.
-        Just instantiate `Decoder` class and define its `customDecode` method.
-        ```scala
-        implicit val decoder = new Decoder{
-            override def customDecode(json: JsValue, otherType: String): Any =
-                  otherType match {
-                        case "car" => json.as[Car]
-                        case "plane" => json.as[Plane]
-                        case _ => throw new IllegalArgumentException("Wrong argument.")
-                  }
-        }
-        ```
-        To do so, you just need to indicate new `"type"` field value along with their Scala class/type.
+Configure the `Deserializer` class with the `DeserializerConf` object.
+This object defines how types in JsonLogic-Typed map to a Scala data structure.
+If no custom object is provided, the default `DeserializerConf` is used .
 
-    - You *need to change built-in naming convention*.
-        Just instantiate `Decoder` class and override its `decode` method.
-        ```scala
-        implicit val decoder = new Decoder{
-            override def decode(jsonLogic: JsObject, jsonLogicData: JsObject): Any =
-                val typeData = (jsonLogic \ "type").as[String]
-                val pathData = (jsonLogic \ "var").as[String]
-                val jsValue = (jsonLogicData \ pathData).get
+```scala
+import play.api.libs.json.Json
 
-                val value = typeData match {
-                    case "my_custom_byte_name" => jsValue.as[Byte]
-                    case "my_custom_int_name" => jsValue.as[Int]
-                      ...
-                }
-                ValueLogic("var", value)
-        }
-        ```
+val jsonString: String = ...
+implicit val deserializerConf = DeserializerConf.createConf(...)
+implicit val deserializer = new Deserializer()
+val jsonLogicCore = deserializer.deserialize(jsonString)
+```
 
-    - Take note that you must provide Play JSON library a `Reads` typeclass to define how to read your specific type.
-    For [more information on defining a `Reads` typeclass](https://github.com/playframework/play-json#reading-and-writing-objects).
-    Fortunately, you usually don't need to implement a `Reads` typleclass directly.
-    Play JSON comes equipped with some convenient macros to convert to and from case classes.
-    In the following, you just need to define in *companion object* of `case class Car`:
-        ```scala
-        object Car {
-            implicit val carReads: Reads[Car] = Json.reads[Car]
-        }
-        ```
+### 4.4 Write json: Define Serializer
+The `Serializer` utility class converts a Scala data structure to JsonLogic-Typed
+data.
 
-### 4.2 Write json: Define Encoder
-A decoder defines how to write a JSON string/[JsValue](https://www.playframework.com/documentation/latest/api/scala/play/api/libs/json/JsValue.html)
-from a `JsonLogicCore` instance.
+Configure the`Serializer` class with the `SerializerConf` object.
+This object defines how Scala data structures map to the JsonLogic-Typed format.
+If no custom object is provided, the default `SerializerConf` is used .
 
-* **`Encoder` class must be instantiated** if you need to stringify a Scala object.
-    ```scala
-    implicit val encoder: Encoder = new Encoder // useless if only basic built-in types
-    val json = Json.stringify(Json.toJson(json).as[JsonLogicCore])
-    ```
-  *Json-logic-scala* comes with built-in `Encoder` for basic/built-in types.
+```scala
+import play.api.libs.json.Json
 
-* **Custom scala object/classes**:
-    - You *don't need to change built-in naming convention*.
-        Just instantiate `Encoder` class and define its `customValueAndType` method.
-        ```scala
-        implicit val encoder = new Encoder{
-            override def customValueAndType(value: Any): (String, JsValue) =
-                  value match {
-                        case value: Car => ("car", Json.toJson(value))
-                        case value: Plane => ("plane", Json.toJson(value))
-                        case _ => throw new IllegalArgumentException("Wrong argument.")
-                  }
-        }
-        ```
-        To do so, you just need to indicate new `"type"` field value along with their Scala class/type.
-        You can also override `encode` method instead of `customValueAndType`.
+val jsonLogicCore: JsonLogicCore = ...
+implicit val serializerConf = SerializerConf.createConf(...)
+implicit val serializer = new Serializer()
+val jsonString = serializer.serialize(jsonLogicCore)
+```
 
-    - You *need to change built-in naming convention*.
-        Just instantiate `Encoder` class and override its `getJsValueAndType` method.
-        ```scala
-        implicit val encoder = new Encoder{
-            override def getJsValueAndType(value: Any): (String, JsValue) = {
-                value match {
-                      case value: String => ("my_custom_string", JsString(value))
-                      case value: MyCustomClass => ("my_custom_class", Json.toJson(value))
-                      ...
-                }
-        }
-        ```
 
-    - Take note that you must provide Play JSON library a `Writes` typeclass to define how to write your specific type.
-    For [more information on defining a `Writes` typeclass](https://github.com/playframework/play-json#reading-and-writing-objects).
-    Fortunately, you usually don't need to implement a `Writes` typleclass directly.
-    Play JSON comes equipped with some convenient macros to convert to and from case classes.
-    In the following, you just need to define in *companion object* of `case class Car`:
-        ```scala
-        object Car {
-            implicit val carWrites: Writes[Car] = Json.writes[Car]
-        }
-        ```
-
-## 5. Evaluating logical expression: reduce
-Evaluating a logical expression and getting its result if the main interest for most cases.
+## 5. Evaluating logical expression: `eval` method
+Evaluating a logical expression and getting its result is the main goal in most cases.
 Generally, logic/rules are received from another language/application and we want to apply this logic
 to our Scala program.
 Evaluating the logical expression is performed by applying a
 [reduce](https://en.wikipedia.org/wiki/Fold_(higher-order_function)) function to the boolean-algebra-tree.
 
-### `ReduceLogic` class
-Evaluating boolean-algebra-tree can be done by instantiating `ReduceLogic` class and applying `reduce` method on your `JsonLogicCore` instance.
-```scala
-val condition: JsonLogicCore = ...
-val reducer = new ReduceLogic
-val result = reducer.reduce(condition)
-```
 
-The `reduce` method applies two sub-methods depending if the Node is an Internal Node or a Leaf Node.
+## 6. Define custom operators
 
-### 5.1 `reduceValueLogic` method
-- `def reduceValueLogic(condition: ValueLogic[_]): Any`
-- It is called by the `reduce` method on `ValueLogic` conditions.
-- Current built-in json-logic-scala implementation returns the Leaf Node `ValueLogic` instance's `value`.
+For more information please check [online documentation](https://jsonlogicscala.com).
 
-### 5.2 `reduceComposeLogic` method
-- `def reduceComposeLogic(condition: ComposeLogic): Any`
-- It is called by the `reduce` method on `ComposeLogic` conditions.
-- Defines for which `operator` string value, which Scala comparator function should be applied.
-- Comes with **built-in naming convention for operators** and **built-in Scala comparators function**.
+## 7. Define EvaluatorValueLogic
+
+For more information please check [online documentation](https://jsonlogicscala.com).
 
 
-*Json-logic-scala* comes with built-in comparators which are split into 3 different categories:
-`CompareOperator`, `ContainsOperator`, `BooleanOperator`.
+## 8. Define objects as Java services
 
+For more information please check [online documentation](https://jsonlogicscala.com).
 
-There are several ways to define a **custom `reduceComposeLogic`** method:
+## 9. Scaladoc API
 
-#### 5.2.1 Define custom comparators methods
-Good option if you **need to add new types** but **don't need to change the comparator functions for built-in/basic types** and
-**don't need to change built-in naming convention for operators**.
+API Documentation available [here](https://www.jsonlogicscala.com/_api/api.html).
 
-*Json-logic-scala* provides comparator functions for basic types: `Byte`, `Short`, `Int`, `Long`, `Float`, `Double`.
-Those comparators are implicit parameters of `ReduceLogic` loaded at instantiation.
-
-If you need to define comparison behavior to compare a new type to other types you need to implement methods
-among the following:
-
-|     package      |              Scala function                   |                  Behavior that it defines                   |
-|:------------:    |:----------------------------------------------|:-----------------------------------------------------------:|
-| CompareOperator  |`def negateCustom(value: Any): Any`            |negate operator for custom types in CompareOperator package  |
-| CompareOperator  |`def cmpCustomLong(a: Long, b: Any): Any`      | <= operator between `Long` and custom types                 |
-| CompareOperator  |`def cmpCustomDouble(a: Double, b: Any): Any`  | <= operator between `Double` and custom types               |
-| CompareOperator  |`def cmpCustom(a: Any, b: Any): Any`           | <= operator between custom types themselves                 |
-| CompareOperator  |`def eqCustomLong(a: Long, b: Any): Any`       | = operator between `Long` and custom types                  |
-| CompareOperator  |`def eqCustomDouble(a: Double, b: Any): Any`   | <= operator between `Double` and custom types               |
-| CompareOperator  |`def eqCustom(a: Any, b: Any): Any`            | = operator between custom types themselves                  |
-| ContainsOperator |`def containsCustom(a: Any, b: Any): Any`      | contains operator between custom types themselves           |
-| ContainsOperator |`def negateCustom(value: Any): Any`            | negate operator for custom types in ContainsOperator package|
-| BooleanOperator  |`def andCustom(a: Any, b: Any): Any`           | and operator between custom types                           |
-| BooleanOperator  |`def andCustomBoolean(a: Boolean, b: Any): Any`| and operator between `Boolean` type and custom types        |
-| BooleanOperator  |`def orCustom(a: Any, b: Any): Any`            | or operator between custom types                            |
-| BooleanOperator  |`def orCustomBoolean(a: Boolean, b: Any): Any` | or operator between `Boolean` type and custom types         |
-| BooleanOperator  |`def negateCustom(value: Any): Any`            | negate operator for custom types in BooleanOperator package |
-
-#### 5.2.2 Redefine main comparators methods
-Good option if you **need to change the comparator functions for built-in/basic types** and
-**don't need to change built-in naming convention for operators**.
-
-You just need to override among the following comparator methods:
-
-|     package      |              Scala function                   |                  Behavior that it defines                              |
-|:----------------:|:----------------------------------------------|:----------------------------------------------------------------------:|
-| CompareOperator  |`def eq(a: Any, b: Any): Any`                  | = operator for all different types in CompareOperator package          |
-| CompareOperator  |`def negate(value: Any): Any`                  | ! operator for all different types in CompareOperator package          |
-| CompareOperator  |`def cmp(a: Any, b: Any): Any`                 | <= operator for all different types in CompareOperator package         |
-| ContainsOperator |`def contains(a: Any, b: Any): Any`            | contains operator for all different types in ContainsOperator package  |
-| ContainsOperator |`def negate(value: Any): Any`                  | ! operator for all different types in ContainsOperator package         |
-| BooleanOperator  |`def and(a: Any, b: Any): Any`                 | ! operator for all different types in ContainsOperator package         |
-| BooleanOperator  |`def or(a: Any, b: Any): Any`                  | ! operator for all different types in ContainsOperator package         |
-| BooleanOperator  |`def negate(value: Any): Any`                  | ! operator for all different types in ContainsOperator package         |
-
-
-#### 5.2.3 Redefine `reduceComposeLogic` method
-Good option if you **need to add new operators**.
-
-*Example*: let's imagine we just want to add the `"if"` condition.
-```scala
-
-implicit val reducer = new ReduceLogic() {
-    override def reduceComposeLogic(condition: ComposeLogic): Any = {
-        condition.operator match {
-            case "if" => ifCondition(condition.conditions)
-            case other => super.reduceComposeLogic(condition)
-        } 
-    }
-
-    def ifCondition(conditions: Array[JsonLogicCore]): Any = {
-          ...
-    }
-}
-```
-
-## 6. More examples
-
-[More detailed examples can found here](examples/)
-
-
-
-## 7. Scaladoc API
-
-The Scaladoc API for this project can be found [here](http://celadari.github.io/json-logic-scala/latest/api).
+## 10. Contributors
+* Charles-Edouard LADARI
+* Matt DODSON
 
 ## License
 

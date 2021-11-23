@@ -1,0 +1,7 @@
+className=com.celadari.jsonlogicscala.evaluate.impl.EvaluatorValueLogicImplFloat
+singleton=false
+num1=0
+num2=5
+constructorArgNames=nu1;n
+sep=;
+codename={"codename": "float"}
