@@ -17,7 +17,7 @@ if __name__ == '__main__':
         with open(args.path_json, 'r') as f:
             data = json.load(f)
     else:
-        data = {}
+        data = []
     for scala_version in args.scala_versions:
         scala_version_indices = [i for i, data_version in enumerate(data) if data_version['scala-version'] == scala_version]
         if scala_version_indices:
@@ -25,5 +25,6 @@ if __name__ == '__main__':
             data[scala_version_index]['json-logic-versions'] = [args.api_version] + data[scala_version_index]['json-logic-versions']
         else:
             data.append({'scala-version': scala_version, 'json-logic-versions': [args.api_version]})
+    os.makedirs(os.path.dirname(args.path_json), exist_ok=True)
     with open(args.path_json, 'w') as f:
         json.dump(data, f)
